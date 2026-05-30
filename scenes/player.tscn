@@ -5,17 +5,20 @@
 [ext_resource type="Script" uid="uid://cwkkgxid651cg" path="res://scripts/player/interaction_controller.gd" id="3_qlg0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gs56k"]
+radius = 0.4
+height = 1.7
 
 [node name="Player" type="CharacterBody3D" unique_id=1465517899]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=215040423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 shape = SubResource("CapsuleShape3D_gs56k")
 
 [node name="CameraOrigin" type="Node3D" parent="." unique_id=790305541]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraOrigin" unique_id=255546355]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.5)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.4)
 
 [node name="InteractionRay" type="RayCast3D" parent="CameraOrigin" unique_id=990920359]
 target_position = Vector3(0, 0, 2.5)
@@ -27,10 +30,14 @@ mouse_sensibility = 0.6
 _body = NodePath("..")
 _camera_origin = NodePath("../CameraOrigin")
 
-[node name="CharacterController" type="Node" parent="." unique_id=1797100709 node_paths=PackedStringArray("_body")]
+[node name="CharacterController" type="Node" parent="." unique_id=1797100709 node_paths=PackedStringArray("_body", "_stair_detector_ray")]
 script = ExtResource("2_dqkch")
 _body = NodePath("..")
+_stair_detector_ray = NodePath("../StairDetectorRay")
 
 [node name="InteractionController" type="Node" parent="." unique_id=1750395310 node_paths=PackedStringArray("_detector_ray")]
 script = ExtResource("3_qlg0r")
 _detector_ray = NodePath("../CameraOrigin/InteractionRay")
+
+[node name="StairDetectorRay" type="RayCast3D" parent="." unique_id=1551193248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0.5)
