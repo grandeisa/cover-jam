@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://dnnsuruqyxpfm"]
 
 [ext_resource type="Material" uid="uid://bm088ijg10pkb" path="res://materials/placeholder/kenney_prototype-textures/dark/texture_08.tres" id="1_gs56k"]
-[ext_resource type="Script" uid="uid://bve2331e5y7tc" path="res://scripts/player/view_controller.gd" id="2_ookog"]
-[ext_resource type="Script" uid="uid://d4g5wepx3eq6x" path="res://scripts/player/character_controller.gd" id="3_nx7rw"]
-[ext_resource type="Script" uid="uid://cwkkgxid651cg" path="res://scripts/player/interaction_controller.gd" id="4_stiys"]
+[ext_resource type="PackedScene" uid="uid://dblcq67wbe7wd" path="res://scenes/player.tscn" id="2_wnewh"]
 [ext_resource type="Material" uid="uid://d0gufglqtpund" path="res://materials/placeholder/kenney_prototype-textures/green/texture_05.tres" id="4_wnewh"]
 [ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="6_j48ya"]
 
@@ -18,8 +16,6 @@ sky_material = SubResource("ProceduralSkyMaterial_gs56k")
 background_mode = 2
 sky = SubResource("Sky_ookog")
 tonemap_mode = 2
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gs56k"]
 
 [node name="TestHouseScene" type="Node3D" unique_id=1751540665]
 
@@ -39,35 +35,8 @@ flip_faces = true
 size = Vector3(20, 5, 20)
 material = ExtResource("1_gs56k")
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=374007213]
+[node name="Player" parent="." unique_id=1465517899 instance=ExtResource("2_wnewh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1495215205]
-shape = SubResource("CapsuleShape3D_gs56k")
-
-[node name="CameraOrigin" type="Node3D" parent="Player" unique_id=1893906578]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-
-[node name="Camera3D" type="Camera3D" parent="Player/CameraOrigin" unique_id=1585617827]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.5)
-
-[node name="InteractionRay" type="RayCast3D" parent="Player/CameraOrigin" unique_id=499129950]
-target_position = Vector3(0, 0, 2.5)
-collision_mask = 2
-
-[node name="ViewController" type="Node" parent="Player" unique_id=1944623350 node_paths=PackedStringArray("_body", "_camera_origin")]
-script = ExtResource("2_ookog")
-mouse_sensibility = 0.6
-_body = NodePath("..")
-_camera_origin = NodePath("../CameraOrigin")
-
-[node name="CharacterController" type="Node" parent="Player" unique_id=1968649174 node_paths=PackedStringArray("_body")]
-script = ExtResource("3_nx7rw")
-_body = NodePath("..")
-
-[node name="InteractionController" type="Node" parent="Player" unique_id=424930981 node_paths=PackedStringArray("_detector_ray")]
-script = ExtResource("4_stiys")
-_detector_ray = NodePath("../CameraOrigin/InteractionRay")
 
 [node name="PrototypeInteractable" type="CSGBox3D" parent="." unique_id=957314149]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 9)
