@@ -26,7 +26,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var mouse_vel: Vector2 = Input.get_last_mouse_velocity()
 	
-	_current_rotation += Vector2(mouse_vel.y, mouse_vel.x) * MOUSE_SPEED * mouse_sensibility
+	_current_rotation += Vector2(-mouse_vel.y, mouse_vel.x) * MOUSE_SPEED * mouse_sensibility
 	_current_rotation.x = clampf(_current_rotation.x, _camera_min_angle, _camera_max_angle)
 	
 	_apply_rotation(_current_rotation)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Material" uid="uid://bm088ijg10pkb" path="res://materials/placeholder/kenney_prototype-textures/dark/texture_08.tres" id="1_gs56k"]
 [ext_resource type="Script" uid="uid://bve2331e5y7tc" path="res://scripts/player/view_controller.gd" id="2_ookog"]
+[ext_resource type="Script" uid="uid://d4g5wepx3eq6x" path="res://scripts/player/character_controller.gd" id="3_nx7rw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gs56k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -45,9 +46,14 @@ shape = SubResource("CapsuleShape3D_gs56k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/CameraOrigin" unique_id=1585617827]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.5)
 
 [node name="ViewController" type="Node" parent="Player" unique_id=1944623350 node_paths=PackedStringArray("_body", "_camera_origin")]
 script = ExtResource("2_ookog")
+mouse_sensibility = 0.6
 _body = NodePath("..")
 _camera_origin = NodePath("../CameraOrigin")
+
+[node name="CharacterController" type="Node" parent="Player" unique_id=1968649174 node_paths=PackedStringArray("_body")]
+script = ExtResource("3_nx7rw")
+_body = NodePath("..")
