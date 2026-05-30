@@ -3,7 +3,6 @@
 [ext_resource type="Material" uid="uid://bm088ijg10pkb" path="res://materials/placeholder/kenney_prototype-textures/dark/texture_08.tres" id="1_gs56k"]
 [ext_resource type="PackedScene" uid="uid://dblcq67wbe7wd" path="res://scenes/player.tscn" id="2_wnewh"]
 [ext_resource type="Material" uid="uid://d0gufglqtpund" path="res://materials/placeholder/kenney_prototype-textures/green/texture_05.tres" id="4_wnewh"]
-[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="6_j48ya"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gs56k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -16,6 +15,13 @@ sky_material = SubResource("ProceduralSkyMaterial_gs56k")
 background_mode = 2
 sky = SubResource("Sky_ookog")
 tonemap_mode = 2
+
+[sub_resource type="GDScript" id="GDScript_nx7rw"]
+script/source = "extends Interactable
+
+func _on_interact() -> void:
+	print(\"Cube? Green.... Interaction? Made\")
+"
 
 [node name="TestHouseScene" type="Node3D" unique_id=1751540665]
 
@@ -43,4 +49,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 9)
 material_override = ExtResource("4_wnewh")
 use_collision = true
 collision_layer = 3
-script = ExtResource("6_j48ya")
+script = SubResource("GDScript_nx7rw")
+
+[connection signal="interact" from="PrototypeInteractable" to="PrototypeInteractable" method="_on_interact"]
