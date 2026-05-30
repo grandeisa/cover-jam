@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dblcq67wbe7wd"]
+
+[ext_resource type="Script" uid="uid://bve2331e5y7tc" path="res://scripts/player/view_controller.gd" id="1_qhqgy"]
+[ext_resource type="Script" uid="uid://d4g5wepx3eq6x" path="res://scripts/player/character_controller.gd" id="2_dqkch"]
+[ext_resource type="Script" uid="uid://cwkkgxid651cg" path="res://scripts/player/interaction_controller.gd" id="3_qlg0r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gs56k"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1465517899]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=215040423]
+shape = SubResource("CapsuleShape3D_gs56k")
+
+[node name="CameraOrigin" type="Node3D" parent="." unique_id=790305541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraOrigin" unique_id=255546355]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.5)
+
+[node name="InteractionRay" type="RayCast3D" parent="CameraOrigin" unique_id=990920359]
+target_position = Vector3(0, 0, 2.5)
+collision_mask = 2
+
+[node name="ViewController" type="Node" parent="." unique_id=2017287020 node_paths=PackedStringArray("_body", "_camera_origin")]
+script = ExtResource("1_qhqgy")
+mouse_sensibility = 0.6
+_body = NodePath("..")
+_camera_origin = NodePath("../CameraOrigin")
+
+[node name="CharacterController" type="Node" parent="." unique_id=1797100709 node_paths=PackedStringArray("_body")]
+script = ExtResource("2_dqkch")
+_body = NodePath("..")
+
+[node name="InteractionController" type="Node" parent="." unique_id=1750395310 node_paths=PackedStringArray("_detector_ray")]
+script = ExtResource("3_qlg0r")
+_detector_ray = NodePath("../CameraOrigin/InteractionRay")
