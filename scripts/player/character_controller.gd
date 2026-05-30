@@ -2,8 +2,7 @@
 ## This node makes the character move with constant velocity.
 class_name CharacterController extends Node
 
-## Project gravity, defined at node instatiation.
-var _gravity: float = Input.get_gravity().y
+const GRAVITY: float = 9.8
 
 ## [CharacterBody3D] to be controlled. (Preferably a parent to this node)
 @export var _body: CharacterBody3D
@@ -23,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	movement_velocity += _body.basis.z * movement_input.y
 	
 	if not _body.is_on_floor():
-		_body.velocity.y += _gravity
+		_body.velocity.y -= GRAVITY * delta
 		
 	_body.velocity = Vector3(
 		movement_velocity.x,

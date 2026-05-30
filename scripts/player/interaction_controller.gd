@@ -15,8 +15,8 @@ func _process(delta: float) -> void:
 	
 	
 func _detect_interactable() -> void:
-	var detected_object: Node3D = _detector_ray.get_collider()
+	var detected_object = _detector_ray.get_collider()
 	
-	if not detected_object: return
+	if detected_object is not Interactable: return
 	
 	print("Detected object")
