@@ -15,6 +15,10 @@ run/main_scene="uid://dnnsuruqyxpfm"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventManager="*uid://dshxrqy7r0uv3"
+
 [file_customization]
 
 folder_colors={
