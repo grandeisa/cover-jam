@@ -1,6 +1,6 @@
 extends InteractionBehaviour
 
-@export_file_path var _scene_path: String = ""
+@export var _scene_path: StringName = ""
 
 func _on_interact() -> void:
-	get_tree().change_scene_to_file(_scene_path)
+	MainScene.change_scene(_scene_path)

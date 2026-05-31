@@ -27,8 +27,6 @@ func _ready() -> void:
 	_reset_label.text = tr(RESET_CODE) + "\n\n"
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("p_reset"):
-		EventManager.reset()
-		get_tree().change_scene_to_file(_game_scene_path)
+func _on_reset_button_pressed() -> void:
+	EventManager.reset()
+	MainScene.change_scene("house")

@@ -1,71 +1,43 @@
 [gd_scene format=3 uid="uid://blo0vfud4jdt0"]
 
-[sub_resource type="GDScript" id="GDScript_und3l"]
-script/source = "class_name MainScene extends Node
+[ext_resource type="Script" uid="uid://dkhvhvf4a3x4r" path="res://scripts/main_scene.gd" id="1_w2twt"]
+[ext_resource type="Texture2D" uid="uid://hlx8f684imau" path="res://ui/main_menu_background.png" id="2_7ykc4"]
+[ext_resource type="FontFile" uid="uid://bwt2hie4011bi" path="res://fonts/Inconsolata,Londrina_Solid/Londrina_Solid/LondrinaSolid-Black.ttf" id="3_pu3yx"]
 
-const STARTING_SCENE = \"main-menu\"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fq4u8"]
+bg_color = Color(0.29529, 0.5215239, 0.5585753, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 32.0
+expand_margin_top = 8.0
+expand_margin_right = 32.0
+expand_margin_bottom = 8.0
 
-const SCENE_PATHS: Dictionary = {
-	\"house\" : \"res://scenes/test_house_scene.tscn\",
-	\"main-menu\" : \"res://scenes/main_menu.tscn\"
-}
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
+bg_color = Color(0.4627451, 0.72156864, 0.7647059, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 32.0
+expand_margin_top = 8.0
+expand_margin_right = 32.0
+expand_margin_bottom = 8.0
 
-var _loaded_scenes: Dictionary[String, PackedScene] = {}
-
-@onready var _loading_screen: CanvasLayer = $LoadingScreen
-@onready var _loading_screen_animator: AnimationPlayer = $LoadingScreen/AnimationPlayer
-
-var _current_scene: Node
-
-static var _instance: MainScene
-
-func _ready() -> void:
-	if _instance != null and _instance != self:
-		queue_free()
-		return
-	_instance = self
-	#_load_scene(\"house\")
-	change_scene(STARTING_SCENE)
-
-	
-static func change_scene(scene: String) -> void:
-	_instance._change_scene(scene)
-	
-func _change_scene(scene: String) -> void:
-	_loading_screen.visible = true
-	_loading_screen_animator.play(\"loading\")
-	_loading_screen.visible = true
-	_loading_screen_animator.play(\"loading\")
-	if scene not in _loaded_scenes.keys():
-		_instance._load_scene(scene)
-		while scene not in _loaded_scenes.keys():
-			await get_tree().create_timer(0.001).timeout
-			
-	var new_scene: Node = _loaded_scenes.get(scene).instantiate()
-	add_child(new_scene)
-	if _current_scene:
-		_current_scene.queue_free()
-	_current_scene = new_scene
-	_loading_screen.visible = false
-	_loading_screen_animator.stop()
-	
-
-func _load_scene(scene: String) -> void:
-	var path: String = SCENE_PATHS[scene]
-	if ResourceLoader.load_threaded_get_status(path) == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_IN_PROGRESS: return
-	ResourceLoader.load_threaded_request(path)
-	while ResourceLoader.load_threaded_get_status(path) != ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
-		if ResourceLoader.load_threaded_get_status(path) == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_FAILED:
-			push_warning(\"ResourceLoader failed to load resource %s | Trying again...\" % path)
-			
-		await get_tree().create_timer(0.001).timeout
-	
-	_loaded_scenes.set(scene, ResourceLoader.load_threaded_get(path))
-	
-"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_und3l"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="Theme" id="Theme_gubc5"]
+Button/colors/font_color = Color(0.9098039, 0.8980392, 0.87058824, 1)
+Button/font_sizes/font_size = 32
+Button/styles/hover = SubResource("StyleBoxFlat_fq4u8")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_fq4u8")
+Button/styles/normal = SubResource("StyleBoxFlat_ekxnf")
+Button/styles/pressed = SubResource("StyleBoxFlat_fq4u8")
+RichTextLabel/colors/font_shadow_color = Color(0.023529412, 0.14117648, 0.14117648, 1)
+RichTextLabel/constants/shadow_offset_x = 2
+RichTextLabel/constants/shadow_offset_y = 2
+RichTextLabel/font_sizes/bold_font_size = 32
+RichTextLabel/fonts/bold_font = ExtResource("3_pu3yx")
 
 [sub_resource type="Animation" id="Animation_und3l"]
 length = 0.001
@@ -79,7 +51,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["LOADING..."]
+"values": ["[b]LOADING...[/b]"]
 }
 
 [sub_resource type="Animation" id="Animation_w2twt"]
@@ -93,10 +65,10 @@ tracks/0/path = NodePath("RichTextLabel:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.75, 1.5, 2.25),
+"times": PackedFloat32Array(0, 0.73333335, 1.5, 2.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": ["LOADING", "LOADING.", "LOADING..", "LOADING..."]
+"values": [" [b]LOADING[/b] ", " [b]LOADING.[/b] ", " [b]LOADING..[/b] ", " [b]LOADING...[/b] "]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pw63i"]
@@ -106,19 +78,20 @@ _data = {
 }
 
 [node name="MainScene" type="Node" unique_id=814110512]
-script = SubResource("GDScript_und3l")
+script = ExtResource("1_w2twt")
 
 [node name="LoadingScreen" type="CanvasLayer" parent="." unique_id=831223945]
 layer = 5
-visible = false
 
-[node name="Panel" type="Panel" parent="LoadingScreen" unique_id=624137535]
+[node name="BackgroundTextureRect" type="TextureRect" parent="LoadingScreen" unique_id=1993413209]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_und3l")
+mouse_filter = 2
+texture = ExtResource("2_7ykc4")
+expand_mode = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="LoadingScreen" unique_id=1360669189]
 anchors_preset = 8
@@ -132,9 +105,13 @@ offset_right = 20.0
 offset_bottom = 34.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_gubc5")
+theme_override_constants/shadow_offset_x = 12
+theme_override_constants/shadow_offset_y = 12
 theme_override_font_sizes/normal_font_size = 128
+theme_override_font_sizes/bold_font_size = 128
 bbcode_enabled = true
-text = "LOADING..."
+text = "[b]LOADING...[/b]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0

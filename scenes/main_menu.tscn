@@ -11,11 +11,9 @@ script/source = "extends Control
 
 func _ready() -> void:
 	play_button_label.text = tr(\"menu_button_play\")
-	pass
 
 func _on_play_button_click() -> void:
-	print(\"CLICK CLICK\")
-	pass
+	MainScene.change_scene(\"house\")
 	
 func _on_portuguese_click() -> void:
 	print(\"PT\")

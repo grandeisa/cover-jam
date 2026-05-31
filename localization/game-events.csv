@@ -96,5 +96,5 @@ response_filled-dumpster,Cheira mal…,Smells bad…
 interaction_pills,Tomar remédios?,Take medication?
 menu_ending-title_doom,[b]A TERRA FOI PRO BELELÉU[/b],[b]EARTH HAS MET ITS DOOM[/b]
 menu_ending-title_true,[b]A TERRA SOBREVIVEU[/b],[b]EARTH HAS SURVIVED[/b]
-menu_ending-reset,Tentar novamente?,Try again?
+menu_ending-reset,[b]Tentar novamente?[/b],[b]Try again?[/b]
 menu_button_play,[b]JOGAR?[/b],[b]PLAY?[/b]

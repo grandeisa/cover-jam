@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cg72ioxg3iflu"]
 
 [ext_resource type="Script" uid="uid://def47nqx7oxsq" path="res://scripts/end_scene.gd" id="1_nld2j"]
+[ext_resource type="Texture2D" uid="uid://hlx8f684imau" path="res://ui/main_menu_background.png" id="2_85q8e"]
+[ext_resource type="PackedScene" uid="uid://w316yioivby5" path="res://scenes/ui/button.tscn" id="2_s7dif"]
+[ext_resource type="FontFile" uid="uid://bwt2hie4011bi" path="res://fonts/Inconsolata,Londrina_Solid/Londrina_Solid/LondrinaSolid-Black.ttf" id="3_fjxr3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtt65"]
 bg_color = Color(0.011764706, 0.011764706, 0.011764706, 0.67058825)
@@ -14,9 +17,19 @@ script = ExtResource("1_nld2j")
 _game_scene_path = "res://scenes/test_scene_no_house.tscn"
 _title_label = NodePath("UILayer/VBoxContainer/Title")
 _content_label = NodePath("UILayer/VBoxContainer/Content")
-_reset_label = NodePath("UILayer/VBoxContainer/ResetText")
+_reset_label = NodePath("UILayer/VBoxContainer/ResetButton/RichTextLabel")
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=223964238]
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="UILayer" unique_id=669712680]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_85q8e")
+expand_mode = 3
 
 [node name="Panel" type="Panel" parent="UILayer" unique_id=1968140793]
 anchors_preset = 15
@@ -46,6 +59,7 @@ vertical_alignment = 1
 [node name="Content" type="RichTextLabel" parent="UILayer/VBoxContainer" unique_id=750001647]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_fjxr3")
 theme_override_font_sizes/normal_font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_nld2j")
 bbcode_enabled = true
@@ -54,14 +68,16 @@ fit_content = true
 horizontal_alignment = 3
 vertical_alignment = 1
 
-[node name="ResetText" type="RichTextLabel" parent="UILayer/VBoxContainer" unique_id=1396030573]
+[node name="ResetButton" parent="UILayer/VBoxContainer" unique_id=1687160353 instance=ExtResource("2_s7dif")]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-bbcode_enabled = true
-text = "
-[b]Pressione R para tentar novamente[/b]
+size_flags_horizontal = 4
 
+[node name="Label" type="Label" parent="UILayer/VBoxContainer" unique_id=2093725147]
+layout_mode = 2
+text = "
 "
-fit_content = true
-horizontal_alignment = 1
+
+[connection signal="pressed" from="UILayer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+
+[editable path="UILayer/VBoxContainer/ResetButton"]

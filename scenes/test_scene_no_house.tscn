@@ -924,7 +924,7 @@ script = ExtResource("7_rsqoh")
 
 [node name="EndSceneInteraction" type="Node" parent="Interactables/Pills" unique_id=1565226202]
 script = ExtResource("9_r7b0w")
-_scene_path = "res://scenes/end_scene.tscn"
+_scene_path = &"end"
 
 [node name="RemoveItem" type="Node" parent="Interactables/Pills" unique_id=1761023670]
 script = ExtResource("8_rip4w")
@@ -957,7 +957,7 @@ material = ExtResource("8_alwy6")
 
 [node name="EndSceneInteraction" type="Node" parent="Interactables/Car" unique_id=1434410935]
 script = ExtResource("9_r7b0w")
-_scene_path = "res://scenes/end_scene.tscn"
+_scene_path = &"end"
 
 [node name="Player" parent="." unique_id=1465517899 instance=ExtResource("6_fvyxp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.21, 0)
