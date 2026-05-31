@@ -6,10 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://hsbnoxo3cf8" path="res://models/kitchen/kitchen.glb" id="9_qcuhb"]
 [ext_resource type="PackedScene" uid="uid://c2apbmqachuod" path="res://models/living_room/living_room.glb" id="10_7685u"]
 [ext_resource type="PackedScene" uid="uid://bmgkbdj5kugtx" path="res://models/office/office.glb" id="11_3853c"]
-[ext_resource type="PackedScene" uid="uid://56wbti14iyyh" path="res://scenes/interactables/journals.tscn" id="26_ivbqp"]
-[ext_resource type="PackedScene" uid="uid://d3b7novcalssm" path="res://scenes/interactables/glasses.tscn" id="26_nrgyv"]
-[ext_resource type="PackedScene" uid="uid://cgo0cgrqu11fn" path="res://scenes/interactables/bag.tscn" id="26_r8noe"]
-[ext_resource type="PackedScene" uid="uid://j57gjquyhiuj" path="res://scenes/interactables/oven.tscn" id="27_c2gpw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c2gpw"]
 size = Vector3(2.3017578, 0.5716553, 2.5019531)
@@ -83,18 +79,6 @@ size = Vector3(0.072387695, 1, 3.3901138)
 points = PackedVector3Array(0, 0, 0, 0.05, 0, 0, 0.05, 1, 0, 0, 1, 0, 0, 2.1, -1.8, 0, 1.1, -1.8, 0.05, 1.1, -1.8, 0.05, 2.1, -1.8)
 
 [node name="House" type="Node3D" unique_id=1659228581]
-
-[node name="Interactable" type="Node3D" parent="." unique_id=2010851098]
-
-[node name="Black suitcase" parent="Interactable" unique_id=167385984 instance=ExtResource("26_r8noe")]
-transform = Transform3D(0.78722167, 0.61667013, 0, 0, 0, 1, 0.61667013, -0.7872217, 0, -3.707148, 1.854745, -2.8879368)
-
-[node name="Journals" parent="Interactable" unique_id=94320412 instance=ExtResource("26_ivbqp")]
-
-[node name="Glasses" parent="Interactable" unique_id=868308976 instance=ExtResource("26_nrgyv")]
-
-[node name="Oven" parent="Interactable" unique_id=333559471 instance=ExtResource("27_c2gpw")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.56, 1.2, -4.7999997)
 
 [node name="OfficeColisions" type="StaticBody3D" parent="." unique_id=553427955]
 

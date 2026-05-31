@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bibrgghywicke"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_y7xm7"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="2_nk00m"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="3_ymipu"]
+[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="4_ergbu"]
+[ext_resource type="Script" uid="uid://bykllyxws1rjr" path="res://scripts/interactables/remove_object_interaction.gd" id="5_f5mnm"]
+[ext_resource type="PackedScene" uid="uid://b0y4qb4pttxis" path="res://models/interactable/docs.glb" id="6_rd7vj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4ar8"]
+size = Vector3(0.3, 0.1, 0.4)
+
+[node name="Docs" type="StaticBody3D" unique_id=444856100]
+collision_layer = 3
+script = ExtResource("1_y7xm7")
+interaction_hint = &"interaction_documents_pickup"
+response_text_code = &"response_documents_pickup"
+
+[node name="TriggerEvent" type="Node" parent="." unique_id=730725025]
+script = ExtResource("2_nk00m")
+_event = &"docs_pickup"
+
+[node name="ChangeState" type="Node" parent="." unique_id=1439351305 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_ymipu")
+_next_state = NodePath("")
+_state_machine_interactable = NodePath("")
+
+[node name="DisableInteraction" type="Node" parent="." unique_id=1343463730]
+script = ExtResource("4_ergbu")
+
+[node name="RemoveItem" type="Node" parent="." unique_id=328248387]
+script = ExtResource("5_f5mnm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1430317311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0043497086, 0.004486084, 0.006448269)
+shape = SubResource("BoxShape3D_n4ar8")
+
+[node name="docs" parent="." unique_id=1564327081 instance=ExtResource("6_rd7vj")]

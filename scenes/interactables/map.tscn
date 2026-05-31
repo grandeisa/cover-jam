@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ta8r3rcgos8n"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_f3hwh"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="2_5ob3d"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="3_3sf5t"]
+[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="4_c3fia"]
+[ext_resource type="Script" uid="uid://bykllyxws1rjr" path="res://scripts/interactables/remove_object_interaction.gd" id="5_sosmr"]
+[ext_resource type="PackedScene" uid="uid://q2gi4s2ujres" path="res://models/interactable/map.glb" id="6_85hmt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ue5ns"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Map" type="StaticBody3D" unique_id=1193492625]
+collision_layer = 3
+script = ExtResource("1_f3hwh")
+interaction_hint = &"interaction_map_pickup"
+response_text_code = &"response_map_pickup"
+
+[node name="TriggerEvent" type="Node" parent="." unique_id=121298799]
+script = ExtResource("2_5ob3d")
+_event = &"map_pickup"
+
+[node name="ChangeState" type="Node" parent="." unique_id=1552069562 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_3sf5t")
+_next_state = NodePath("")
+_state_machine_interactable = NodePath("")
+
+[node name="DisableInteraction" type="Node" parent="." unique_id=399237073]
+script = ExtResource("4_c3fia")
+
+[node name="RemoveItem" type="Node" parent="." unique_id=1658257239]
+script = ExtResource("5_sosmr")
+
+[node name="map" parent="." unique_id=1548060681 instance=ExtResource("6_85hmt")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=550922102]
+shape = SubResource("BoxShape3D_ue5ns")

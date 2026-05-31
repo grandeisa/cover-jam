@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cal2fcvgb1hjg"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_kq4vt"]
+[ext_resource type="Script" uid="uid://blnilg65an43a" path="res://scripts/interactables/state_machine_interaction.gd" id="2_0dtar"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="3_l6u5p"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="4_nov1r"]
+[ext_resource type="PackedScene" uid="uid://c3a64s6wago7w" path="res://models/interactable/washer.glb" id="5_tu4ml"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25up1"]
+size = Vector3(0.6064453, 0.8616333, 0.55358887)
+
+[node name="WashingMachine" type="StaticBody3D" unique_id=708132110]
+collision_layer = 3
+script = ExtResource("1_kq4vt")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="ConditionalInteraction" type="Node" parent="." unique_id=654381613 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("2_0dtar")
+_current_state = NodePath("GetClothes")
+
+[node name="GetClothes" type="Node" parent="ConditionalInteraction" unique_id=30689506]
+script = ExtResource("1_kq4vt")
+interaction_hint = &"interaction_washing-machine"
+response_text_code = &"response_washing-machine"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="TriggerEvent" type="Node" parent="ConditionalInteraction/GetClothes" unique_id=1702557061]
+script = ExtResource("3_l6u5p")
+_event = &"clothes_pickup"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/GetClothes" unique_id=1405855167 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("4_nov1r")
+_next_state = NodePath("../../LookAtMachine")
+_state_machine_interactable = NodePath("../..")
+
+[node name="ChangeStateDryer" type="Node" parent="ConditionalInteraction/GetClothes" unique_id=1908440841 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("4_nov1r")
+_next_state = NodePath("")
+_state_machine_interactable = NodePath("")
+
+[node name="LookAtMachine" type="Node" parent="ConditionalInteraction" unique_id=491946086]
+script = ExtResource("1_kq4vt")
+interaction_hint = &"interaction_washing-machine_empty"
+response_text_code = &"response_washing-machine_empty"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="Label3D" type="Label3D" parent="." unique_id=677047165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Washing Machine
+"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1279469605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43893433, -0.003967285)
+shape = SubResource("BoxShape3D_25up1")
+
+[node name="washer" parent="." unique_id=677624081 instance=ExtResource("5_tu4ml")]

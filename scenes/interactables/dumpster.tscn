@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://qa3mrjdljk8y"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_cfd8h"]
+[ext_resource type="Script" uid="uid://blnilg65an43a" path="res://scripts/interactables/state_machine_interaction.gd" id="2_rchcb"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="3_ynwtc"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="4_mqqrf"]
+[ext_resource type="PackedScene" uid="uid://b1dsin264voq8" path="res://models/interactable/trashcan.glb" id="5_8735h"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1vv7p"]
+height = 0.58081055
+radius = 0.27490234
+
+[node name="Dumpster" type="StaticBody3D" unique_id=1303482782]
+collision_layer = 3
+script = ExtResource("1_cfd8h")
+interaction_hint = &"interaction_trash_pickup"
+response_text_code = &"response_trash_pickup"
+
+[node name="Conditional" type="Node" parent="." unique_id=97259466 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("2_rchcb")
+_current_state = NodePath("NoTrash")
+
+[node name="NoTrash" type="Node" parent="Conditional" unique_id=471614484]
+script = ExtResource("1_cfd8h")
+interaction_hint = &"interaction_dumpster_no-trash"
+response_text_code = &"response_dumpster_no-trash"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="PlaceTrash" type="Node" parent="Conditional" unique_id=1927956800]
+script = ExtResource("1_cfd8h")
+interaction_hint = &"interaction_dumpster_with-trash"
+response_text_code = &"response_dumpster_with-trash"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="TriggerEvent" type="Node" parent="Conditional/PlaceTrash" unique_id=738422141]
+script = ExtResource("3_ynwtc")
+_event = &"dumpster_filled"
+
+[node name="ChangeState" type="Node" parent="Conditional/PlaceTrash" unique_id=872917362 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("4_mqqrf")
+_next_state = NodePath("../../Filled")
+_state_machine_interactable = NodePath("../..")
+
+[node name="Filled" type="Node" parent="Conditional" unique_id=309281352]
+script = ExtResource("1_cfd8h")
+interaction_hint = &"interaction_filled-dumpster"
+response_text_code = &"response_filled-dumpster"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="trashcan" parent="." unique_id=368825730 instance=ExtResource("5_8735h")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1590772465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3026123, 0)
+shape = SubResource("CylinderShape3D_1vv7p")

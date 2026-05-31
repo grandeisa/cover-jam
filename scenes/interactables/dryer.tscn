@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dv6tbarktj5ai"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_1h6a5"]
+[ext_resource type="Script" uid="uid://blnilg65an43a" path="res://scripts/interactables/state_machine_interaction.gd" id="2_8sjyp"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="3_4cs66"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="4_wii4l"]
+[ext_resource type="PackedScene" uid="uid://cf8gx5m2afbqp" path="res://models/interactable/clothesline.glb" id="5_thc6h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w8my1"]
+size = Vector3(1, 1.3374023, 2.255066)
+
+[node name="Dryer" type="StaticBody3D" unique_id=1859250708]
+collision_layer = 3
+script = ExtResource("1_1h6a5")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="ConditionalInteraction" type="Node" parent="." unique_id=1660557771 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("2_8sjyp")
+_current_state = NodePath("LookAtEmpty")
+
+[node name="LookAtEmpty" type="Node" parent="ConditionalInteraction" unique_id=881656686]
+script = ExtResource("1_1h6a5")
+interaction_hint = &"interaction_dryer_no-clothes"
+response_text_code = &"response_dryer_no-clothes"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="PlaceClothes" type="Node" parent="ConditionalInteraction" unique_id=2087451166]
+script = ExtResource("1_1h6a5")
+interaction_hint = &"interaction_dryer_with-clothes"
+response_text_code = &"response_dryer_with-clothes"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="TriggerEvent" type="Node" parent="ConditionalInteraction/PlaceClothes" unique_id=1399707043]
+script = ExtResource("3_4cs66")
+_event = &"clothes-on-dryer"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/PlaceClothes" unique_id=2109507825 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("4_wii4l")
+_next_state = NodePath("../../LookAtFull")
+_state_machine_interactable = NodePath("../..")
+
+[node name="LookAtFull" type="Node" parent="ConditionalInteraction" unique_id=942989389]
+script = ExtResource("1_1h6a5")
+interaction_hint = &"interaction_dryer_full"
+response_text_code = &"response_dryer_full"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="clothesline" parent="." unique_id=1214734692 instance=ExtResource("5_thc6h")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2100733757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51758814, -0.009246826)
+shape = SubResource("BoxShape3D_w8my1")

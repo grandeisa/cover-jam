@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dpudvlspwsje6"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_b0fmg"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="2_mmgsk"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="3_76dcp"]
+[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="4_iggyk"]
+[ext_resource type="Script" uid="uid://bykllyxws1rjr" path="res://scripts/interactables/remove_object_interaction.gd" id="5_qsvd5"]
+[ext_resource type="PackedScene" uid="uid://b6u2uii333x87" path="res://models/interactable/journal.glb" id="6_10agd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p0rv3"]
+size = Vector3(0.2, 0.2, 0.3)
+
+[node name="Journal" type="StaticBody3D" unique_id=1409324698]
+collision_layer = 3
+script = ExtResource("1_b0fmg")
+interaction_hint = &"interaction_journal_pickup"
+response_text_code = &"response_journal_pickup"
+
+[node name="TriggerEvent" type="Node" parent="." unique_id=1139461006]
+script = ExtResource("2_mmgsk")
+_event = &"journal_pickup"
+
+[node name="ChangeState" type="Node" parent="." unique_id=598629897 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_76dcp")
+_next_state = NodePath("")
+_state_machine_interactable = NodePath("")
+
+[node name="DisableInteraction" type="Node" parent="." unique_id=1033138969]
+script = ExtResource("4_iggyk")
+
+[node name="RemoveItem" type="Node" parent="." unique_id=495891383]
+script = ExtResource("5_qsvd5")
+
+[node name="journal" parent="." unique_id=1712759579 instance=ExtResource("6_10agd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=235181974]
+shape = SubResource("BoxShape3D_p0rv3")

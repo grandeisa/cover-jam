@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cw0le8e3ej3e8"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_fu2o1"]
+[ext_resource type="PackedScene" uid="uid://b811hn0tc4cb5" path="res://models/interactable/keys.glb" id="2_vto2u"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="3_buoqv"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="4_wtp30"]
+[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="5_fjxc0"]
+[ext_resource type="Script" uid="uid://bykllyxws1rjr" path="res://scripts/interactables/remove_object_interaction.gd" id="6_igtis"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mhoyc"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Keys" type="StaticBody3D" unique_id=866098731]
+collision_layer = 3
+script = ExtResource("1_fu2o1")
+interaction_hint = &"interaction_key"
+response_text_code = &"response_key"
+
+[node name="keys" parent="." unique_id=509544384 instance=ExtResource("2_vto2u")]
+
+[node name="TriggerEvent" type="Node" parent="." unique_id=1195981217]
+script = ExtResource("3_buoqv")
+_event = &"keys_pickup"
+
+[node name="ChangeState" type="Node" parent="." unique_id=725221066 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("4_wtp30")
+_next_state = NodePath("")
+_state_machine_interactable = NodePath("")
+
+[node name="DisableInteraction" type="Node" parent="." unique_id=1609587788]
+script = ExtResource("5_fjxc0")
+
+[node name="RemoveItem" type="Node" parent="." unique_id=275330150]
+script = ExtResource("6_igtis")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=612856806]
+shape = SubResource("BoxShape3D_mhoyc")

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://1u8qxsgv2flc"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_to2jp"]
+[ext_resource type="Script" uid="uid://blnilg65an43a" path="res://scripts/interactables/state_machine_interaction.gd" id="2_tjfh6"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="3_fiund"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="4_wqjbn"]
+[ext_resource type="PackedScene" uid="uid://dmsaq5q8ffi3u" path="res://scenes/interactables/door_small_right.tscn" id="5_751aj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gkjao"]
+size = Vector3(0.7441406, 2.0986328, 0.20898438)
+
+[node name="BasementDoor" type="StaticBody3D" unique_id=1420407968]
+collision_layer = 3
+script = ExtResource("1_to2jp")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="ConditionalInteraction" type="Node" parent="." unique_id=599857186 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("2_tjfh6")
+_current_state = NodePath("OpenDoorLocked")
+
+[node name="OpenDoorLocked" type="Node" parent="ConditionalInteraction" unique_id=2010530249]
+script = ExtResource("1_to2jp")
+interaction_hint = &"interaction_closed-door_locked"
+response_text_code = &"response_closed-door_locked"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="PlankPlacement" type="Node" parent="ConditionalInteraction" unique_id=634824009]
+script = ExtResource("1_to2jp")
+interaction_hint = &"interaction_closed-door_locked"
+response_text_code = &"response_closed-door_locked"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ConditionalPlank" type="Node" parent="ConditionalInteraction/PlankPlacement" unique_id=319763793 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("2_tjfh6")
+_current_state = NodePath("PlacePlanks")
+
+[node name="PlacePlanks" type="Node" parent="ConditionalInteraction/PlankPlacement/ConditionalPlank" unique_id=873782999]
+script = ExtResource("1_to2jp")
+interaction_hint = &"interaction_basement-door_with-planks"
+response_text_code = &"response_basement-door_with-planks"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanks" unique_id=581971981 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_fiund")
+_next_state = NodePath("../../../../PlanksPlaced")
+_state_machine_interactable = NodePath("../../../..")
+
+[node name="TriggerEvent" type="Node" parent="ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanks" unique_id=1782426349]
+script = ExtResource("4_wqjbn")
+_event = &"basement-door_planks-on-front"
+
+[node name="PlacePlanksWithHammer" type="Node" parent="ConditionalInteraction/PlankPlacement/ConditionalPlank" unique_id=625562800]
+script = ExtResource("1_to2jp")
+interaction_hint = &"interaction_basement-door_with-planks_with-hammer"
+response_text_code = &"response_basement-door_with-planks_with-hammer"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanksWithHammer" unique_id=540151933 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_fiund")
+_next_state = NodePath("../../../../DoorBlocked")
+_state_machine_interactable = NodePath("../../../..")
+
+[node name="TriggerEvent" type="Node" parent="ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanksWithHammer" unique_id=1508374512]
+script = ExtResource("4_wqjbn")
+_event = &"basement-door_blocked"
+
+[node name="PlanksPlaced" type="Node" parent="ConditionalInteraction" unique_id=1521480157]
+script = ExtResource("1_to2jp")
+interaction_hint = &"interaction_basement-door_planks-in-front"
+response_text_code = &"response_basement-door_planks-in-front"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="DoorBlocked" type="Node" parent="ConditionalInteraction" unique_id=1382105276]
+script = ExtResource("1_to2jp")
+interaction_hint = &"interaction_basement-door-blocked"
+response_text_code = &"response_basement-door_locked"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1422008205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Basement Door"
+
+[node name="Door" parent="." unique_id=730218231 instance=ExtResource("5_751aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06655681, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=431549240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0493164, 0)
+shape = SubResource("BoxShape3D_gkjao")

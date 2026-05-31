@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c37n0tmh3kch7"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_lnqqy"]
+[ext_resource type="Script" uid="uid://blnilg65an43a" path="res://scripts/interactables/state_machine_interaction.gd" id="2_cftvd"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="3_166ko"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="4_vv8fj"]
+[ext_resource type="PackedScene" uid="uid://bgt6ehmldtkd4" path="res://models/interactable/pc.glb" id="5_bimfd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2qflp"]
+size = Vector3(0.35308838, 0.4885254, 0.6532593)
+
+[node name="Computer" type="StaticBody3D" unique_id=501239230]
+collision_layer = 3
+script = ExtResource("1_lnqqy")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="ConditionalInteraction" type="Node" parent="." unique_id=402272959 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("2_cftvd")
+_current_state = NodePath("ComputerEnabled")
+
+[node name="ComputerEnabled" type="Node" parent="ConditionalInteraction" unique_id=2069316596]
+script = ExtResource("1_lnqqy")
+interaction_hint = &"interaction_computer_no-docs"
+response_text_code = &"response_computer_no-docs"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ConditionalInteraction2" type="Node" parent="ConditionalInteraction/ComputerEnabled" unique_id=1466590270 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("2_cftvd")
+_current_state = NodePath("DisableEnabled")
+
+[node name="DisableEnabled" type="Node" parent="ConditionalInteraction/ComputerEnabled/ConditionalInteraction2" unique_id=489537178]
+script = ExtResource("1_lnqqy")
+interaction_hint = &"interaction_computer_no-docs"
+response_text_code = &"response_computer_no-docs"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/DisableEnabled" unique_id=489060455 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_166ko")
+_next_state = NodePath("../../../../LookOff")
+_state_machine_interactable = NodePath("../../../..")
+
+[node name="TriggerEvent" type="Node" parent="ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/DisableEnabled" unique_id=898012365]
+script = ExtResource("4_vv8fj")
+_event = &"computer_off"
+
+[node name="ScanDocs" type="Node" parent="ConditionalInteraction/ComputerEnabled/ConditionalInteraction2" unique_id=588246728]
+script = ExtResource("1_lnqqy")
+interaction_hint = &"interaction_computer_with-docs"
+response_text_code = &"response_computer_with-docs"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/ScanDocs" unique_id=1589814532 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_166ko")
+_next_state = NodePath("../../DisableEnabled")
+_state_machine_interactable = NodePath("../..")
+
+[node name="TriggerEvent" type="Node" parent="ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/ScanDocs" unique_id=284633341]
+script = ExtResource("4_vv8fj")
+_event = &"docs_scanned"
+
+[node name="LookOff" type="Node" parent="ConditionalInteraction" unique_id=1844368065]
+script = ExtResource("1_lnqqy")
+interaction_hint = &"interaction_computer-off"
+response_text_code = &"response_computer-off"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="pc" parent="." unique_id=939097511 instance=ExtResource("5_bimfd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1263000615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0074768066, 0.19274902, 0.0140686035)
+shape = SubResource("BoxShape3D_2qflp")
