@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dmskwxx22g7i"]
+[gd_scene format=3 uid="uid://0bnig8j7opqi"]
 
 [ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_2j5ej"]
 [ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="2_ddehs"]
@@ -13,7 +13,7 @@ script/source = "extends Node
 func _ready() -> void:
 	get_parent().visible = false
 	get_parent().active = false
-	get_parent().use_collision = false
+	get_parent().process_mode = Node.PROCESS_MODE_DISABLED
 	while get_tree():
 		await get_tree().create_timer(0.1).timeout
 		_check_for_pills_event()
@@ -22,7 +22,7 @@ func _check_for_pills_event() -> void:
 	if EventManager.get_first_event_for_ending() == \"pills_taken\":
 		get_parent().visible = true
 		get_parent().active = true
-		get_parent().use_collision = true
+		get_parent().process_mode = Node.PROCESS_MODE_INHERIT
 		queue_free()
 "
 

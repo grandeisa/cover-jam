@@ -17,9 +17,10 @@ const RESET_CODE: StringName = "menu_ending-reset"
 @export var _reset_label: RichTextLabel
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var ending: String = EventManager.get_first_event_ending_text()
 	if not ending.is_empty():
-		_content_label.text = tr(ending)
+		_content_label.text = tr(ending).replace("{time}", EventManager.latest_time)
 	if EventManager.get_first_event_for_ending().is_empty():
 		_title_label.text = tr(TRUE_ENDING_TITLE_CODE)
 	else:

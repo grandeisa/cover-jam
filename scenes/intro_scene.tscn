@@ -1,9 +1,23 @@
-[gd_scene format=3 uid="uid://cg72ioxg3iflu"]
+[gd_scene format=3 uid="uid://dsxl3hib6ey27"]
 
-[ext_resource type="Script" uid="uid://def47nqx7oxsq" path="res://scripts/end_scene.gd" id="1_nld2j"]
-[ext_resource type="Texture2D" uid="uid://hlx8f684imau" path="res://ui/main_menu_background.png" id="2_85q8e"]
-[ext_resource type="PackedScene" uid="uid://w316yioivby5" path="res://scenes/ui/button.tscn" id="2_s7dif"]
-[ext_resource type="FontFile" uid="uid://bwt2hie4011bi" path="res://fonts/Inconsolata,Londrina_Solid/Londrina_Solid/LondrinaSolid-Black.ttf" id="3_fjxr3"]
+[ext_resource type="Texture2D" uid="uid://hlx8f684imau" path="res://ui/main_menu_background.png" id="2_tij55"]
+[ext_resource type="FontFile" uid="uid://bwt2hie4011bi" path="res://fonts/Inconsolata,Londrina_Solid/Londrina_Solid/LondrinaSolid-Black.ttf" id="3_8wqor"]
+[ext_resource type="PackedScene" uid="uid://w316yioivby5" path="res://scenes/ui/button.tscn" id="4_0f06d"]
+
+[sub_resource type="GDScript" id="GDScript_gsw8x"]
+script/source = "extends Node2D
+
+@export var _content_label: RichTextLabel
+@export var _start_button_label: RichTextLabel
+
+func _ready() -> void:
+	_content_label.text = tr(\"menu_intro\")
+	_start_button_label.text = \"[b]\" + tr(\"menu_intro_start-button\") + \"[/b]\"
+
+func _on_click() -> void:
+	EventManager.reset()
+	MainScene.change_scene(\"house\")
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtt65"]
 bg_color = Color(0.011764706, 0.011764706, 0.011764706, 0.67058825)
@@ -12,12 +26,10 @@ bg_color = Color(0.011764706, 0.011764706, 0.011764706, 0.67058825)
 content_margin_left = 256.0
 content_margin_right = 256.0
 
-[node name="EndScene" type="Node2D" unique_id=1808120751 node_paths=PackedStringArray("_title_label", "_content_label", "_reset_label")]
-script = ExtResource("1_nld2j")
-_game_scene_path = "res://scenes/test_scene_no_house.tscn"
-_title_label = NodePath("UILayer/VBoxContainer/Title")
+[node name="IntroScene" type="Node2D" unique_id=1808120751 node_paths=PackedStringArray("_content_label", "_start_button_label")]
+script = SubResource("GDScript_gsw8x")
 _content_label = NodePath("UILayer/VBoxContainer/Content")
-_reset_label = NodePath("UILayer/VBoxContainer/ResetButton/RichTextLabel")
+_start_button_label = NodePath("UILayer/VBoxContainer/StartButton/RichTextLabel")
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=223964238]
 
@@ -28,7 +40,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_85q8e")
+texture = ExtResource("2_tij55")
 expand_mode = 3
 
 [node name="Panel" type="Panel" parent="UILayer" unique_id=1968140793]
@@ -51,7 +63,7 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 theme_override_font_sizes/bold_font_size = 60
 bbcode_enabled = true
-text = "[b]A TERRA ENCONTROU SEU FIM[/b]"
+text = "[b]LEVEL 1: THE TUTORIAL[/b]"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -59,24 +71,29 @@ vertical_alignment = 1
 [node name="Content" type="RichTextLabel" parent="UILayer/VBoxContainer" unique_id=750001647]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/normal_font = ExtResource("3_fjxr3")
+theme_override_constants/line_separation = 26
+theme_override_fonts/normal_font = ExtResource("3_8wqor")
 theme_override_font_sizes/normal_font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_nld2j")
 bbcode_enabled = true
-text = "You uhhh... I don't know this is kinda unexpected... there is no text for this ending I have no idea what you forgot but don't think the Earth is safe..."
+text = "You uhhh... I don't know this is kinda unexpected... there is no text for this ending I have no idea what you forgot but I don't think the Earth is safe..."
 fit_content = true
 vertical_alignment = 1
 
-[node name="ResetButton" parent="UILayer/VBoxContainer" unique_id=1687160353 instance=ExtResource("2_s7dif")]
+[node name="StartButton" parent="UILayer/VBoxContainer" unique_id=1687160353 instance=ExtResource("4_0f06d")]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="RichTextLabel" parent="UILayer/VBoxContainer/StartButton" index="0" unique_id=1471739602]
+text = "[b]READY?[/b]
+"
 
 [node name="Label" type="Label" parent="UILayer/VBoxContainer" unique_id=2093725147]
 layout_mode = 2
 text = "
 "
 
-[connection signal="pressed" from="UILayer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="UILayer/VBoxContainer/StartButton" to="." method="_on_click"]
 
-[editable path="UILayer/VBoxContainer/ResetButton"]
+[editable path="UILayer/VBoxContainer/StartButton"]

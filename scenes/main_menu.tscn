@@ -5,15 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://w316yioivby5" path="res://scenes/ui/button.tscn" id="3_bqqt6"]
 
 [sub_resource type="GDScript" id="GDScript_bqqt6"]
-script/source = "extends Control
-
+script/source = "extends Node
 @onready var play_button_label: RichTextLabel = $PlayButton/RichTextLabel
 
 func _ready() -> void:
 	play_button_label.text = tr(\"menu_button_play\")
 
 func _on_play_button_click() -> void:
-	MainScene.change_scene(\"house\")
+	MainScene.change_scene(\"intro-scene\")
 	
 func _on_portuguese_click() -> void:
 	print(\"PT\")
@@ -25,18 +24,11 @@ func _on_english_click() -> void:
 	play_button_label.text = tr(\"menu_button_play\")
 "
 
-[node name="MainMenu" type="Control" unique_id=2102072327]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="MainMenu" type="CanvasLayer" unique_id=454491664]
+follow_viewport_enabled = true
 script = SubResource("GDScript_bqqt6")
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="." unique_id=427328016]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -47,7 +39,6 @@ texture = ExtResource("1_ekxnf")
 expand_mode = 3
 
 [node name="TitleTextureRect" type="TextureRect" parent="." unique_id=304979543]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -62,10 +53,9 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="PlayButton" parent="." unique_id=1687160353 instance=ExtResource("3_bqqt6")]
-layout_mode = 1
 
 [node name="PortugueseButton" parent="." unique_id=2115182405 instance=ExtResource("3_bqqt6")]
-layout_mode = 1
+anchors_preset = -1
 offset_left = 430.0
 offset_top = -592.0
 offset_right = 477.0
@@ -76,7 +66,6 @@ text = "[b]PT-BR[/b]
 "
 
 [node name="EnglishButton" parent="." unique_id=1124667217 instance=ExtResource("3_bqqt6")]
-layout_mode = 1
 offset_left = 430.0
 offset_top = -523.0
 offset_right = 477.0
