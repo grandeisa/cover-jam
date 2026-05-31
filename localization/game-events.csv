@@ -67,6 +67,8 @@ interaction_magnet_no-hammer,Olhar pro super imã?,Look at super magnet?
 response_magnet_no-hammer,Dispositivo super interessante.,Very interesting device.
 interaction_magnet_with-hammer,Quebrar super imã?,Break super magnet?
 response_magnet_with-hammer,clank clank clank,clank clank clank
+interaction_hammer_pickup,Pegar martelo?,Pickup hammer?
+response_hammer_pickup,"Marcelo, o martelo! :)","Hammond, the hammer! :)"
 interaction_cellphone,Responder bom dia da sua mãe?,Answer mom’s good morning text?
 response_cellphone,Parece que você vive mais um dia…,Looks like you will live one more day…
 interaction_map_pickup,Pegar mapa?,Pickup map?

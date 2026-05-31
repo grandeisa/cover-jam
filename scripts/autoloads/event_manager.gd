@@ -80,6 +80,13 @@ func get_first_event_ending_text() -> String:
 	
 	return "finale-event_true-ending"
 
+func get_first_event_for_ending() -> String:
+	for event in _ending_texts.keys():
+		if _event_states.get(event, true): continue
+		return event
+	
+	return ""
+
 ## Sets [param event] state as [code]true[/code] if it is in the list of events.
 func trigger_event(event: StringName):
 	if not _event_states.has(event): return
