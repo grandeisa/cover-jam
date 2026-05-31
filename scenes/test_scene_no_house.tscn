@@ -7,8 +7,10 @@
 [ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="4_rip4w"]
 [ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="6_3dfpv"]
 [ext_resource type="PackedScene" uid="uid://dblcq67wbe7wd" path="res://scenes/player.tscn" id="6_fvyxp"]
+[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="7_rsqoh"]
 [ext_resource type="Material" uid="uid://b8bp874bdkywr" path="res://materials/placeholder/kenney_prototype-textures/purple/texture_03.tres" id="7_ts0v3"]
 [ext_resource type="Material" uid="uid://dy6tqbjif7yh" path="res://materials/placeholder/kenney_prototype-textures/purple/texture_13.tres" id="8_alwy6"]
+[ext_resource type="Script" uid="uid://bykllyxws1rjr" path="res://scripts/interactables/remove_object_interaction.gd" id="8_rip4w"]
 [ext_resource type="Script" uid="uid://dgmfyhauhwfum" path="res://scripts/interactables/change_scene_interaction_behaviour.gd" id="9_r7b0w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gs56k"]
@@ -48,8 +50,60 @@ flip_faces = true
 size = Vector3(30, 14, 20)
 material = ExtResource("1_3dfpv")
 
-[node name="Oven" type="CSGBox3D" parent="." unique_id=2030922616]
+[node name="Backpack" type="CSGBox3D" parent="." unique_id=2076713668]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_backpack_pickup"
+response_text_code = &"response_backpack_pickup"
+
+[node name="TriggerEvent" type="Node" parent="Backpack" unique_id=2046702468]
+script = ExtResource("4_rip4w")
+_event = &"backpack_pickup"
+
+[node name="DisableInteraction" type="Node" parent="Backpack" unique_id=1552800856]
+script = ExtResource("7_rsqoh")
+
+[node name="RemoveItem" type="Node" parent="Backpack" unique_id=150309869]
+script = ExtResource("8_rip4w")
+
+[node name="Label3D" type="Label3D" parent="Backpack" unique_id=2012646425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Backpack
+"
+
+[node name="Glasses" type="CSGBox3D" parent="." unique_id=282043119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_glasses"
+response_text_code = &"response_glasses"
+
+[node name="TriggerEvent" type="Node" parent="Glasses" unique_id=2018473130]
+script = ExtResource("4_rip4w")
+_event = &"glasses_pickup"
+
+[node name="DisableInteraction" type="Node" parent="Glasses" unique_id=1212080463]
+script = ExtResource("7_rsqoh")
+
+[node name="RemoveItem" type="Node" parent="Glasses" unique_id=217905026]
+script = ExtResource("8_rip4w")
+
+[node name="Label3D" type="Label3D" parent="Glasses" unique_id=1595888481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Glasses
+"
+
+[node name="Oven" type="CSGBox3D" parent="." unique_id=2030922616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
 collision_layer = 3
@@ -86,6 +140,125 @@ metadata/_custom_type_script = "uid://cyltasfew5sr3"
 [node name="BurnJournal" type="Node" parent="Oven/ConditionalInteraction" unique_id=979614827]
 script = ExtResource("3_rsqoh")
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="Label3D" type="Label3D" parent="Oven" unique_id=1971693572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Oven"
+
+[node name="WashingMachine" type="CSGBox3D" parent="." unique_id=825725985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="ConditionalInteraction" type="Node" parent="WashingMachine" unique_id=287212370 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("4_1ts6t")
+_current_state = NodePath("GetClothes")
+
+[node name="GetClothes" type="Node" parent="WashingMachine/ConditionalInteraction" unique_id=1978283320]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_washing-machine"
+response_text_code = &"response_washing-machine"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="TriggerEvent" type="Node" parent="WashingMachine/ConditionalInteraction/GetClothes" unique_id=1561356508]
+script = ExtResource("4_rip4w")
+_event = &"clothes_pickup"
+
+[node name="ChangeState" type="Node" parent="WashingMachine/ConditionalInteraction/GetClothes" unique_id=1466693417 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../LookAtMachine")
+_state_machine_interactable = NodePath("../..")
+
+[node name="ChangeStateDryer" type="Node" parent="WashingMachine/ConditionalInteraction/GetClothes" unique_id=941648186 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../../../Dryer/ConditionalInteraction/PlaceClothes")
+_state_machine_interactable = NodePath("../../../../Dryer/ConditionalInteraction")
+
+[node name="LookAtMachine" type="Node" parent="WashingMachine/ConditionalInteraction" unique_id=64482571]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_washing-machine_empty"
+response_text_code = &"response_washing-machine_empty"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="Label3D" type="Label3D" parent="WashingMachine" unique_id=532305034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Washing Machine
+"
+
+[node name="Dryer" type="CSGBox3D" parent="." unique_id=237111736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="ConditionalInteraction" type="Node" parent="Dryer" unique_id=911635615 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("4_1ts6t")
+_current_state = NodePath("LookAtEmpty")
+
+[node name="LookAtEmpty" type="Node" parent="Dryer/ConditionalInteraction" unique_id=1815029993]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_dryer_no-clothes"
+response_text_code = &"response_dryer_no-clothes"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="PlaceClothes" type="Node" parent="Dryer/ConditionalInteraction" unique_id=1122150350]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_dryer_with-clothes"
+response_text_code = &"response_dryer_with-clothes"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="TriggerEvent" type="Node" parent="Dryer/ConditionalInteraction/PlaceClothes" unique_id=1958739215]
+script = ExtResource("4_rip4w")
+_event = &"clothes-on-dryer"
+
+[node name="ChangeState" type="Node" parent="Dryer/ConditionalInteraction/PlaceClothes" unique_id=1903408646 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../LookAtFull")
+_state_machine_interactable = NodePath("../..")
+
+[node name="LookAtFull" type="Node" parent="Dryer/ConditionalInteraction" unique_id=818956995]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_dryer_full"
+response_text_code = &"response_dryer_full"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="Label3D" type="Label3D" parent="Dryer" unique_id=414969490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Dryer
+"
+
+[node name="Cat" type="CSGBox3D" parent="." unique_id=696297444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_cat"
+response_text_code = &"response_cat"
+
+[node name="TriggerEvent" type="Node" parent="Cat" unique_id=515138073]
+script = ExtResource("4_rip4w")
+_event = &"cat_pet"
+
+[node name="Label3D" type="Label3D" parent="Cat" unique_id=187972855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Cat
+
+"
 
 [node name="Player" parent="." unique_id=1465517899 instance=ExtResource("6_fvyxp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21, 0)

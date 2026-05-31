@@ -22,13 +22,19 @@ response_oven-off,Imagina se eu esqueço de desligar o forno?,Could you imagine 
 interaction_oven-on,Ligar forno?,Turn the oven on?
 response_oven-on,E… ligado! Só que não…,And… on! NOT
 interaction_backpack_pickup,Pegar mochila?,Take backpack?
-response_backpack,Meio pesada… não?,Kinda heavy… right?
+response_backpack_pickup,Meio pesada… não?,Kinda heavy… right?
 interaction_glasses,Pegar óculos?,Take glasses?
 response_glasses,Agora eu posso ver melhor!,Now I can see better!
 interaction_washing-machine,Tirar roupas da máquina?,Take clothes out of the washing machine?
 response_washing-machine,Tudo molhado…,It’s all wet…
 interaction_washing-machine_empty,Olhar para a máquina de lavar?,Look at the washing machine?
 response_washing-machine_empty,Ah sim… bela máquina de lavar…,Ah yes… what a nice washing machine…
+interaction_dryer_no-clothes,Olhar para a secadora?,Look at the dryer?
+response_dryer_no-clothes,Sabia que ela pode secar roupas?,Did you know it can dry clothes?
+interaction_dryer_with-clothes,Colocar roupas na secadora?,Place clothes in the dryer?
+response_dryer_with-clothes,Com certeza não vão mofar agora,They won’t get moldy now
+interaction_dryer_full,Olhar para a secadora..?,Look at the dryer..?
+response_dryer_full,Parece que há roupas na secadora… Extraordinário…,Looks like there are clothes in the dryer… Extraordinary…
 interaction_cat,Fazer carinho no gato?,Pet the cat?
 response_cat,miau.,meow.
 interaction_key,Pegar chave?,Take keys?
