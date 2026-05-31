@@ -52,7 +52,7 @@ const _ending_texts: Dictionary[StringName, String] = {
 ## States of all current events.
 var _event_states: Dictionary[StringName, bool] = {}
 
-
+var latest_time: String = "5:00.000"
 
 func _ready() -> void:
 	reset()

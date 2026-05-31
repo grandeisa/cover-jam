@@ -2,28 +2,28 @@
 
 [ext_resource type="Material" uid="uid://bm088ijg10pkb" path="res://materials/placeholder/kenney_prototype-textures/dark/texture_08.tres" id="1_gs56k"]
 [ext_resource type="PackedScene" uid="uid://dblcq67wbe7wd" path="res://scenes/player.tscn" id="2_wnewh"]
-[ext_resource type="PackedScene" uid="uid://d2psnu1qwsdmi" path="res://scenes/interactables/backpack.tscn" id="4_mhoyc"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/backpack.tscn" id="4_mhoyc"]
 [ext_resource type="PackedScene" uid="uid://dun5f4a73bsoq" path="res://scenes/house.tscn" id="5_stiys"]
 [ext_resource type="PackedScene" uid="uid://c0gqthlk0icsb" path="res://scenes/interactables/glasses.tscn" id="5_ue5ns"]
 [ext_resource type="PackedScene" uid="uid://bsnf8mrajncst" path="res://scenes/interactables/oven.tscn" id="6_26tvh"]
-[ext_resource type="PackedScene" uid="uid://cal2fcvgb1hjg" path="res://scenes/interactables/washing_machine.tscn" id="7_ue5ns"]
-[ext_resource type="PackedScene" uid="uid://dv6tbarktj5ai" path="res://scenes/interactables/dryer.tscn" id="8_26tvh"]
-[ext_resource type="PackedScene" uid="uid://bnimffei7jjv6" path="res://scenes/interactables/cat.tscn" id="9_mhoyc"]
-[ext_resource type="PackedScene" uid="uid://bq7nq6silvih7" path="res://scenes/interactables/simple_door.tscn" id="12_2qflp"]
-[ext_resource type="PackedScene" uid="uid://cw0le8e3ej3e8" path="res://scenes/interactables/keys.tscn" id="14_25up1"]
-[ext_resource type="PackedScene" uid="uid://bqr60cg5pxtw4" path="res://scenes/interactables/main_door.tscn" id="15_nc5dg"]
-[ext_resource type="PackedScene" uid="uid://c37n0tmh3kch7" path="res://scenes/interactables/computer.tscn" id="17_2qflp"]
-[ext_resource type="PackedScene" uid="uid://dua5ag6a3gflu" path="res://scenes/interactables/planks.tscn" id="18_25up1"]
-[ext_resource type="PackedScene" uid="uid://1u8qxsgv2flc" path="res://scenes/interactables/basement_door.tscn" id="19_nc5dg"]
-[ext_resource type="PackedScene" uid="uid://dyob6sipgmo26" path="res://scenes/interactables/phone.tscn" id="20_84k8x"]
-[ext_resource type="PackedScene" uid="uid://ta8r3rcgos8n" path="res://scenes/interactables/map.tscn" id="21_1vv7p"]
-[ext_resource type="PackedScene" uid="uid://cvx7rej0c8xks" path="res://scenes/interactables/chest.tscn" id="22_hbpq3"]
-[ext_resource type="PackedScene" uid="uid://dpudvlspwsje6" path="res://scenes/interactables/journal.tscn" id="23_ueq0l"]
-[ext_resource type="PackedScene" uid="uid://bhdb7ytmi4ovr" path="res://scenes/interactables/hammer.tscn" id="24_lux7n"]
-[ext_resource type="PackedScene" uid="uid://qa3mrjdljk8y" path="res://scenes/interactables/dumpster.tscn" id="25_84k8x"]
-[ext_resource type="PackedScene" uid="uid://bibrgghywicke" path="res://scenes/interactables/docs.tscn" id="25_ljmra"]
-[ext_resource type="PackedScene" uid="uid://dmskwxx22g7i" path="res://scenes/interactables/pills.tscn" id="27_nc5dg"]
-[ext_resource type="PackedScene" uid="uid://but0kfq60er7j" path="res://scenes/interactables/car.tscn" id="28_84k8x"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/washing_machine.tscn" id="7_ue5ns"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/dryer.tscn" id="8_26tvh"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/cat.tscn" id="9_mhoyc"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/simple_door.tscn" id="12_2qflp"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/keys.tscn" id="14_25up1"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/main_door.tscn" id="15_nc5dg"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/computer.tscn" id="17_2qflp"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/planks.tscn" id="18_25up1"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/basement_door.tscn" id="19_nc5dg"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/phone.tscn" id="20_84k8x"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/map.tscn" id="21_1vv7p"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/chest.tscn" id="22_hbpq3"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/journal.tscn" id="23_ueq0l"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/hammer.tscn" id="24_lux7n"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/dumpster.tscn" id="25_84k8x"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/docs.tscn" id="25_ljmra"]
+[ext_resource type="PackedScene" uid="uid://0bnig8j7opqi" path="res://scenes/interactables/pills.tscn" id="27_nc5dg"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/car.tscn" id="28_84k8x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gs56k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -61,86 +61,66 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21, 0)
 
 [node name="House" parent="." unique_id=1659228581 instance=ExtResource("5_stiys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00034999847, -0.018094301, -0.0023422241)
-visible = false
 
 [node name="Interactables" type="Node3D" parent="." unique_id=1338882631]
 
 [node name="Backpack" parent="Interactables" unique_id=1766439008 instance=ExtResource("4_mhoyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.25, 4)
-visible = false
 
 [node name="Glasses" parent="Interactables" unique_id=1622885799 instance=ExtResource("5_ue5ns")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.25, 4)
-visible = false
 
 [node name="Oven" parent="Interactables" unique_id=405203539 instance=ExtResource("6_26tvh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.25, 4)
-visible = false
 
 [node name="WashingMachine" parent="Interactables" unique_id=708132110 instance=ExtResource("7_ue5ns")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.25, 4)
-visible = false
 
 [node name="Dryer" parent="Interactables" unique_id=1859250708 instance=ExtResource("8_26tvh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.25, 4)
-visible = false
 
 [node name="Cat" parent="Interactables" unique_id=950922914 instance=ExtResource("9_mhoyc")]
-visible = false
 
 [node name="SimpleDoor" parent="Interactables" unique_id=1938618768 instance=ExtResource("12_2qflp")]
-visible = false
 
 [node name="Keys" parent="Interactables" unique_id=866098731 instance=ExtResource("14_25up1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.25, 4)
-visible = false
 
 [node name="MainDoor" parent="Interactables" unique_id=937838125 instance=ExtResource("15_nc5dg")]
-visible = false
 
 [node name="Computer" parent="Interactables" unique_id=501239230 instance=ExtResource("17_2qflp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 4)
-visible = false
 
 [node name="Planks" parent="Interactables" unique_id=385068276 instance=ExtResource("18_25up1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.25, 4)
+visible = true
 
 [node name="BasementDoor" parent="Interactables" unique_id=1420407968 instance=ExtResource("19_nc5dg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.25, 4)
-visible = false
 
 [node name="Phone" parent="Interactables" unique_id=366554376 instance=ExtResource("20_84k8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.25, 4)
-visible = false
 
 [node name="Map" parent="Interactables" unique_id=1193492625 instance=ExtResource("21_1vv7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.25, 4)
-visible = false
 
 [node name="Chest" parent="Interactables" unique_id=395904396 instance=ExtResource("22_hbpq3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.111328, 1.4006042, 4)
-visible = false
 
 [node name="Journal" parent="Interactables" unique_id=1409324698 instance=ExtResource("23_ueq0l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.25, 4)
-visible = false
 
 [node name="Dumpster" parent="Interactables" unique_id=1303482782 instance=ExtResource("25_84k8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.25, 4)
-visible = false
 
 [node name="Hammer" parent="Interactables" unique_id=44032773 instance=ExtResource("24_lux7n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.25, 4)
-visible = false
 
 [node name="Docs" parent="Interactables" unique_id=444856100 instance=ExtResource("25_ljmra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.25, 4)
-visible = false
 
 [node name="Pills" parent="Interactables" unique_id=1191881144 instance=ExtResource("27_nc5dg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.25, 4)
-visible = false
 
 [node name="Car" parent="Interactables" unique_id=193347517 instance=ExtResource("28_84k8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.822266, 0.83631897, 1.0732422)
-visible = false
