@@ -94,5 +94,6 @@ response_dumpster_with-trash,Você sente a imensa alegria de um trabalho bem fei
 interaction_filled-dumpster,Sentir o cheiro?,Smell it?
 response_filled-dumpster,Cheira mal…,Smells bad…
 interaction_pills,Tomar remédios?,Take medication?
-menu_ending-title_doom,[b]A TERRA ENCONTROU SEU FIM[/b],[b]EARTH HAS MET ITS DOOM[/b]
+menu_ending-title_doom,[b]A TERRA FOI PRO BELELÉU[/b],[b]EARTH HAS MET ITS DOOM[/b]
+menu_ending-title_true,[b]A TERRA SOBREVIVEU[/b],[b]EARTH HAS SURVIVED[/b]
 menu_ending-reset,Pressione [b]<R>[/b] para tentar novamente,Press [b]<R>[/b] to try again

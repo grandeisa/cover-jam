@@ -64,6 +64,7 @@ p_reset={
 [internationalization]
 
 locale/translations=PackedStringArray("res://localization/game-events.en.translation", "res://localization/game-events.pt.translation")
+locale/test="pt"
 
 [layer_names]
 

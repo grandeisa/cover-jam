@@ -69,7 +69,9 @@ flip_faces = true
 size = Vector3(30, 14, 20)
 material = ExtResource("1_3dfpv")
 
-[node name="Backpack" type="CSGBox3D" parent="." unique_id=2076713668]
+[node name="Interactables" type="Node3D" parent="." unique_id=1120850124]
+
+[node name="Backpack" type="CSGBox3D" parent="Interactables" unique_id=2076713668]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -79,23 +81,23 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_backpack_pickup"
 response_text_code = &"response_backpack_pickup"
 
-[node name="TriggerEvent" type="Node" parent="Backpack" unique_id=2046702468]
+[node name="TriggerEvent" type="Node" parent="Interactables/Backpack" unique_id=2046702468]
 script = ExtResource("4_rip4w")
 _event = &"backpack_pickup"
 
-[node name="DisableInteraction" type="Node" parent="Backpack" unique_id=1552800856]
+[node name="DisableInteraction" type="Node" parent="Interactables/Backpack" unique_id=1552800856]
 script = ExtResource("7_rsqoh")
 
-[node name="RemoveItem" type="Node" parent="Backpack" unique_id=150309869]
+[node name="RemoveItem" type="Node" parent="Interactables/Backpack" unique_id=150309869]
 script = ExtResource("8_rip4w")
 
-[node name="Label3D" type="Label3D" parent="Backpack" unique_id=2012646425]
+[node name="Label3D" type="Label3D" parent="Interactables/Backpack" unique_id=2012646425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Backpack
 "
 
-[node name="Glasses" type="CSGBox3D" parent="." unique_id=282043119]
+[node name="Glasses" type="CSGBox3D" parent="Interactables" unique_id=282043119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -105,23 +107,23 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_glasses"
 response_text_code = &"response_glasses"
 
-[node name="TriggerEvent" type="Node" parent="Glasses" unique_id=2018473130]
+[node name="TriggerEvent" type="Node" parent="Interactables/Glasses" unique_id=2018473130]
 script = ExtResource("4_rip4w")
 _event = &"glasses_pickup"
 
-[node name="DisableInteraction" type="Node" parent="Glasses" unique_id=1212080463]
+[node name="DisableInteraction" type="Node" parent="Interactables/Glasses" unique_id=1212080463]
 script = ExtResource("7_rsqoh")
 
-[node name="RemoveItem" type="Node" parent="Glasses" unique_id=217905026]
+[node name="RemoveItem" type="Node" parent="Interactables/Glasses" unique_id=217905026]
 script = ExtResource("8_rip4w")
 
-[node name="Label3D" type="Label3D" parent="Glasses" unique_id=1595888481]
+[node name="Label3D" type="Label3D" parent="Interactables/Glasses" unique_id=1595888481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Glasses
 "
 
-[node name="Oven" type="CSGBox3D" parent="." unique_id=2030922616]
+[node name="Oven" type="CSGBox3D" parent="Interactables" unique_id=2030922616]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -131,62 +133,62 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-off"
 response_text_code = &"response_oven-off"
 
-[node name="ConditionalInteraction" type="Node" parent="Oven" unique_id=1484254495 node_paths=PackedStringArray("_current_state")]
+[node name="ConditionalInteraction" type="Node" parent="Interactables/Oven" unique_id=1484254495 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("OvenOn")
 
-[node name="OvenOn" type="Node" parent="Oven/ConditionalInteraction" unique_id=1030166298]
+[node name="OvenOn" type="Node" parent="Interactables/Oven/ConditionalInteraction" unique_id=1030166298]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-off"
 response_text_code = &"response_oven-off"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ConditionalInteraction2" type="Node" parent="Oven/ConditionalInteraction/OvenOn" unique_id=1763343191 node_paths=PackedStringArray("_current_state")]
+[node name="ConditionalInteraction2" type="Node" parent="Interactables/Oven/ConditionalInteraction/OvenOn" unique_id=1763343191 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("DisableOven")
 
-[node name="DisableOven" type="Node" parent="Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2" unique_id=1582868097]
+[node name="DisableOven" type="Node" parent="Interactables/Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2" unique_id=1582868097]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-off"
 response_text_code = &"response_oven-off"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="TriggerEvent" type="Node" parent="Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/DisableOven" unique_id=55668737]
+[node name="TriggerEvent" type="Node" parent="Interactables/Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/DisableOven" unique_id=55668737]
 script = ExtResource("4_rip4w")
 _event = &"oven_off"
 
-[node name="ChangeState" type="Node" parent="Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/DisableOven" unique_id=1278171614 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/DisableOven" unique_id=1278171614 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../../../LookAtOven")
 _state_machine_interactable = NodePath("../../../..")
 
-[node name="BurnJournals" type="Node" parent="Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2" unique_id=1850853808]
+[node name="BurnJournals" type="Node" parent="Interactables/Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2" unique_id=1850853808]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven_with-journal"
 response_text_code = &"response_oven-with-journal"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="TriggerEvent" type="Node" parent="Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/BurnJournals" unique_id=1678398234]
+[node name="TriggerEvent" type="Node" parent="Interactables/Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/BurnJournals" unique_id=1678398234]
 script = ExtResource("4_rip4w")
 _event = &"journal_burn"
 
-[node name="ChangeState" type="Node" parent="Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/BurnJournals" unique_id=323377837 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/BurnJournals" unique_id=323377837 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../DisableOven")
 _state_machine_interactable = NodePath("../..")
 
-[node name="LookAtOven" type="Node" parent="Oven/ConditionalInteraction" unique_id=1694503255]
+[node name="LookAtOven" type="Node" parent="Interactables/Oven/ConditionalInteraction" unique_id=1694503255]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-on"
 response_text_code = &"response_oven-on"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="Label3D" type="Label3D" parent="Oven" unique_id=1971693572]
+[node name="Label3D" type="Label3D" parent="Interactables/Oven" unique_id=1971693572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Oven"
 
-[node name="WashingMachine" type="CSGBox3D" parent="." unique_id=825725985]
+[node name="WashingMachine" type="CSGBox3D" parent="Interactables" unique_id=825725985]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -196,43 +198,43 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-off"
 response_text_code = &"response_oven-off"
 
-[node name="ConditionalInteraction" type="Node" parent="WashingMachine" unique_id=287212370 node_paths=PackedStringArray("_current_state")]
+[node name="ConditionalInteraction" type="Node" parent="Interactables/WashingMachine" unique_id=287212370 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("GetClothes")
 
-[node name="GetClothes" type="Node" parent="WashingMachine/ConditionalInteraction" unique_id=1978283320]
+[node name="GetClothes" type="Node" parent="Interactables/WashingMachine/ConditionalInteraction" unique_id=1978283320]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_washing-machine"
 response_text_code = &"response_washing-machine"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="TriggerEvent" type="Node" parent="WashingMachine/ConditionalInteraction/GetClothes" unique_id=1561356508]
+[node name="TriggerEvent" type="Node" parent="Interactables/WashingMachine/ConditionalInteraction/GetClothes" unique_id=1561356508]
 script = ExtResource("4_rip4w")
 _event = &"clothes_pickup"
 
-[node name="ChangeState" type="Node" parent="WashingMachine/ConditionalInteraction/GetClothes" unique_id=1466693417 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/WashingMachine/ConditionalInteraction/GetClothes" unique_id=1466693417 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../LookAtMachine")
 _state_machine_interactable = NodePath("../..")
 
-[node name="ChangeStateDryer" type="Node" parent="WashingMachine/ConditionalInteraction/GetClothes" unique_id=941648186 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeStateDryer" type="Node" parent="Interactables/WashingMachine/ConditionalInteraction/GetClothes" unique_id=941648186 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../../../Dryer/ConditionalInteraction/PlaceClothes")
 _state_machine_interactable = NodePath("../../../../Dryer/ConditionalInteraction")
 
-[node name="LookAtMachine" type="Node" parent="WashingMachine/ConditionalInteraction" unique_id=64482571]
+[node name="LookAtMachine" type="Node" parent="Interactables/WashingMachine/ConditionalInteraction" unique_id=64482571]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_washing-machine_empty"
 response_text_code = &"response_washing-machine_empty"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="Label3D" type="Label3D" parent="WashingMachine" unique_id=532305034]
+[node name="Label3D" type="Label3D" parent="Interactables/WashingMachine" unique_id=532305034]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Washing Machine
 "
 
-[node name="Dryer" type="CSGBox3D" parent="." unique_id=237111736]
+[node name="Dryer" type="CSGBox3D" parent="Interactables" unique_id=237111736]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -242,44 +244,44 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-off"
 response_text_code = &"response_oven-off"
 
-[node name="ConditionalInteraction" type="Node" parent="Dryer" unique_id=911635615 node_paths=PackedStringArray("_current_state")]
+[node name="ConditionalInteraction" type="Node" parent="Interactables/Dryer" unique_id=911635615 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("LookAtEmpty")
 
-[node name="LookAtEmpty" type="Node" parent="Dryer/ConditionalInteraction" unique_id=1815029993]
+[node name="LookAtEmpty" type="Node" parent="Interactables/Dryer/ConditionalInteraction" unique_id=1815029993]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_dryer_no-clothes"
 response_text_code = &"response_dryer_no-clothes"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="PlaceClothes" type="Node" parent="Dryer/ConditionalInteraction" unique_id=1122150350]
+[node name="PlaceClothes" type="Node" parent="Interactables/Dryer/ConditionalInteraction" unique_id=1122150350]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_dryer_with-clothes"
 response_text_code = &"response_dryer_with-clothes"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="TriggerEvent" type="Node" parent="Dryer/ConditionalInteraction/PlaceClothes" unique_id=1958739215]
+[node name="TriggerEvent" type="Node" parent="Interactables/Dryer/ConditionalInteraction/PlaceClothes" unique_id=1958739215]
 script = ExtResource("4_rip4w")
 _event = &"clothes-on-dryer"
 
-[node name="ChangeState" type="Node" parent="Dryer/ConditionalInteraction/PlaceClothes" unique_id=1903408646 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Dryer/ConditionalInteraction/PlaceClothes" unique_id=1903408646 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../LookAtFull")
 _state_machine_interactable = NodePath("../..")
 
-[node name="LookAtFull" type="Node" parent="Dryer/ConditionalInteraction" unique_id=818956995]
+[node name="LookAtFull" type="Node" parent="Interactables/Dryer/ConditionalInteraction" unique_id=818956995]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_dryer_full"
 response_text_code = &"response_dryer_full"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="Label3D" type="Label3D" parent="Dryer" unique_id=414969490]
+[node name="Label3D" type="Label3D" parent="Interactables/Dryer" unique_id=414969490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Dryer
 "
 
-[node name="Cat" type="CSGBox3D" parent="." unique_id=696297444]
+[node name="Cat" type="CSGBox3D" parent="Interactables" unique_id=696297444]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -289,18 +291,18 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_cat"
 response_text_code = &"response_cat"
 
-[node name="TriggerEvent" type="Node" parent="Cat" unique_id=515138073]
+[node name="TriggerEvent" type="Node" parent="Interactables/Cat" unique_id=515138073]
 script = ExtResource("4_rip4w")
 _event = &"cat_pet"
 
-[node name="Label3D" type="Label3D" parent="Cat" unique_id=187972855]
+[node name="Label3D" type="Label3D" parent="Interactables/Cat" unique_id=187972855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Cat
 
 "
 
-[node name="SimpleDoor" type="CSGBox3D" parent="." unique_id=623630394]
+[node name="SimpleDoor" type="CSGBox3D" parent="Interactables" unique_id=623630394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -310,36 +312,36 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-off"
 response_text_code = &"response_oven-off"
 
-[node name="ConditionalInteraction" type="Node" parent="SimpleDoor" unique_id=423393080 node_paths=PackedStringArray("_current_state")]
+[node name="ConditionalInteraction" type="Node" parent="Interactables/SimpleDoor" unique_id=423393080 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("OpenDoor")
 
-[node name="OpenDoor" type="Node" parent="SimpleDoor/ConditionalInteraction" unique_id=831560965]
+[node name="OpenDoor" type="Node" parent="Interactables/SimpleDoor/ConditionalInteraction" unique_id=831560965]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_closed-door_unlocked"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ChangeState" type="Node" parent="SimpleDoor/ConditionalInteraction/OpenDoor" unique_id=1780687875 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/SimpleDoor/ConditionalInteraction/OpenDoor" unique_id=1780687875 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../CloseDoor")
 _state_machine_interactable = NodePath("../..")
 
-[node name="CloseDoor" type="Node" parent="SimpleDoor/ConditionalInteraction" unique_id=1490072393]
+[node name="CloseDoor" type="Node" parent="Interactables/SimpleDoor/ConditionalInteraction" unique_id=1490072393]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_open-door"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ChangeState" type="Node" parent="SimpleDoor/ConditionalInteraction/CloseDoor" unique_id=1170449545 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/SimpleDoor/ConditionalInteraction/CloseDoor" unique_id=1170449545 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../OpenDoor")
 _state_machine_interactable = NodePath("../..")
 
-[node name="Label3D" type="Label3D" parent="SimpleDoor" unique_id=117043784]
+[node name="Label3D" type="Label3D" parent="Interactables/SimpleDoor" unique_id=117043784]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Simple door"
 
-[node name="Keys" type="CSGBox3D" parent="." unique_id=2090750112]
+[node name="Keys" type="CSGBox3D" parent="Interactables" unique_id=2090750112]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -349,29 +351,29 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_key"
 response_text_code = &"response_key"
 
-[node name="TriggerEvent" type="Node" parent="Keys" unique_id=1329236210]
+[node name="TriggerEvent" type="Node" parent="Interactables/Keys" unique_id=1329236210]
 script = ExtResource("4_rip4w")
 _event = &"keys_pickup"
 
-[node name="ChangeState" type="Node" parent="Keys" unique_id=1722945134 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Keys" unique_id=1722945134 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../MainDoor/ConditionalInteraction/LockDoor")
 _state_machine_interactable = NodePath("../../MainDoor/ConditionalInteraction")
 
-[node name="DisableInteraction" type="Node" parent="Keys" unique_id=711467069]
+[node name="DisableInteraction" type="Node" parent="Interactables/Keys" unique_id=711467069]
 script = ExtResource("7_rsqoh")
 
-[node name="RemoveItem" type="Node" parent="Keys" unique_id=1924195916]
+[node name="RemoveItem" type="Node" parent="Interactables/Keys" unique_id=1924195916]
 script = ExtResource("8_rip4w")
 
-[node name="Label3D" type="Label3D" parent="Keys" unique_id=1096878853]
+[node name="Label3D" type="Label3D" parent="Interactables/Keys" unique_id=1096878853]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Keys
 
 "
 
-[node name="MainDoor" type="CSGBox3D" parent="." unique_id=1401284513]
+[node name="MainDoor" type="CSGBox3D" parent="Interactables" unique_id=1401284513]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -381,57 +383,57 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-off"
 response_text_code = &"response_oven-off"
 
-[node name="ConditionalInteraction" type="Node" parent="MainDoor" unique_id=904841542 node_paths=PackedStringArray("_current_state")]
+[node name="ConditionalInteraction" type="Node" parent="Interactables/MainDoor" unique_id=904841542 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("OpenDoor")
 
-[node name="OpenDoor" type="Node" parent="MainDoor/ConditionalInteraction" unique_id=483649193]
+[node name="OpenDoor" type="Node" parent="Interactables/MainDoor/ConditionalInteraction" unique_id=483649193]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_closed-door_unlocked"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ChangeState" type="Node" parent="MainDoor/ConditionalInteraction/OpenDoor" unique_id=2094473215 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/MainDoor/ConditionalInteraction/OpenDoor" unique_id=2094473215 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../CloseDoor")
 _state_machine_interactable = NodePath("../..")
 
-[node name="CloseDoor" type="Node" parent="MainDoor/ConditionalInteraction" unique_id=1991120380]
+[node name="CloseDoor" type="Node" parent="Interactables/MainDoor/ConditionalInteraction" unique_id=1991120380]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_open-door"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ChangeState" type="Node" parent="MainDoor/ConditionalInteraction/CloseDoor" unique_id=1911026312 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/MainDoor/ConditionalInteraction/CloseDoor" unique_id=1911026312 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../OpenDoor")
 _state_machine_interactable = NodePath("../..")
 
-[node name="LockDoor" type="Node" parent="MainDoor/ConditionalInteraction" unique_id=1914556725]
+[node name="LockDoor" type="Node" parent="Interactables/MainDoor/ConditionalInteraction" unique_id=1914556725]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_open-door_with-keys"
 response_text_code = &"response_open-door_with-keys"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="TriggerEvent" type="Node" parent="MainDoor/ConditionalInteraction/LockDoor" unique_id=1492082358]
+[node name="TriggerEvent" type="Node" parent="Interactables/MainDoor/ConditionalInteraction/LockDoor" unique_id=1492082358]
 script = ExtResource("4_rip4w")
 _event = &"house-door_lock"
 
-[node name="ChangeState" type="Node" parent="MainDoor/ConditionalInteraction/LockDoor" unique_id=227411522 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/MainDoor/ConditionalInteraction/LockDoor" unique_id=227411522 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../../OpenDoorLocked")
 _state_machine_interactable = NodePath("../..")
 
-[node name="OpenDoorLocked" type="Node" parent="MainDoor" unique_id=1729645340]
+[node name="OpenDoorLocked" type="Node" parent="Interactables/MainDoor" unique_id=1729645340]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_closed-door_locked"
 response_text_code = &"response_closed-door_locked"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="Label3D" type="Label3D" parent="MainDoor" unique_id=1292689]
+[node name="Label3D" type="Label3D" parent="Interactables/MainDoor" unique_id=1292689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Main Door"
 
-[node name="Computer" type="CSGBox3D" parent="." unique_id=1634123241]
+[node name="Computer" type="CSGBox3D" parent="Interactables" unique_id=1634123241]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -441,62 +443,62 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-off"
 response_text_code = &"response_oven-off"
 
-[node name="ConditionalInteraction" type="Node" parent="Computer" unique_id=863251796 node_paths=PackedStringArray("_current_state")]
+[node name="ConditionalInteraction" type="Node" parent="Interactables/Computer" unique_id=863251796 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("ComputerEnabled")
 
-[node name="ComputerEnabled" type="Node" parent="Computer/ConditionalInteraction" unique_id=659531805]
+[node name="ComputerEnabled" type="Node" parent="Interactables/Computer/ConditionalInteraction" unique_id=659531805]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_computer_no-docs"
 response_text_code = &"response_computer_no-docs"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ConditionalInteraction2" type="Node" parent="Computer/ConditionalInteraction/ComputerEnabled" unique_id=1762397631 node_paths=PackedStringArray("_current_state")]
+[node name="ConditionalInteraction2" type="Node" parent="Interactables/Computer/ConditionalInteraction/ComputerEnabled" unique_id=1762397631 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("DisableEnabled")
 
-[node name="DisableEnabled" type="Node" parent="Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2" unique_id=1038947983]
+[node name="DisableEnabled" type="Node" parent="Interactables/Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2" unique_id=1038947983]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_computer_no-docs"
 response_text_code = &"response_computer_no-docs"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ChangeState" type="Node" parent="Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/DisableEnabled" unique_id=1778912686 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/DisableEnabled" unique_id=1778912686 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../../../LookOff")
 _state_machine_interactable = NodePath("../../../..")
 
-[node name="TriggerEvent" type="Node" parent="Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/DisableEnabled" unique_id=704684424]
+[node name="TriggerEvent" type="Node" parent="Interactables/Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/DisableEnabled" unique_id=704684424]
 script = ExtResource("4_rip4w")
 _event = &"computer_off"
 
-[node name="ScanDocs" type="Node" parent="Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2" unique_id=1488172200]
+[node name="ScanDocs" type="Node" parent="Interactables/Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2" unique_id=1488172200]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_computer_with-docs"
 response_text_code = &"response_computer_with-docs"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ChangeState" type="Node" parent="Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/ScanDocs" unique_id=1016018132 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/ScanDocs" unique_id=1016018132 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../DisableEnabled")
 _state_machine_interactable = NodePath("../..")
 
-[node name="TriggerEvent" type="Node" parent="Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/ScanDocs" unique_id=1072416367]
+[node name="TriggerEvent" type="Node" parent="Interactables/Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/ScanDocs" unique_id=1072416367]
 script = ExtResource("4_rip4w")
 _event = &"docs_scanned"
 
-[node name="LookOff" type="Node" parent="Computer/ConditionalInteraction" unique_id=153023405]
+[node name="LookOff" type="Node" parent="Interactables/Computer/ConditionalInteraction" unique_id=153023405]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_computer-off"
 response_text_code = &"response_computer-off"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="Label3D" type="Label3D" parent="Computer" unique_id=2011657319]
+[node name="Label3D" type="Label3D" parent="Interactables/Computer" unique_id=2011657319]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Computer"
 
-[node name="Planks" type="CSGBox3D" parent="." unique_id=506215909]
+[node name="Planks" type="CSGBox3D" parent="Interactables" unique_id=506215909]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -506,29 +508,29 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_planks_pickup"
 response_text_code = &"response_planks_pickup"
 
-[node name="TriggerEvent" type="Node" parent="Planks" unique_id=1283583568]
+[node name="TriggerEvent" type="Node" parent="Interactables/Planks" unique_id=1283583568]
 script = ExtResource("4_rip4w")
 _event = &"planks_pickup"
 
-[node name="ChangeState" type="Node" parent="Planks" unique_id=952978038 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Planks" unique_id=952978038 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../BasementDoor/ConditionalInteraction/PlankPlacement")
 _state_machine_interactable = NodePath("../../BasementDoor/ConditionalInteraction")
 
-[node name="DisableInteraction" type="Node" parent="Planks" unique_id=1067546313]
+[node name="DisableInteraction" type="Node" parent="Interactables/Planks" unique_id=1067546313]
 script = ExtResource("7_rsqoh")
 
-[node name="RemoveItem" type="Node" parent="Planks" unique_id=336038127]
+[node name="RemoveItem" type="Node" parent="Interactables/Planks" unique_id=336038127]
 script = ExtResource("8_rip4w")
 
-[node name="Label3D" type="Label3D" parent="Planks" unique_id=449214091]
+[node name="Label3D" type="Label3D" parent="Interactables/Planks" unique_id=449214091]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Wooden planks
 
 "
 
-[node name="BasementDoor" type="CSGBox3D" parent="." unique_id=1861019289]
+[node name="BasementDoor" type="CSGBox3D" parent="Interactables" unique_id=1861019289]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -538,74 +540,74 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-off"
 response_text_code = &"response_oven-off"
 
-[node name="ConditionalInteraction" type="Node" parent="BasementDoor" unique_id=97390361 node_paths=PackedStringArray("_current_state")]
+[node name="ConditionalInteraction" type="Node" parent="Interactables/BasementDoor" unique_id=97390361 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("OpenDoorLocked")
 
-[node name="OpenDoorLocked" type="Node" parent="BasementDoor/ConditionalInteraction" unique_id=1734481432]
+[node name="OpenDoorLocked" type="Node" parent="Interactables/BasementDoor/ConditionalInteraction" unique_id=1734481432]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_closed-door_locked"
 response_text_code = &"response_closed-door_locked"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="PlankPlacement" type="Node" parent="BasementDoor/ConditionalInteraction" unique_id=520205143]
+[node name="PlankPlacement" type="Node" parent="Interactables/BasementDoor/ConditionalInteraction" unique_id=520205143]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_closed-door_locked"
 response_text_code = &"response_closed-door_locked"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ConditionalPlank" type="Node" parent="BasementDoor/ConditionalInteraction/PlankPlacement" unique_id=1218286616 node_paths=PackedStringArray("_current_state")]
+[node name="ConditionalPlank" type="Node" parent="Interactables/BasementDoor/ConditionalInteraction/PlankPlacement" unique_id=1218286616 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("PlacePlanks")
 
-[node name="PlacePlanks" type="Node" parent="BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank" unique_id=1891755451]
+[node name="PlacePlanks" type="Node" parent="Interactables/BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank" unique_id=1891755451]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_basement-door_with-planks"
 response_text_code = &"response_basement-door_with-planks"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ChangeState" type="Node" parent="BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanks" unique_id=787323586 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanks" unique_id=787323586 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../../../PlanksPlaced")
 _state_machine_interactable = NodePath("../../../..")
 
-[node name="TriggerEvent" type="Node" parent="BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanks" unique_id=383823983]
+[node name="TriggerEvent" type="Node" parent="Interactables/BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanks" unique_id=383823983]
 script = ExtResource("4_rip4w")
 _event = &"basement-door_planks-on-front"
 
-[node name="PlacePlanksWithHammer" type="Node" parent="BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank" unique_id=1798031257]
+[node name="PlacePlanksWithHammer" type="Node" parent="Interactables/BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank" unique_id=1798031257]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_basement-door_with-planks_with-hammer"
 response_text_code = &"response_basement-door_with-planks_with-hammer"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ChangeState" type="Node" parent="BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanksWithHammer" unique_id=1943122008 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanksWithHammer" unique_id=1943122008 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../../../DoorBlocked")
 _state_machine_interactable = NodePath("../../../..")
 
-[node name="TriggerEvent" type="Node" parent="BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanksWithHammer" unique_id=1714679281]
+[node name="TriggerEvent" type="Node" parent="Interactables/BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanksWithHammer" unique_id=1714679281]
 script = ExtResource("4_rip4w")
 _event = &"basement-door_blocked"
 
-[node name="PlanksPlaced" type="Node" parent="BasementDoor/ConditionalInteraction" unique_id=999437770]
+[node name="PlanksPlaced" type="Node" parent="Interactables/BasementDoor/ConditionalInteraction" unique_id=999437770]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_basement-door_planks-in-front"
 response_text_code = &"response_basement-door_planks-in-front"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="DoorBlocked" type="Node" parent="BasementDoor/ConditionalInteraction" unique_id=1063868788]
+[node name="DoorBlocked" type="Node" parent="Interactables/BasementDoor/ConditionalInteraction" unique_id=1063868788]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_basement-door-blocked"
 response_text_code = &"response_basement-door_locked"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="Label3D" type="Label3D" parent="BasementDoor" unique_id=952416373]
+[node name="Label3D" type="Label3D" parent="Interactables/BasementDoor" unique_id=952416373]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Basement Door"
 
-[node name="Phone" type="CSGBox3D" parent="." unique_id=1462104448]
+[node name="Phone" type="CSGBox3D" parent="Interactables" unique_id=1462104448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -615,23 +617,23 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_cellphone"
 response_text_code = &"response_cellphone"
 
-[node name="TriggerEvent" type="Node" parent="Phone" unique_id=1714213571]
+[node name="TriggerEvent" type="Node" parent="Interactables/Phone" unique_id=1714213571]
 script = ExtResource("4_rip4w")
 _event = &"mother"
 
-[node name="DisableInteraction" type="Node" parent="Phone" unique_id=953228258]
+[node name="DisableInteraction" type="Node" parent="Interactables/Phone" unique_id=953228258]
 script = ExtResource("7_rsqoh")
 
-[node name="RemoveItem" type="Node" parent="Phone" unique_id=1949285014]
+[node name="RemoveItem" type="Node" parent="Interactables/Phone" unique_id=1949285014]
 script = ExtResource("8_rip4w")
 
-[node name="Label3D" type="Label3D" parent="Phone" unique_id=1717438854]
+[node name="Label3D" type="Label3D" parent="Interactables/Phone" unique_id=1717438854]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Cellphone
 "
 
-[node name="Map" type="CSGBox3D" parent="." unique_id=1440727802]
+[node name="Map" type="CSGBox3D" parent="Interactables" unique_id=1440727802]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -641,29 +643,29 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_map_pickup"
 response_text_code = &"response_map_pickup"
 
-[node name="TriggerEvent" type="Node" parent="Map" unique_id=2120895708]
+[node name="TriggerEvent" type="Node" parent="Interactables/Map" unique_id=2120895708]
 script = ExtResource("4_rip4w")
 _event = &"map_pickup"
 
-[node name="ChangeState" type="Node" parent="Map" unique_id=2030746919 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Map" unique_id=2030746919 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../Box/ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxWithMap")
 _state_machine_interactable = NodePath("../../Box/ConditionalInteraction/OpenBox/ConditionalInteraction2")
 
-[node name="DisableInteraction" type="Node" parent="Map" unique_id=417705305]
+[node name="DisableInteraction" type="Node" parent="Interactables/Map" unique_id=417705305]
 script = ExtResource("7_rsqoh")
 
-[node name="RemoveItem" type="Node" parent="Map" unique_id=1365754732]
+[node name="RemoveItem" type="Node" parent="Interactables/Map" unique_id=1365754732]
 script = ExtResource("8_rip4w")
 
-[node name="Label3D" type="Label3D" parent="Map" unique_id=1020752282]
+[node name="Label3D" type="Label3D" parent="Interactables/Map" unique_id=1020752282]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Map
 
 "
 
-[node name="Box" type="CSGBox3D" parent="." unique_id=1819473309]
+[node name="Box" type="CSGBox3D" parent="Interactables" unique_id=1819473309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -673,67 +675,67 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_closed-box"
 response_text_code = &"response_closed-box"
 
-[node name="ConditionalInteraction" type="Node" parent="Box" unique_id=1371865955 node_paths=PackedStringArray("_current_state")]
+[node name="ConditionalInteraction" type="Node" parent="Interactables/Box" unique_id=1371865955 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("ClosedBox")
 
-[node name="ClosedBox" type="Node" parent="Box/ConditionalInteraction" unique_id=842019303]
+[node name="ClosedBox" type="Node" parent="Interactables/Box/ConditionalInteraction" unique_id=842019303]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_closed-box"
 response_text_code = &"response_closed-box"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ChangeState" type="Node" parent="Box/ConditionalInteraction/ClosedBox" unique_id=437615056 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Box/ConditionalInteraction/ClosedBox" unique_id=437615056 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../OpenBox")
 _state_machine_interactable = NodePath("../..")
 
-[node name="OpenBox" type="Node" parent="Box/ConditionalInteraction" unique_id=2065511299]
+[node name="OpenBox" type="Node" parent="Interactables/Box/ConditionalInteraction" unique_id=2065511299]
 script = ExtResource("3_rsqoh")
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ConditionalInteraction2" type="Node" parent="Box/ConditionalInteraction/OpenBox" unique_id=1657554593 node_paths=PackedStringArray("_current_state")]
+[node name="ConditionalInteraction2" type="Node" parent="Interactables/Box/ConditionalInteraction/OpenBox" unique_id=1657554593 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("OpenBoxNoMap")
 
-[node name="OpenBoxNoMap" type="Node" parent="Box/ConditionalInteraction/OpenBox/ConditionalInteraction2" unique_id=945845539]
+[node name="OpenBoxNoMap" type="Node" parent="Interactables/Box/ConditionalInteraction/OpenBox/ConditionalInteraction2" unique_id=945845539]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_open-box_no-map"
 response_text_code = &"response_open-box_no-map"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="ChangeState" type="Node" parent="Box/ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxNoMap" unique_id=317651828 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Box/ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxNoMap" unique_id=317651828 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../../../ClosedBox")
 _state_machine_interactable = NodePath("../../../..")
 
-[node name="OpenBoxWithMap" type="Node" parent="Box/ConditionalInteraction/OpenBox/ConditionalInteraction2" unique_id=209040694]
+[node name="OpenBoxWithMap" type="Node" parent="Interactables/Box/ConditionalInteraction/OpenBox/ConditionalInteraction2" unique_id=209040694]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_open-box_with-map"
 response_text_code = &"response_open-box_with-map"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="TriggerEvent" type="Node" parent="Box/ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxWithMap" unique_id=1170242315]
+[node name="TriggerEvent" type="Node" parent="Interactables/Box/ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxWithMap" unique_id=1170242315]
 script = ExtResource("4_rip4w")
 _event = &"map_hidden"
 
-[node name="ChangeState" type="Node" parent="Box/ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxWithMap" unique_id=1931405105 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Box/ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxWithMap" unique_id=1931405105 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../../../LockedBox")
 _state_machine_interactable = NodePath("../../../..")
 
-[node name="LockedBox" type="Node" parent="Box/ConditionalInteraction" unique_id=997499963]
+[node name="LockedBox" type="Node" parent="Interactables/Box/ConditionalInteraction" unique_id=997499963]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_locked-box"
 response_text_code = &"response_locked-box"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="Label3D" type="Label3D" parent="Box" unique_id=1877737517]
+[node name="Label3D" type="Label3D" parent="Interactables/Box" unique_id=1877737517]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Box"
 
-[node name="Journals" type="CSGBox3D" parent="." unique_id=674192242]
+[node name="Journals" type="CSGBox3D" parent="Interactables" unique_id=674192242]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -743,28 +745,28 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_journal_pickup"
 response_text_code = &"response_journal_pickup"
 
-[node name="TriggerEvent" type="Node" parent="Journals" unique_id=730620358]
+[node name="TriggerEvent" type="Node" parent="Interactables/Journals" unique_id=730620358]
 script = ExtResource("4_rip4w")
 _event = &"journal_pickup"
 
-[node name="ChangeState" type="Node" parent="Journals" unique_id=340684298 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Journals" unique_id=340684298 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/BurnJournals")
 _state_machine_interactable = NodePath("../../Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2")
 
-[node name="DisableInteraction" type="Node" parent="Journals" unique_id=1634948713]
+[node name="DisableInteraction" type="Node" parent="Interactables/Journals" unique_id=1634948713]
 script = ExtResource("7_rsqoh")
 
-[node name="RemoveItem" type="Node" parent="Journals" unique_id=1289759401]
+[node name="RemoveItem" type="Node" parent="Interactables/Journals" unique_id=1289759401]
 script = ExtResource("8_rip4w")
 
-[node name="Label3D" type="Label3D" parent="Journals" unique_id=1693228778]
+[node name="Label3D" type="Label3D" parent="Interactables/Journals" unique_id=1693228778]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Journals
 "
 
-[node name="Trash" type="CSGBox3D" parent="." unique_id=1874006656]
+[node name="Trash" type="CSGBox3D" parent="Interactables" unique_id=1874006656]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -774,28 +776,28 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_trash_pickup"
 response_text_code = &"response_trash_pickup"
 
-[node name="TriggerEvent" type="Node" parent="Trash" unique_id=865486327]
+[node name="TriggerEvent" type="Node" parent="Interactables/Trash" unique_id=865486327]
 script = ExtResource("4_rip4w")
 _event = &"trash_pickup"
 
-[node name="ChangeState" type="Node" parent="Trash" unique_id=1010996933 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Trash" unique_id=1010996933 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../Dumpster/Conditional/PlaceTrash")
 _state_machine_interactable = NodePath("../../Dumpster/Conditional")
 
-[node name="DisableInteraction" type="Node" parent="Trash" unique_id=19339622]
+[node name="DisableInteraction" type="Node" parent="Interactables/Trash" unique_id=19339622]
 script = ExtResource("7_rsqoh")
 
-[node name="RemoveItem" type="Node" parent="Trash" unique_id=1383639787]
+[node name="RemoveItem" type="Node" parent="Interactables/Trash" unique_id=1383639787]
 script = ExtResource("8_rip4w")
 
-[node name="Label3D" type="Label3D" parent="Trash" unique_id=921981031]
+[node name="Label3D" type="Label3D" parent="Interactables/Trash" unique_id=921981031]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Trash
 "
 
-[node name="Dumpster" type="CSGBox3D" parent="." unique_id=574004697]
+[node name="Dumpster" type="CSGBox3D" parent="Interactables" unique_id=574004697]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -805,44 +807,44 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_trash_pickup"
 response_text_code = &"response_trash_pickup"
 
-[node name="Conditional" type="Node" parent="Dumpster" unique_id=791155889 node_paths=PackedStringArray("_current_state")]
+[node name="Conditional" type="Node" parent="Interactables/Dumpster" unique_id=791155889 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
 _current_state = NodePath("NoTrash")
 
-[node name="NoTrash" type="Node" parent="Dumpster/Conditional" unique_id=1619458587]
+[node name="NoTrash" type="Node" parent="Interactables/Dumpster/Conditional" unique_id=1619458587]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_dumpster_no-trash"
 response_text_code = &"response_dumpster_no-trash"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="PlaceTrash" type="Node" parent="Dumpster/Conditional" unique_id=2081201035]
+[node name="PlaceTrash" type="Node" parent="Interactables/Dumpster/Conditional" unique_id=2081201035]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_dumpster_with-trash"
 response_text_code = &"response_dumpster_with-trash"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="TriggerEvent" type="Node" parent="Dumpster/Conditional/PlaceTrash" unique_id=1420747727]
+[node name="TriggerEvent" type="Node" parent="Interactables/Dumpster/Conditional/PlaceTrash" unique_id=1420747727]
 script = ExtResource("4_rip4w")
 _event = &"dumpster_filled"
 
-[node name="ChangeState" type="Node" parent="Dumpster/Conditional/PlaceTrash" unique_id=1137883990 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Dumpster/Conditional/PlaceTrash" unique_id=1137883990 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../Filled")
 _state_machine_interactable = NodePath("../..")
 
-[node name="Filled" type="Node" parent="Dumpster/Conditional" unique_id=160508271]
+[node name="Filled" type="Node" parent="Interactables/Dumpster/Conditional" unique_id=160508271]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_filled-dumpster"
 response_text_code = &"response_filled-dumpster"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="Label3D" type="Label3D" parent="Dumpster" unique_id=286416141]
+[node name="Label3D" type="Label3D" parent="Interactables/Dumpster" unique_id=286416141]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Dumpster
 "
 
-[node name="Hammer" type="CSGBox3D" parent="." unique_id=1224226864]
+[node name="Hammer" type="CSGBox3D" parent="Interactables" unique_id=1224226864]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -852,28 +854,28 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_hammer_pickup"
 response_text_code = &"response_hammer_pickup"
 
-[node name="TriggerEvent" type="Node" parent="Hammer" unique_id=288448949]
+[node name="TriggerEvent" type="Node" parent="Interactables/Hammer" unique_id=288448949]
 script = ExtResource("4_rip4w")
 _event = &"hammer_pickup"
 
-[node name="ChangeState" type="Node" parent="Hammer" unique_id=1082498872 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Hammer" unique_id=1082498872 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanksWithHammer")
 _state_machine_interactable = NodePath("../../BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank")
 
-[node name="DisableInteraction" type="Node" parent="Hammer" unique_id=2007492793]
+[node name="DisableInteraction" type="Node" parent="Interactables/Hammer" unique_id=2007492793]
 script = ExtResource("7_rsqoh")
 
-[node name="RemoveItem" type="Node" parent="Hammer" unique_id=1052577257]
+[node name="RemoveItem" type="Node" parent="Interactables/Hammer" unique_id=1052577257]
 script = ExtResource("8_rip4w")
 
-[node name="Label3D" type="Label3D" parent="Hammer" unique_id=1898783425]
+[node name="Label3D" type="Label3D" parent="Interactables/Hammer" unique_id=1898783425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Hammer
 "
 
-[node name="Docs" type="CSGBox3D" parent="." unique_id=1433673688]
+[node name="Docs" type="CSGBox3D" parent="Interactables" unique_id=1433673688]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -883,28 +885,28 @@ script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_documents_pickup"
 response_text_code = &"response_documents_pickup"
 
-[node name="TriggerEvent" type="Node" parent="Docs" unique_id=2127398162]
+[node name="TriggerEvent" type="Node" parent="Interactables/Docs" unique_id=2127398162]
 script = ExtResource("4_rip4w")
 _event = &"docs_pickup"
 
-[node name="ChangeState" type="Node" parent="Docs" unique_id=1450399230 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Interactables/Docs" unique_id=1450399230 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
 _next_state = NodePath("../../Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/ScanDocs")
 _state_machine_interactable = NodePath("../../Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2")
 
-[node name="DisableInteraction" type="Node" parent="Docs" unique_id=494273072]
+[node name="DisableInteraction" type="Node" parent="Interactables/Docs" unique_id=494273072]
 script = ExtResource("7_rsqoh")
 
-[node name="RemoveItem" type="Node" parent="Docs" unique_id=949262677]
+[node name="RemoveItem" type="Node" parent="Interactables/Docs" unique_id=949262677]
 script = ExtResource("8_rip4w")
 
-[node name="Label3D" type="Label3D" parent="Docs" unique_id=515396207]
+[node name="Label3D" type="Label3D" parent="Interactables/Docs" unique_id=515396207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Docs
 "
 
-[node name="Pills" type="CSGBox3D" parent="." unique_id=704139588]
+[node name="Pills" type="CSGBox3D" parent="Interactables" unique_id=704139588]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
@@ -913,49 +915,49 @@ size = Vector3(0.5, 0.5, 0.5)
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_pills"
 
-[node name="TriggerEvent" type="Node" parent="Pills" unique_id=553489670]
+[node name="TriggerEvent" type="Node" parent="Interactables/Pills" unique_id=553489670]
 script = ExtResource("4_rip4w")
 _event = &"pills_taken"
 
-[node name="DisableInteraction" type="Node" parent="Pills" unique_id=862116859]
+[node name="DisableInteraction" type="Node" parent="Interactables/Pills" unique_id=862116859]
 script = ExtResource("7_rsqoh")
 
-[node name="EndSceneInteraction" type="Node" parent="Pills" unique_id=1565226202]
+[node name="EndSceneInteraction" type="Node" parent="Interactables/Pills" unique_id=1565226202]
 script = ExtResource("9_r7b0w")
 _scene_path = "res://scenes/end_scene.tscn"
 
-[node name="RemoveItem" type="Node" parent="Pills" unique_id=1761023670]
+[node name="RemoveItem" type="Node" parent="Interactables/Pills" unique_id=1761023670]
 script = ExtResource("8_rip4w")
 
-[node name="Label3D" type="Label3D" parent="Pills" unique_id=327278395]
+[node name="Label3D" type="Label3D" parent="Interactables/Pills" unique_id=327278395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Pills
 "
 
-[node name="PillsAppearanceController" type="Node" parent="Pills" unique_id=1702741820]
+[node name="PillsAppearanceController" type="Node" parent="Interactables/Pills" unique_id=1702741820]
 script = SubResource("GDScript_rsqoh")
 
-[node name="Player" parent="." unique_id=1465517899 instance=ExtResource("6_fvyxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.21, 0)
-
-[node name="Car" type="CSGCombiner3D" parent="." unique_id=688505514]
+[node name="Car" type="CSGCombiner3D" parent="Interactables" unique_id=688505514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
 use_collision = true
 collision_layer = 3
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_car"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Car" unique_id=1405356217]
+[node name="CSGBox3D" type="CSGBox3D" parent="Interactables/Car" unique_id=1405356217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 size = Vector3(1.5, 1, 3)
 material = ExtResource("7_ts0v3")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Car" unique_id=2014728153]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Interactables/Car" unique_id=2014728153]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 size = Vector3(1.5, 0.5, 2)
 material = ExtResource("8_alwy6")
 
-[node name="EndSceneInteraction" type="Node" parent="Car" unique_id=1434410935]
+[node name="EndSceneInteraction" type="Node" parent="Interactables/Car" unique_id=1434410935]
 script = ExtResource("9_r7b0w")
 _scene_path = "res://scenes/end_scene.tscn"
+
+[node name="Player" parent="." unique_id=1465517899 instance=ExtResource("6_fvyxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.21, 0)
