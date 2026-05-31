@@ -114,31 +114,52 @@ response_text_code = &"response_oven-off"
 
 [node name="ConditionalInteraction" type="Node" parent="Oven" unique_id=1484254495 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("4_1ts6t")
-_current_state = NodePath("DisableOven")
+_current_state = NodePath("OvenOn")
 
-[node name="DisableOven" type="Node" parent="Oven/ConditionalInteraction" unique_id=1030166298]
+[node name="OvenOn" type="Node" parent="Oven/ConditionalInteraction" unique_id=1030166298]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-off"
 response_text_code = &"response_oven-off"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="TriggerEvent" type="Node" parent="Oven/ConditionalInteraction/DisableOven" unique_id=2052319505]
+[node name="ConditionalInteraction2" type="Node" parent="Oven/ConditionalInteraction/OvenOn" unique_id=1763343191 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("4_1ts6t")
+_current_state = NodePath("DisableOven")
+
+[node name="DisableOven" type="Node" parent="Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2" unique_id=1582868097]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="TriggerEvent" type="Node" parent="Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/DisableOven" unique_id=55668737]
 script = ExtResource("4_rip4w")
 _event = &"oven_off"
 
-[node name="ChangeState" type="Node" parent="Oven/ConditionalInteraction/DisableOven" unique_id=1745489790 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/DisableOven" unique_id=1278171614 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("6_3dfpv")
-_next_state = NodePath("../../LookAtOven")
+_next_state = NodePath("../../../../LookAtOven")
+_state_machine_interactable = NodePath("../../../..")
+
+[node name="BurnJournals" type="Node" parent="Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2" unique_id=1850853808]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_oven_with-journal"
+response_text_code = &"response_oven-with-journal"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="TriggerEvent" type="Node" parent="Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/BurnJournals" unique_id=1678398234]
+script = ExtResource("4_rip4w")
+_event = &"journal_burn"
+
+[node name="ChangeState" type="Node" parent="Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/BurnJournals" unique_id=323377837 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../DisableOven")
 _state_machine_interactable = NodePath("../..")
 
 [node name="LookAtOven" type="Node" parent="Oven/ConditionalInteraction" unique_id=1694503255]
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-on"
 response_text_code = &"response_oven-on"
-metadata/_custom_type_script = "uid://cyltasfew5sr3"
-
-[node name="BurnJournal" type="Node" parent="Oven/ConditionalInteraction" unique_id=979614827]
-script = ExtResource("3_rsqoh")
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
 [node name="Label3D" type="Label3D" parent="Oven" unique_id=1971693572]
@@ -391,8 +412,317 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Main Door"
 
+[node name="Computer" type="CSGBox3D" parent="." unique_id=1634123241]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="ConditionalInteraction" type="Node" parent="Computer" unique_id=863251796 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("4_1ts6t")
+_current_state = NodePath("DisableComputer")
+
+[node name="DisableComputer" type="Node" parent="Computer/ConditionalInteraction" unique_id=659531805]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_computer_no-docs"
+response_text_code = &"response_computer_no-docs"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="Computer/ConditionalInteraction/DisableComputer" unique_id=634423052 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../LookOff")
+_state_machine_interactable = NodePath("../..")
+
+[node name="TriggerEvent" type="Node" parent="Computer/ConditionalInteraction/DisableComputer" unique_id=1407407563]
+script = ExtResource("4_rip4w")
+_event = &"computer_off"
+
+[node name="LookOff" type="Node" parent="Computer/ConditionalInteraction" unique_id=153023405]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_computer-off"
+response_text_code = &"response_computer-off"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ScanDocs" type="Node" parent="Computer/ConditionalInteraction" unique_id=1517524427]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_computer_with-docs"
+response_text_code = &"response_computer_with-docs"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="Computer/ConditionalInteraction/ScanDocs" unique_id=1865351029 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../DisableComputer")
+_state_machine_interactable = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="Computer" unique_id=2011657319]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Computer"
+
+[node name="Planks" type="CSGBox3D" parent="." unique_id=506215909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_planks_pickup"
+response_text_code = &"response_planks_pickup"
+
+[node name="TriggerEvent" type="Node" parent="Planks" unique_id=1283583568]
+script = ExtResource("4_rip4w")
+_event = &"planks_pickup"
+
+[node name="ChangeState" type="Node" parent="Planks" unique_id=952978038 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../BasementDoor/ConditionalInteraction/PlacePlanks")
+_state_machine_interactable = NodePath("../../BasementDoor/ConditionalInteraction")
+
+[node name="DisableInteraction" type="Node" parent="Planks" unique_id=1067546313]
+script = ExtResource("7_rsqoh")
+
+[node name="RemoveItem" type="Node" parent="Planks" unique_id=336038127]
+script = ExtResource("8_rip4w")
+
+[node name="Label3D" type="Label3D" parent="Planks" unique_id=449214091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Wooden planks
+
+"
+
+[node name="BasementDoor" type="CSGBox3D" parent="." unique_id=1861019289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="ConditionalInteraction" type="Node" parent="BasementDoor" unique_id=97390361 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("4_1ts6t")
+_current_state = NodePath("OpenDoorLocked")
+
+[node name="OpenDoorLocked" type="Node" parent="BasementDoor/ConditionalInteraction" unique_id=1734481432]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_closed-door_locked"
+response_text_code = &"response_closed-door_locked"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="PlacePlanks" type="Node" parent="BasementDoor/ConditionalInteraction" unique_id=1891755451]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_basement-door_with-planks"
+response_text_code = &"response_basement-door_with-planks"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="BasementDoor/ConditionalInteraction/PlacePlanks" unique_id=787323586 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../PlanksPlaced")
+_state_machine_interactable = NodePath("../..")
+
+[node name="TriggerEvent" type="Node" parent="BasementDoor/ConditionalInteraction/PlacePlanks" unique_id=383823983]
+script = ExtResource("4_rip4w")
+_event = &"basement-door_planks-on-front"
+
+[node name="PlanksPlaced" type="Node" parent="BasementDoor/ConditionalInteraction" unique_id=999437770]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_basement-door_planks-in-front"
+response_text_code = &"response_basement-door_planks-in-front"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="PlacePlanksWithHammer" type="Node" parent="BasementDoor/ConditionalInteraction" unique_id=1798031257]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_basement-door_with-planks_with-hammer"
+response_text_code = &"response_basement-door_with-planks_with-hammer"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="BasementDoor/ConditionalInteraction/PlacePlanksWithHammer" unique_id=1943122008 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../DoorBlocked")
+_state_machine_interactable = NodePath("../..")
+
+[node name="TriggerEvent" type="Node" parent="BasementDoor/ConditionalInteraction/PlacePlanksWithHammer" unique_id=1714679281]
+script = ExtResource("4_rip4w")
+_event = &"basement-door_blocked"
+
+[node name="DoorBlocked" type="Node" parent="BasementDoor/ConditionalInteraction" unique_id=1063868788]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_basement-door-blocked"
+response_text_code = &"response_basement-door_locked"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="Label3D" type="Label3D" parent="BasementDoor" unique_id=952416373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Basement Door"
+
+[node name="Phone" type="CSGBox3D" parent="." unique_id=1462104448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_cellphone"
+response_text_code = &"response_cellphone"
+
+[node name="TriggerEvent" type="Node" parent="Phone" unique_id=1714213571]
+script = ExtResource("4_rip4w")
+_event = &"mother"
+
+[node name="DisableInteraction" type="Node" parent="Phone" unique_id=953228258]
+script = ExtResource("7_rsqoh")
+
+[node name="RemoveItem" type="Node" parent="Phone" unique_id=1949285014]
+script = ExtResource("8_rip4w")
+
+[node name="Label3D" type="Label3D" parent="Phone" unique_id=1717438854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Cellphone
+"
+
+[node name="Map" type="CSGBox3D" parent="." unique_id=1440727802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_map_pickup"
+response_text_code = &"response_map_pickup"
+
+[node name="TriggerEvent" type="Node" parent="Map" unique_id=2120895708]
+script = ExtResource("4_rip4w")
+_event = &"map_pickup"
+
+[node name="ChangeState" type="Node" parent="Map" unique_id=2030746919 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../Box/ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxWithMap")
+_state_machine_interactable = NodePath("../../Box/ConditionalInteraction/OpenBox/ConditionalInteraction2")
+
+[node name="DisableInteraction" type="Node" parent="Map" unique_id=417705305]
+script = ExtResource("7_rsqoh")
+
+[node name="RemoveItem" type="Node" parent="Map" unique_id=1365754732]
+script = ExtResource("8_rip4w")
+
+[node name="Label3D" type="Label3D" parent="Map" unique_id=1020752282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Map
+
+"
+
+[node name="Box" type="CSGBox3D" parent="." unique_id=1819473309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_closed-box"
+response_text_code = &"response_closed-box"
+
+[node name="ConditionalInteraction" type="Node" parent="Box" unique_id=1371865955 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("4_1ts6t")
+_current_state = NodePath("ClosedBox")
+
+[node name="ClosedBox" type="Node" parent="Box/ConditionalInteraction" unique_id=842019303]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_closed-box"
+response_text_code = &"response_closed-box"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="Box/ConditionalInteraction/ClosedBox" unique_id=437615056 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../OpenBox")
+_state_machine_interactable = NodePath("../..")
+
+[node name="OpenBox" type="Node" parent="Box/ConditionalInteraction" unique_id=2065511299]
+script = ExtResource("3_rsqoh")
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ConditionalInteraction2" type="Node" parent="Box/ConditionalInteraction/OpenBox" unique_id=1657554593 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("4_1ts6t")
+_current_state = NodePath("OpenBoxNoMap")
+
+[node name="OpenBoxNoMap" type="Node" parent="Box/ConditionalInteraction/OpenBox/ConditionalInteraction2" unique_id=945845539]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_open-box_no-map"
+response_text_code = &"response_open-box_no-map"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="Box/ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxNoMap" unique_id=317651828 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../../../ClosedBox")
+_state_machine_interactable = NodePath("../../../..")
+
+[node name="OpenBoxWithMap" type="Node" parent="Box/ConditionalInteraction/OpenBox/ConditionalInteraction2" unique_id=209040694]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_open-box_with-map"
+response_text_code = &"response_open-box_with-map"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="TriggerEvent" type="Node" parent="Box/ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxWithMap" unique_id=1170242315]
+script = ExtResource("4_rip4w")
+_event = &"map_hidden"
+
+[node name="ChangeState" type="Node" parent="Box/ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxWithMap" unique_id=1931405105 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../../../LockedBox")
+_state_machine_interactable = NodePath("../../../..")
+
+[node name="LockedBox" type="Node" parent="Box/ConditionalInteraction" unique_id=997499963]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_locked-box"
+response_text_code = &"response_locked-box"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="Label3D" type="Label3D" parent="Box" unique_id=1877737517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Box"
+
+[node name="Journals" type="CSGBox3D" parent="." unique_id=674192242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_journal_pickup"
+response_text_code = &"response_journal_pickup"
+
+[node name="TriggerEvent" type="Node" parent="Journals" unique_id=730620358]
+script = ExtResource("4_rip4w")
+_event = &"journal_pickup"
+
+[node name="ChangeState" type="Node" parent="Journals" unique_id=340684298 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/BurnJournals")
+_state_machine_interactable = NodePath("../../Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2")
+
+[node name="DisableInteraction" type="Node" parent="Journals" unique_id=1634948713]
+script = ExtResource("7_rsqoh")
+
+[node name="RemoveItem" type="Node" parent="Journals" unique_id=1289759401]
+script = ExtResource("8_rip4w")
+
+[node name="Label3D" type="Label3D" parent="Journals" unique_id=1693228778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Journals
+"
+
 [node name="Player" parent="." unique_id=1465517899 instance=ExtResource("6_fvyxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.21, 0)
 
 [node name="Car" type="CSGCombiner3D" parent="." unique_id=688505514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)

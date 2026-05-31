@@ -16,3 +16,9 @@ func set_state(interaction: Interactable) -> void:
 	_current_state = interaction
 	get_parent().interaction_hint = interaction.interaction_hint
 	get_parent().response_text_code = interaction.response_text_code
+	get_parent().codes_changed.emit()
+	_current_state.codes_changed.connect(_on_codes_changed)
+
+func _on_codes_changed() -> void: 
+	get_parent().interaction_hint = _current_state.interaction_hint
+	get_parent().response_text_code = _current_state.response_text_code

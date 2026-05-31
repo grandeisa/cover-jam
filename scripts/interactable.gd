@@ -5,6 +5,8 @@ class_name Interactable extends Node
 ## Code of the localized text to be displayed after interacting with an object
 @export var response_text_code: StringName = ""
 
+signal codes_changed
+
 ## Used to define if an object can be interacted with or not.[br]
 ## Interaction hint should not be displayed if this isn't active.
 var active: bool = true
