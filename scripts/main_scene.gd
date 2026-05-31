@@ -3,9 +3,10 @@ class_name MainScene extends Node
 const STARTING_SCENE = "main-menu"
 
 const SCENE_PATHS: Dictionary = {
-	"house" : "res://scenes/test_house_scene.tscn",
 	"main-menu" : "res://scenes/main_menu.tscn",
-	"end" : "res://scenes/end_scene.tscn" 
+	"intro-scene" : "res://scenes/intro_scene.tscn",
+	"house" : "res://scenes/test_house_scene.tscn",
+	"end" : "res://scenes/end_scene.tscn" ,
 }
 
 var _loaded_scenes: Dictionary[String, PackedScene] = {}

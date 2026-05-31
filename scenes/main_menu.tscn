@@ -13,7 +13,7 @@ func _ready() -> void:
 	play_button_label.text = tr(\"menu_button_play\")
 
 func _on_play_button_click() -> void:
-	MainScene.change_scene(\"house\")
+	MainScene.change_scene(\"intro-scene\")
 	
 func _on_portuguese_click() -> void:
 	print(\"PT\")

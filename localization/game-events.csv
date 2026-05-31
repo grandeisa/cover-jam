@@ -98,3 +98,5 @@ menu_ending-title_doom,[b]A TERRA FOI PRO BELELÉU[/b],[b]EARTH HAS MET ITS DOOM
 menu_ending-title_true,[b]A TERRA SOBREVIVEU[/b],[b]EARTH HAS SURVIVED[/b]
 menu_ending-reset,[b]Tentar novamente?[/b],[b]Try again?[/b]
 menu_button_play,[b]JOGAR?[/b],[b]PLAY?[/b]
+menu_intro,"Está é uma história sobre um homem chamado Otávio...[br][br]Otávio é um astronauta da ASNA e está atrasado para ir para o lançamento do foguete…[br][br]Para começar, vamos pegar os itens que não podem faltar: Sua mochila e seu óculos![br][br]Depois de pega-los, vá até o carro para finalizar o tutorial.","This is a story about a man named Otavio…[br][br]Otavio is an ASNA astronauto and is now late for the rocket’s launch...[br][br]To begin, let’s grab the items that he cannot go away without: His backpack and glasses![br][br]After grabbing them, go to the car to finish the tutorial."
+menu_intro_start-button,PREPARADO?,READY?
