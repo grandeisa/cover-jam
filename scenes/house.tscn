@@ -6,11 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://hsbnoxo3cf8" path="res://materials/models/kitchen/kitchen.glb" id="9_qcuhb"]
 [ext_resource type="PackedScene" uid="uid://c2apbmqachuod" path="res://materials/models/living_room/living_room.glb" id="10_7685u"]
 [ext_resource type="PackedScene" uid="uid://bmgkbdj5kugtx" path="res://materials/models/office/office.glb" id="11_3853c"]
-[ext_resource type="PackedScene" uid="uid://56wbti14iyyh" path="res://scenes/iteractable_objects/journals.tscn" id="26_ivbqp"]
-[ext_resource type="PackedScene" uid="uid://d3b7novcalssm" path="res://scenes/iteractable_objects/glasses.tscn" id="26_nrgyv"]
-[ext_resource type="PackedScene" uid="uid://cgo0cgrqu11fn" path="res://scenes/iteractable_objects/bag.tscn" id="26_r8noe"]
-[ext_resource type="PackedScene" uid="uid://j57gjquyhiuj" path="res://scenes/iteractable_objects/oven.tscn" id="27_c2gpw"]
-[ext_resource type="PackedScene" uid="uid://dnqi8ty7ma4bh" path="res://scenes/iteractable_objects/washing_machine.tscn" id="31_k27xr"]
+[ext_resource type="PackedScene" uid="uid://56wbti14iyyh" path="res://scenes/interactables/journals.tscn" id="26_ivbqp"]
+[ext_resource type="PackedScene" uid="uid://d3b7novcalssm" path="res://scenes/interactables/glasses.tscn" id="26_nrgyv"]
+[ext_resource type="PackedScene" uid="uid://cgo0cgrqu11fn" path="res://scenes/interactables/bag.tscn" id="26_r8noe"]
+[ext_resource type="PackedScene" uid="uid://j57gjquyhiuj" path="res://scenes/interactables/oven.tscn" id="27_c2gpw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c2gpw"]
 size = Vector3(2.3017578, 0.5716553, 2.5019531)
@@ -96,8 +95,6 @@ transform = Transform3D(0.78722167, 0.61667013, 0, 0, 0, 1, 0.61667013, -0.78722
 
 [node name="Oven" parent="Interactable" unique_id=333559471 instance=ExtResource("27_c2gpw")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.56, 1.2, -4.7999997)
-
-[node name="WashingMachine" parent="Interactable" unique_id=449417167 instance=ExtResource("31_k27xr")]
 
 [node name="OfficeColisions" type="StaticBody3D" parent="." unique_id=553427955]
 
