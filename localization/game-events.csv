@@ -1,0 +1,88 @@
+keys,pt,en
+finale-event_on-time,"Você se atrasou tanto que perdeu o lançamento, foi demitido.","You are so late that you missed the launch, you were fired…"
+finale-event_backpack-pickup,"Você esqueceu sua mochila, ela tinha sua credencial, você não conseguiu entrar no trabalho e foi demitido, o estresse de estar desempregado te causou a explodir","You forgot your backpack, it had your credentials, you couldn’t get into work and was fired… The stress from being unemployed has made you explode and take the world with you"
+finale-event_glasses-pickup,"Você esqueceu seu óculos em casa, manobrou o foguete errado e o fez cair em uma base militar secreta com ogivas nucleares, o mundo explodiu","You forgot your glasses at home, did a bad maneuver with the rocket and made it land on a secret militar base with nuclear warheads, the world has exploded."
+finale-event_stove-off,Você deixou o fogão ligado. O mundo pegou fogo.,You left the stove on… The world has caught on fire…
+finale-event_clothes,"Você não tirou suas roupas da maquina, elas mofaram tanto que iniciaram um apocalipse zumbi de fungos",You have not taken your clothes out of the washing machine… They have accumulated so much mold that they have started a fungus zombie apocalypse
+finale-event_cat,"Você não fez carinho no seu gato antes de sair de casa, ele fugiu de casa se sentindo não amado e comeu um rato radioativo na rua, se tornando um kaiju e destruindo a terra…","You didn’t pet your cat before leaving your home, it ran away feeling unloved and ate a radioactive rat in the street… It  became a kaiju and destroyed earth…"
+finale-event_house-door,"Você não trancou a porta de casa, um ladrão entrou e roubou todos os seus pertences, no seu notebook havia sua fanfic ultra secreta, que ele compartilhou na internet, ela era tão ruim que fez a cabeça de todo mundo que leu explodir","You didn’t lock your home’s door before leaving… A robber entered and stole all of your belongings… In your laptop there was your ultra secret fanfic that he shared on the internet… It was so bad that it made people’s heads explode after reading, ending the worlds population…"
+finale-event_documents,"Você não escaneou os documentos do tratado de paz com os alienígenas, a terra será destruída em 20 dias úteis…",You didn’t scan the documents of the alien peace treaty… Earth will be destroyed in 20 business days…
+finale-event_basement-door,Você não fechou seu porão com tábuas de madeira… a criatura sobrenatural que você tinha aprisionado lá saiu e destruiu a terra com poderes fora da sua compreensão,You didn’t close your basement properly with wooden planks… The supernatural creature you had summoned in your basement has broken free of its chains and destroyed the Earth with otherwordly powers…
+finale-event_magnet,Você não desmontou seu super imã… ele puxou outro planeta que colidiu com a terra explodindo ambos,"You did not disassemble your super magnet device… It has pulled another planet into Earth’s orbit, making them collide…"
+finale-event_mother,"Você não deu bom dia pra sua mãe no celular, ela jogou um chinelo tão forte que bateu na nave e entrou como um cometa na atmosfera terrestre dividindo o planeta no meio",You didn’t reply to your mother’s ‘good morning’ message on your phone… She threw her flip-flop so strongly that it hit you in space and re-entered Earth’s atmosphere with such power that it came down like a comet and divided the Earth in half…
+finale-event_computer,"Você não desligou o computador em que estava jogando antes de sair, um raio cosmico atingiu os circuitos causando um glitch tão absurdo no jogo que causou uma falha na matrix",You didn’t turn off your computer before leaving… A cosmic ray hit your computer and caused a glitch so massive in your game that it caused a glitch in the matrix…
+finale-event_map,"Você não escondeu o seu mapa para o tesouro antigo de GUADALAPELAJANEMAPENAPEMATALUPE, um bandido roubou e coletou o artefato, liberando aspargas do egito no mundo.","You didn’t hide your map to the ancient treasure of  GUADALAPELAJANEMAPENAPEMATALUPE… A bandit has stolen it and collected the artifact, unleashing the aspargus of the Egypt in the world…"
+finale-event_journal,"Você não queimou seus diários contendo os segredos do universo, a humanidade leu os segredos e se tornou uma raça super-avançada de gênios… o mundo colapsou com o peso de suas cabeças…",You didn’t burn your journals containing the secrets of the universe… Humanity has read your secrets and became a super-advance race of geniuses… The world has collapsed with the weight of their heads…
+finale-event_trash,"Você não tirou o lixo de casa, ele transbordou e consumiu a terra",You didn’t take the trash out… It has overflown and consumed the Earth…
+finale-event_pills,"Apesar de todos os seus esforços, a terra ainda explodiu, tudo parece surreal.[br]Na próxima tente lembrar de tomar seus remédios, quem sabe eles te deixam mais calmo…","Despite all of your efforts, the Earth still exploded, it all seems so surreal.[br]Next time try to remember to take your pills… Who knows? Maybe they can make you a little calmer…"
+finale-event_true-ending,Você tomou seus remédios e lembrou… Você não é um astronauta… E a Terra não explodiu… Quem diria que se medicar ajuda?,You took your pills and remembered… You’re not an astronaut… And the Earth hasn’t exploded… Who knew getting medicated would help?
+interaction_car,Ir trabalhar..?,Go to work..?
+interaction_oven-off,Desligar forno?,Turn the oven off?
+response_oven-off,Imagina se eu esqueço de desligar o forno?,Could you imagine what would happen if I left the oven on?
+interaction_oven-on,Ligar forno?,Turn the oven on?
+response_oven-on,E… ligado! Só que não…,And… on! NOT
+interaction_backpack_pickup,Pegar mochila?,Take backpack?
+response_backpack,Meio pesada… não?,Kinda heavy… right?
+interaction_glasses,Pegar óculos?,Take glasses?
+response_glasses,Agora eu posso ver melhor!,Now I can see better!
+interaction_washing-machine,Tirar roupas da máquina?,Take clothes out of the washing machine?
+response_washing-machine,Tudo molhado…,It’s all wet…
+interaction_washing-machine_empty,Olhar para a máquina de lavar?,Look at the washing machine?
+response_washing-machine_empty,Ah sim… bela máquina de lavar…,Ah yes… what a nice washing machine…
+interaction_cat,Fazer carinho no gato?,Pet the cat?
+response_cat,miau.,meow.
+interaction_key,Pegar chave?,Take keys?
+response_key,Hmmm…. metal…,Hmmm… metal…
+interaction_closed-door_unlocked,Abrir porta?,Open door?
+interaction_closed-door_locked,Abrir porta..?,Open door..?
+response_closed-door_locked,Porta trancada :(,Locked door :(
+interaction_open-door,Fechar porta?,Close door?
+interaction_open-door_with-keys,Fechar porta e trancar?,Close and lock door?
+response_copen-door_with-keys,Agora sim minha casa está segura!,Now my house is safe!
+interaction_documents_pickup,Pegar documentos?,Pickup documents?
+response_documents_pickup,Burocracia de outro mundo…,Burocracy from other world…
+interaction_computer_no-docs,Desligar computador?,Turn off computer?
+response_computer_no-docs,Salvando energia!,Saving power!
+interaction_computer-off,Olhar pro computador?,Look at computer?
+response_computer-off,Quem teve a ideia de fazer as pedras pensarem?,Who had the idea to make rocks think?
+interaction_computer_with-docs,Escanear documentos?,Scan docs?
+response_computer_with-docs,Paz na galáxia,Peace in the galaxy
+interaction_planks_pickup,Pegar tábuas de madeira?,Pickup wooden planks?
+response_planks_pickup,MADEIRA,WOOD
+interaction_basement-door_with-planks,Colocar tabuas na frente da porta?,Place planks in front of the door?
+response_basement-door_with-planks,Ok..?,Ok..?
+interaction_basement-door_planks-in-front,Olhar para a porta do porão?,Look at the basement door?
+response_basement-door_planks-in-front,Não parece muito seguro…,Doesn’t seem very safe…
+interaction_basement-door_with-planks_with-hammer,Travar porta com tabuas?,Block door with planks?
+response_basement-door_with-planks_with-hammer,Agora sim a criatura não sai!,Now the creature won’t leave!
+interaction_basement-door-blocked,Olhar para a porta do porão?,Look at the basement door?
+response_basement-door_locked,Bem seguro.,Very safe.
+interaction_magnet_no-hammer,Olhar pro super imã?,Look at super magnet?
+response_magnet_no-hammer,Dispositivo super interessante.,Very interesting device.
+interaction_magnet_with-hammer,Quebrar super imã?,Break super magnet?
+response_magnet_with-hammer,clank clank clank,clank clank clank
+interaction_cellphone,Responder bom dia da sua mãe?,Answer mom’s good morning text?
+response_cellphone,Parece que você vive mais um dia…,Looks like you will live one more day…
+interaction_map_pickup,Pegar mapa?,Pickup map?
+response_map_pickup,Dr. Jones… Nos encontramos de novo..,"We meet again, Dr. Jones"
+interaction_closed-box,Abrir caixa?,Open box?
+response_closed-box,E dentro há… Nada…,And inside there’s… Nothing really…
+interaction_open-box_no-map,Fechar caixa?,Close box?
+response_open-box_no-map,Melhor uma caixa fechada do que segredos revelados…,Better to have a closed box than revealed secrets…
+interaction_open-box_with-map,Esconder mapa?,Hide map?
+response_open-box_with-map,Agora ninguém vai achar…,Now no one will find it…
+interaction_locked-box,Olhar para esconderijo do mapa?,Look at super secret map hideout?
+response_locked-box,Definitivamente não tem nada de importante aí…,Definitely there’s nothing important there…
+interaction_journal_pickup,Pegar diários?,Pickup journals?
+response_journal_pickup,Os segredos do universo…,The secrets of the universe…
+interaction_oven_with-journal,Queimar diário?,Burn journals?
+response_oven-with-journal,QUEIMA QUEIMA QUEIMA,BURN BURN BURN
+interaction_trash_pickup,Pegar lixo?,Pickup trash?
+response_trash_pickup,Eca,Ew
+interaction_dumpster_no-trash,Olhar para a caçamba?,Look at the dumpster?
+response_dumpster_no-trash,Meio vazia… não?,Kinda empty… right?
+interaction_dumpster_with-trash,Jogar lixo?,Throw trash?
+response_dumpster_with-trash,Você sente a imensa alegria de um trabalho bem feito…,You feel the immense joy of a job well done…
+interaction_filled-dumpster,Sentir o cheiro?,Smell it?
+response_filled-dumpster,Cheira mal…,Smells bad…
+interaction_pills,Tomar remédios?,Take medication?

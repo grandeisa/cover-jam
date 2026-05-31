@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cawway8q4l6it"
+
+[deps]
+
+files=["res://localization/game-events.pt.translation", "res://localization/game-events.en.translation"]
+
+source_file="res://localization/game-events.csv"
+dest_files=["res://localization/game-events.pt.translation", "res://localization/game-events.en.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

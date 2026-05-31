@@ -1,7 +1,9 @@
 class_name Interactable extends Node
 
-## Text to be displayed when player looks at object
-@export var interaction_hint: String = "Interact?"
+## Code of the localized text to be displayed when player looks at object
+@export var interaction_hint: StringName = ""
+## Code of the localized text to be displayed after interacting with an object
+@export var response_text_code: StringName = ""
 
 ## Used to define if an object can be interacted with or not.[br]
 ## Interaction hint should not be displayed if this isn't active.

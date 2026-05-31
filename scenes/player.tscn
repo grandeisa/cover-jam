@@ -32,10 +32,11 @@ script = ExtResource("2_dqkch")
 _body = NodePath("..")
 _speed = 200.0
 
-[node name="InteractionController" type="Node" parent="." unique_id=1750395310 node_paths=PackedStringArray("_detector_ray", "_interaction_hint_label")]
+[node name="InteractionController" type="Node" parent="." unique_id=1750395310 node_paths=PackedStringArray("_detector_ray", "_interaction_hint_label", "_response_label")]
 script = ExtResource("3_qlg0r")
 _detector_ray = NodePath("../CameraOrigin/InteractionRay")
 _interaction_hint_label = NodePath("../HUD/InteractionLabel")
+_response_label = NodePath("../HUD/ResponseLabel")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=374679099]
 
@@ -49,6 +50,25 @@ offset_left = -51.5
 offset_top = 16.0
 offset_right = 51.5
 offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "IS THIS REAL?"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResponseLabel" type="RichTextLabel" parent="HUD" unique_id=574431721]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = 151.0
+offset_right = 51.5
+offset_bottom = 191.00006
 grow_horizontal = 2
 grow_vertical = 2
 text = "IS THIS REAL?"

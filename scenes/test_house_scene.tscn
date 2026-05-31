@@ -46,7 +46,8 @@ material_override = ExtResource("4_wnewh")
 use_collision = true
 collision_layer = 3
 script = ExtResource("4_stiys")
-interaction_hint = "Turn the oven off?"
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
 
 [node name="TriggerEventInteraction" type="Node" parent="TestOvenInteractable" unique_id=871634787]
 script = ExtResource("4_640pk")
@@ -63,7 +64,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
 use_collision = true
 collision_layer = 3
 script = ExtResource("4_stiys")
-interaction_hint = "Go to work..?"
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Car" unique_id=1405356217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
