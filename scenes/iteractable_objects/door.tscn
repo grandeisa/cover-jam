@@ -253,4 +253,4 @@ shape = SubResource("BoxShape3D_ju5n0")
 root_node = NodePath("../Pivot")
 libraries/ = SubResource("AnimationLibrary_ey00f")
 
-[connection signal="interact" from="Pivot/StaticBody3D" to="Pivot/StaticBody3D" method="_on_interact"]
+[connection signal="_interact" from="Pivot/StaticBody3D" to="Pivot/StaticBody3D" method="_on_interact"]

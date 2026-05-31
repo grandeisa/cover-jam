@@ -252,4 +252,4 @@ libraries/ = SubResource("AnimationLibrary_ey00f")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3552917, -1.2, -1.5987135)
 mesh = SubResource("ArrayMesh_rhok0")
 
-[connection signal="interact" from="Pivot/StaticBody3D" to="Pivot/StaticBody3D" method="_on_interact"]
+[connection signal="_interact" from="Pivot/StaticBody3D" to="Pivot/StaticBody3D" method="_on_interact"]
