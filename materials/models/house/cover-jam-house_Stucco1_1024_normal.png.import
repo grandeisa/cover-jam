@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://d0s0j6fo2mk37"
+path.s3tc="res://.godot/imported/cover-jam-house_Stucco1_1024_normal.png-872c5a5a42e532dd56cd6ba5e55b50ac.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c3a235f5e01621e5f1b0ec187b965a86"
+}
+
+[deps]
+
+source_file="res://materials/models/house/cover-jam-house_Stucco1_1024_normal.png"
+dest_files=["res://.godot/imported/cover-jam-house_Stucco1_1024_normal.png-872c5a5a42e532dd56cd6ba5e55b50ac.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://materials/models/cover-jam-house_Stucco1_1024_normal.png"
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
