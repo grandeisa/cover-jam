@@ -8,10 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://douafq43t3qaf" path="res://models/interactable/planks.glb" id="6_aem5r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iamjc"]
-size = Vector3(1, 0.2692871, 1.970459)
+size = Vector3(0.5546875, 0.2692871, 1.3720703)
 
 [node name="Planks" type="StaticBody3D" unique_id=385068276]
-visible = false
 collision_layer = 3
 script = ExtResource("1_00ogx")
 interaction_hint = &"interaction_planks_pickup"
@@ -21,10 +20,8 @@ response_text_code = &"response_planks_pickup"
 script = ExtResource("2_ab0i1")
 _event = &"planks_pickup"
 
-[node name="ChangeState" type="Node" parent="." unique_id=1051728759 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="." unique_id=1051728759]
 script = ExtResource("3_gh5cf")
-_next_state = NodePath("")
-_state_machine_interactable = NodePath("")
 
 [node name="DisableInteraction" type="Node" parent="." unique_id=2061873770]
 script = ExtResource("4_7uhl3")
@@ -32,15 +29,8 @@ script = ExtResource("4_7uhl3")
 [node name="RemoveItem" type="Node" parent="." unique_id=2027444733]
 script = ExtResource("5_7am8l")
 
-[node name="Label3D" type="Label3D" parent="." unique_id=1382750138]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-billboard = 1
-text = "Wooden planks
-
-"
-
 [node name="planks" parent="." unique_id=1098225139 instance=ExtResource("6_aem5r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14999282, 0, 0)
+transform = Transform3D(0.615, 0, 0, 0, 0.615, 0, 0, 0, 0.615, -0.14999282, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1240582347]
 shape = SubResource("BoxShape3D_iamjc")

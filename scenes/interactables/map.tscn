@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://q2gi4s2ujres" path="res://models/interactable/map.glb" id="6_85hmt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ue5ns"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.37329102, 0.05493164, 0.36157227)
 
 [node name="Map" type="StaticBody3D" unique_id=1193492625]
 collision_layer = 3
@@ -20,10 +20,8 @@ response_text_code = &"response_map_pickup"
 script = ExtResource("2_5ob3d")
 _event = &"map_pickup"
 
-[node name="ChangeState" type="Node" parent="." unique_id=1552069562 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeState" type="Node" parent="." unique_id=1552069562]
 script = ExtResource("3_3sf5t")
-_next_state = NodePath("")
-_state_machine_interactable = NodePath("")
 
 [node name="DisableInteraction" type="Node" parent="." unique_id=399237073]
 script = ExtResource("4_c3fia")
@@ -32,6 +30,7 @@ script = ExtResource("4_c3fia")
 script = ExtResource("5_sosmr")
 
 [node name="map" parent="." unique_id=1548060681 instance=ExtResource("6_85hmt")]
+transform = Transform3D(3.1467793, 0, 0, 0, 1, 0, 0, 0, 3.1467793, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=550922102]
 shape = SubResource("BoxShape3D_ue5ns")
