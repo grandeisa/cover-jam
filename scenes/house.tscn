@@ -28,10 +28,10 @@
 [ext_resource type="PackedScene" uid="uid://d3b7novcalssm" path="res://scenes/iteractable_objects/glasses.tscn" id="26_nrgyv"]
 [ext_resource type="PackedScene" uid="uid://cgo0cgrqu11fn" path="res://scenes/iteractable_objects/bag.tscn" id="26_r8noe"]
 [ext_resource type="PackedScene" uid="uid://j57gjquyhiuj" path="res://scenes/iteractable_objects/oven.tscn" id="27_c2gpw"]
-[ext_resource type="PackedScene" uid="uid://binc5njta70t1" path="res://scenes/living_room.tscn" id="27_nrgyv"]
 [ext_resource type="PackedScene" uid="uid://cwo00jeh6a0sv" path="res://scenes/office.tscn" id="28_c2gpw"]
 [ext_resource type="PackedScene" uid="uid://dnqi8ty7ma4bh" path="res://scenes/iteractable_objects/washing_machine.tscn" id="31_k27xr"]
 [ext_resource type="PackedScene" uid="uid://b86lsydx757mm" path="res://scenes/iteractable_objects/clothesline.tscn" id="32_k27xr"]
+[ext_resource type="PackedScene" uid="uid://c2apbmqachuod" path="res://materials/models/living_room/living_room.glb" id="33_8cron"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1a6h"]
 resource_name = "Wood"
@@ -4037,50 +4037,50 @@ shape = SubResource("BoxShape3D_nrgyv")
 
 [node name="Laundry" parent="." unique_id=1484357736 instance=ExtResource("23_r2srw")]
 
-[node name="LivingRoom" parent="." unique_id=589875546 instance=ExtResource("27_nrgyv")]
+[node name="living_room" parent="." unique_id=531635720 instance=ExtResource("33_8cron")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="LivingRoom" unique_id=1709441752]
+[node name="StaticBody3D" type="StaticBody3D" parent="living_room" unique_id=1709441752]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LivingRoom/StaticBody3D" unique_id=1157118536]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="living_room/StaticBody3D" unique_id=1157118536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.314146, 1.5809774, 4.6962624)
 shape = SubResource("BoxShape3D_e5ov4")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="LivingRoom/StaticBody3D" unique_id=1693138221]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="living_room/StaticBody3D" unique_id=1693138221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9163747, 2.0416782, 0.9463166)
 shape = SubResource("BoxShape3D_ep1bp")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="LivingRoom/StaticBody3D" unique_id=1169554934]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="living_room/StaticBody3D" unique_id=1169554934]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05241251, 1.62047, 4.4226775)
 shape = SubResource("CylinderShape3D_82h1m")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="LivingRoom/StaticBody3D" unique_id=897991786]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="living_room/StaticBody3D" unique_id=897991786]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.400164, 1.7242169, 1.4733655)
 shape = SubResource("BoxShape3D_57tf3")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="LivingRoom/StaticBody3D" unique_id=2014925600]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="living_room/StaticBody3D" unique_id=2014925600]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.007, 1.5212824, -1.309)
 shape = SubResource("BoxShape3D_3kuml")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="LivingRoom/StaticBody3D" unique_id=811287469]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="living_room/StaticBody3D" unique_id=811287469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1443472, 2.2007096, -1.3916016)
 shape = SubResource("BoxShape3D_lamap")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="LivingRoom/StaticBody3D" unique_id=487730914]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="living_room/StaticBody3D" unique_id=487730914]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8743255, 2.2007096, -1.3916016)
 shape = SubResource("BoxShape3D_lamap")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="LivingRoom/StaticBody3D" unique_id=1772398709]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="living_room/StaticBody3D" unique_id=1772398709]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1166625, 1.5075624, 4.01869)
 shape = SubResource("CylinderShape3D_qrght")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="LivingRoom" unique_id=1882370149]
+[node name="SpotLight3D" type="SpotLight3D" parent="living_room" unique_id=1882370149]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.3660626, 2.2424624, 0.72571)
 light_color = Color(0.8214262, 0.75356704, 0.42761746, 1)
 light_energy = 1.79
 spot_range = 0.679
 spot_angle = 44.009075
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="LivingRoom" unique_id=1622690068]
+[node name="SpotLight3D2" type="SpotLight3D" parent="living_room" unique_id=1622690068]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.3660626, 2.2016175, 0.72571)
 light_color = Color(0.8214262, 0.75356704, 0.42761746, 1)
 light_energy = 1.79

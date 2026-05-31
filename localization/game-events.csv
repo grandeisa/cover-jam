@@ -2,7 +2,7 @@ keys,pt,en
 finale-event_on-time,"Você se atrasou tanto que perdeu o lançamento, foi demitido.","You are so late that you missed the launch, you were fired…"
 finale-event_backpack-pickup,"Você esqueceu sua mochila, ela tinha sua credencial, você não conseguiu entrar no trabalho e foi demitido, o estresse de estar desempregado te causou a explodir","You forgot your backpack, it had your credentials, you couldn’t get into work and was fired… The stress from being unemployed has made you explode and take the world with you"
 finale-event_glasses-pickup,"Você esqueceu seu óculos em casa, manobrou o foguete errado e o fez cair em uma base militar secreta com ogivas nucleares, o mundo explodiu","You forgot your glasses at home, did a bad maneuver with the rocket and made it land on a secret militar base with nuclear warheads, the world has exploded."
-finale-event_stove-off,Você deixou o fogão ligado. O mundo pegou fogo.,You left the stove on… The world has caught on fire…
+finale-event_oven-off,Você deixou o forno ligado. O mundo pegou fogo.,You’ve left the oven on… The world has caught on fire…
 finale-event_clothes,"Você não tirou suas roupas da maquina, elas mofaram tanto que iniciaram um apocalipse zumbi de fungos",You have not taken your clothes out of the washing machine… They have accumulated so much mold that they have started a fungus zombie apocalypse
 finale-event_cat,"Você não fez carinho no seu gato antes de sair de casa, ele fugiu de casa se sentindo não amado e comeu um rato radioativo na rua, se tornando um kaiju e destruindo a terra…","You didn’t pet your cat before leaving your home, it ran away feeling unloved and ate a radioactive rat in the street… It  became a kaiju and destroyed earth…"
 finale-event_house-door,"Você não trancou a porta de casa, um ladrão entrou e roubou todos os seus pertences, no seu notebook havia sua fanfic ultra secreta, que ele compartilhou na internet, ela era tão ruim que fez a cabeça de todo mundo que leu explodir","You didn’t lock your home’s door before leaving… A robber entered and stole all of your belongings… In your laptop there was your ultra secret fanfic that he shared on the internet… It was so bad that it made people’s heads explode after reading, ending the worlds population…"
@@ -86,3 +86,5 @@ response_dumpster_with-trash,Você sente a imensa alegria de um trabalho bem fei
 interaction_filled-dumpster,Sentir o cheiro?,Smell it?
 response_filled-dumpster,Cheira mal…,Smells bad…
 interaction_pills,Tomar remédios?,Take medication?
+menu_ending-title_doom,[b]A TERRA ENCONTROU SEU FIM[/b],[b]EARTH HAS MET ITS DOOM[/b]
+menu_ending-reset,Pressione [b]<R>[/b] para tentar novamente,Press [b]<R>[/b] to try again

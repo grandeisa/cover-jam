@@ -10,7 +10,7 @@ const EVENT_LIST: Array[StringName] = [
 ## Value: Text displayed in case of ending (event is [code]false[/code])[br]
 ## [b]All texts should be displayed with a BBCode enabled [RichTextLabel][/b]
 const _ending_texts: Dictionary[StringName, String] = {
-	"oven_off" : "Você deixou o fogão ligado. O mundo pegou fogo."
+	"oven_off" : "finale-event_oven-off"
 }
 
 ## States of all current events.
@@ -34,15 +34,15 @@ func get_event_state(event: StringName) -> bool: return _event_states.get(event,
 ## Returns an empty [string] in case the ending text doesn't exist.
 func get_event_ending_text(event: StringName) -> String: return _ending_texts.get(event, "")
 
-## Returns the ending text for the first element in the [member _event_states] [Dictionary]
+## Returns the ending translation key for the first element in the [member _event_states] [Dictionary]
 ## that is [code]false[/code].
-## Returns an empty [String] if there are no events available.
+## Returns the code for the final ending if there are no events available.
 func get_first_event_ending_text() -> String:
 	for event in _ending_texts.keys():
 		if _event_states.get(event, true): continue
 		return _ending_texts.get(event, "For some reason the text is missing...")
 	
-	return ""
+	return "finale-event_true-ending"
 
 ## Sets [param event] state as [code]true[/code] if it is in the list of events.
 func trigger_event(event: StringName):

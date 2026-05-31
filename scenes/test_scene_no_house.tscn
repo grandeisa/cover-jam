@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://cfcrsf2pi3oc5"]
+
+[ext_resource type="Material" uid="uid://bm088ijg10pkb" path="res://materials/placeholder/kenney_prototype-textures/dark/texture_08.tres" id="1_3dfpv"]
+[ext_resource type="Material" uid="uid://d0gufglqtpund" path="res://materials/placeholder/kenney_prototype-textures/green/texture_05.tres" id="2_2b3rr"]
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="3_rsqoh"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="4_rip4w"]
+[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="5_2teey"]
+[ext_resource type="PackedScene" uid="uid://dblcq67wbe7wd" path="res://scenes/player.tscn" id="6_fvyxp"]
+[ext_resource type="Material" uid="uid://b8bp874bdkywr" path="res://materials/placeholder/kenney_prototype-textures/purple/texture_03.tres" id="7_ts0v3"]
+[ext_resource type="Material" uid="uid://dy6tqbjif7yh" path="res://materials/placeholder/kenney_prototype-textures/purple/texture_13.tres" id="8_alwy6"]
+[ext_resource type="Script" uid="uid://dgmfyhauhwfum" path="res://scripts/interactables/change_scene_interaction_behaviour.gd" id="9_r7b0w"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gs56k"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ookog"]
+sky_material = SubResource("ProceduralSkyMaterial_gs56k")
+
+[sub_resource type="Environment" id="Environment_nx7rw"]
+background_mode = 2
+sky = SubResource("Sky_ookog")
+tonemap_mode = 2
+
+[node name="TestHouseScene" type="Node3D" unique_id=1751540665]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1203103640]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=953013832]
+environment = SubResource("Environment_nx7rw")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=777795242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=185771257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.584961, 0)
+flip_faces = true
+size = Vector3(30, 14, 20)
+material = ExtResource("1_3dfpv")
+
+[node name="TestOvenInteractable" type="CSGBox3D" parent="." unique_id=957314149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 9)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="TriggerEventInteraction" type="Node" parent="TestOvenInteractable" unique_id=871634787]
+script = ExtResource("4_rip4w")
+_event = &"oven_off"
+
+[node name="OneShotInteraction" type="Node" parent="TestOvenInteractable" unique_id=5900331]
+script = ExtResource("5_2teey")
+
+[node name="Player" parent="." unique_id=1465517899 instance=ExtResource("6_fvyxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21, 0)
+
+[node name="Car" type="CSGCombiner3D" parent="." unique_id=688505514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
+use_collision = true
+collision_layer = 3
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_car"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Car" unique_id=1405356217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+size = Vector3(1.5, 1, 3)
+material = ExtResource("7_ts0v3")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Car" unique_id=2014728153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+size = Vector3(1.5, 0.5, 2)
+material = ExtResource("8_alwy6")
+
+[node name="EndSceneInteraction" type="Node" parent="Car" unique_id=1434410935]
+script = ExtResource("9_r7b0w")
+_scene_path = "res://scenes/end_scene.tscn"
+
+[connection signal="_interact" from="TestOvenInteractable" to="TestOvenInteractable" method="_on_interact"]
