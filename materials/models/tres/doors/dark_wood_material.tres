@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dn4y1gwphe8e7"]
+
+[ext_resource type="Texture2D" uid="uid://cede6qhu5nv2g" path="res://materials/models/tres/doors/door_wood_brown_d.jpg" id="1_1g5u3"]
+[ext_resource type="Texture2D" uid="uid://ckxgcjmld3cga" path="res://materials/models/tres/doors/door_wood_brown_d_2.png" id="2_w82sr"]
+[ext_resource type="Texture2D" uid="uid://g7qo6fegmaxa" path="res://materials/models/tres/doors/door_wood_light_brown_NRM_1K.jpg" id="3_j7so6"]
+
+[resource]
+resource_name = "Wood.003"
+cull_mode = 2
+albedo_texture = ExtResource("1_1g5u3")
+metallic_specular = 0.2
+metallic_texture = ExtResource("2_w82sr")
+metallic_texture_channel = 2
+roughness = 0.7
+roughness_texture = ExtResource("2_w82sr")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_j7so6")

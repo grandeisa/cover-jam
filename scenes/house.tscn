@@ -3865,6 +3865,7 @@ shape = SubResource("ConcavePolygonShape3D_k27xr")
 shape = SubResource("ConcavePolygonShape3D_8cron")
 
 [node name="Strop" type="MeshInstance3D" parent="." unique_id=1956434384]
+visible = false
 mesh = SubResource("ArrayMesh_1guo8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Strop" unique_id=1666112274]
