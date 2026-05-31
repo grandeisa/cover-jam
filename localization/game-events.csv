@@ -44,7 +44,7 @@ interaction_closed-door_locked,Abrir porta..?,Open door..?
 response_closed-door_locked,Porta trancada :(,Locked door :(
 interaction_open-door,Fechar porta?,Close door?
 interaction_open-door_with-keys,Fechar porta e trancar?,Close and lock door?
-response_copen-door_with-keys,Agora sim minha casa está segura!,Now my house is safe!
+response_open-door_with-keys,Agora sim minha casa está segura!,Now my house is safe!
 interaction_documents_pickup,Pegar documentos?,Pickup documents?
 response_documents_pickup,Burocracia de outro mundo…,Burocracy from other world…
 interaction_computer_no-docs,Desligar computador?,Turn off computer?

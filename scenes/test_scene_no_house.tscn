@@ -260,6 +260,137 @@ text = "Cat
 
 "
 
+[node name="SimpleDoor" type="CSGBox3D" parent="." unique_id=623630394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="ConditionalInteraction" type="Node" parent="SimpleDoor" unique_id=423393080 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("4_1ts6t")
+_current_state = NodePath("OpenDoor")
+
+[node name="OpenDoor" type="Node" parent="SimpleDoor/ConditionalInteraction" unique_id=831560965]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_closed-door_unlocked"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="SimpleDoor/ConditionalInteraction/OpenDoor" unique_id=1780687875 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../CloseDoor")
+_state_machine_interactable = NodePath("../..")
+
+[node name="CloseDoor" type="Node" parent="SimpleDoor/ConditionalInteraction" unique_id=1490072393]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_open-door"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="SimpleDoor/ConditionalInteraction/CloseDoor" unique_id=1170449545 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../OpenDoor")
+_state_machine_interactable = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="SimpleDoor" unique_id=117043784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Simple door"
+
+[node name="Keys" type="CSGBox3D" parent="." unique_id=2090750112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_key"
+response_text_code = &"response_key"
+
+[node name="TriggerEvent" type="Node" parent="Keys" unique_id=1329236210]
+script = ExtResource("4_rip4w")
+_event = &"keys_pickup"
+
+[node name="ChangeState" type="Node" parent="Keys" unique_id=1722945134 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../MainDoor/ConditionalInteraction/LockDoor")
+_state_machine_interactable = NodePath("../../MainDoor/ConditionalInteraction")
+
+[node name="DisableInteraction" type="Node" parent="Keys" unique_id=711467069]
+script = ExtResource("7_rsqoh")
+
+[node name="RemoveItem" type="Node" parent="Keys" unique_id=1924195916]
+script = ExtResource("8_rip4w")
+
+[node name="Label3D" type="Label3D" parent="Keys" unique_id=1096878853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Keys
+
+"
+
+[node name="MainDoor" type="CSGBox3D" parent="." unique_id=1401284513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.25, 4)
+material_override = ExtResource("2_2b3rr")
+use_collision = true
+collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="ConditionalInteraction" type="Node" parent="MainDoor" unique_id=904841542 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("4_1ts6t")
+_current_state = NodePath("OpenDoor")
+
+[node name="OpenDoor" type="Node" parent="MainDoor/ConditionalInteraction" unique_id=483649193]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_closed-door_unlocked"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="MainDoor/ConditionalInteraction/OpenDoor" unique_id=2094473215 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../CloseDoor")
+_state_machine_interactable = NodePath("../..")
+
+[node name="CloseDoor" type="Node" parent="MainDoor/ConditionalInteraction" unique_id=1991120380]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_open-door"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="MainDoor/ConditionalInteraction/CloseDoor" unique_id=1911026312 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../OpenDoor")
+_state_machine_interactable = NodePath("../..")
+
+[node name="LockDoor" type="Node" parent="MainDoor/ConditionalInteraction" unique_id=1914556725]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_open-door_with-keys"
+response_text_code = &"response_open-door_with-keys"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="TriggerEvent" type="Node" parent="MainDoor/ConditionalInteraction/LockDoor" unique_id=1492082358]
+script = ExtResource("4_rip4w")
+_event = &"house-door_lock"
+
+[node name="ChangeState" type="Node" parent="MainDoor/ConditionalInteraction/LockDoor" unique_id=227411522 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../../OpenDoorLocked")
+_state_machine_interactable = NodePath("../..")
+
+[node name="OpenDoorLocked" type="Node" parent="MainDoor" unique_id=1729645340]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_closed-door_locked"
+response_text_code = &"response_closed-door_locked"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="Label3D" type="Label3D" parent="MainDoor" unique_id=1292689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Main Door"
+
 [node name="Player" parent="." unique_id=1465517899 instance=ExtResource("6_fvyxp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21, 0)
 

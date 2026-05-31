@@ -10,6 +10,7 @@ const EVENT_LIST: Array[StringName] = [
 	"clothes_pickup",
 	"clothes-on-dryer",
 	"cat_pet",
+	"keys_pickup",
 	"house-door_lock",
 	"docs_pickup",
 	"docs_scanned",
