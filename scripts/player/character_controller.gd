@@ -6,6 +6,7 @@ const GRAVITY: float = 9.8
 
 ## [CharacterBody3D] to be controlled. (Preferably a parent to this node)
 @export var _body: CharacterBody3D
+@export var _stair_detector_ray: RayCast3D
 
 @export_category("Physics")
 ## The speed in which the character moves.
@@ -21,7 +22,16 @@ func _physics_process(delta: float) -> void:
 	# Add Z axis velicity based on player's facing direction
 	movement_velocity += _body.basis.z * movement_input.y
 	
-	if not _body.is_on_floor():
+	if  _body.is_on_floor():
+		#Auto-jump when the bump have less than 0.2m
+		if _stair_detector_ray.is_colliding():
+			var bump_col_point = _stair_detector_ray.get_collision_point()
+			var dist = bump_col_point.distance_to(_stair_detector_ray.global_position)
+			if dist > 0.8:
+				#Move up and forward automatically
+				_body.position.y += (1 - dist) + 0.1
+				_body.position += _body.basis.z * (1 - dist)
+	else:
 		_body.velocity.y -= GRAVITY * delta
 		
 	_body.velocity = Vector3(
