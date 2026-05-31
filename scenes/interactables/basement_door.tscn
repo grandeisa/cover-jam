@@ -77,11 +77,6 @@ interaction_hint = &"interaction_basement-door-blocked"
 response_text_code = &"response_basement-door_locked"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
-[node name="Label3D" type="Label3D" parent="." unique_id=1422008205]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-billboard = 1
-text = "Basement Door"
-
 [node name="Door" parent="." unique_id=730218231 instance=ExtResource("5_751aj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06655681, 0, 0)
 

@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="5_my246"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3c56g"]
-size = Vector3(0.25, 0.2, 0.2)
+size = Vector3(0.39160156, 0.21484375, 0.23779297)
 
 [node name="Chest" type="StaticBody3D" unique_id=395904396]
 collision_layer = 3
@@ -16,6 +16,7 @@ interaction_hint = &"interaction_closed-box"
 response_text_code = &"response_closed-box"
 
 [node name="chest" parent="." unique_id=1407557094 instance=ExtResource("2_cfmh4")]
+transform = Transform3D(1.48, 0, 0, 0, 1.48, 0, 0, 0, 1.48, 0, 0, 0)
 
 [node name="ConditionalInteraction" type="Node" parent="." unique_id=6966688 node_paths=PackedStringArray("_current_state")]
 script = ExtResource("3_bqxrc")
@@ -73,5 +74,5 @@ response_text_code = &"response_locked-box"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=395838893]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1058054, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1058054, -0.0075683594)
 shape = SubResource("BoxShape3D_3c56g")

@@ -34,22 +34,14 @@ script = ExtResource("4_nov1r")
 _next_state = NodePath("../../LookAtMachine")
 _state_machine_interactable = NodePath("../..")
 
-[node name="ChangeStateDryer" type="Node" parent="ConditionalInteraction/GetClothes" unique_id=1908440841 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+[node name="ChangeStateDryer" type="Node" parent="ConditionalInteraction/GetClothes" unique_id=1908440841]
 script = ExtResource("4_nov1r")
-_next_state = NodePath("")
-_state_machine_interactable = NodePath("")
 
 [node name="LookAtMachine" type="Node" parent="ConditionalInteraction" unique_id=491946086]
 script = ExtResource("1_kq4vt")
 interaction_hint = &"interaction_washing-machine_empty"
 response_text_code = &"response_washing-machine_empty"
 metadata/_custom_type_script = "uid://cyltasfew5sr3"
-
-[node name="Label3D" type="Label3D" parent="." unique_id=677047165]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-billboard = 1
-text = "Washing Machine
-"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1279469605]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43893433, -0.003967285)
