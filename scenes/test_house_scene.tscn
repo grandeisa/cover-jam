@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dblcq67wbe7wd" path="res://scenes/player.tscn" id="2_wnewh"]
 [ext_resource type="Material" uid="uid://d0gufglqtpund" path="res://materials/placeholder/kenney_prototype-textures/green/texture_05.tres" id="4_wnewh"]
 [ext_resource type="PackedScene" uid="uid://dun5f4a73bsoq" path="res://scenes/house.tscn" id="5_stiys"]
-[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="6_j48ya"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gs56k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -52,5 +51,8 @@ material_override = ExtResource("4_wnewh")
 use_collision = true
 collision_layer = 3
 script = SubResource("GDScript_nx7rw")
+
+[node name="House" parent="." unique_id=1659228581 instance=ExtResource("5_stiys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00034999847, -0.018094301, -0.0023422241)
 
 [connection signal="interact" from="PrototypeInteractable" to="PrototypeInteractable" method="_on_interact"]

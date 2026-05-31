@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cwkkgxid651cg" path="res://scripts/player/interaction_controller.gd" id="3_qlg0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gs56k"]
-radius = 0.4
+radius = 0.3
 height = 1.7
 
 [node name="Player" type="CharacterBody3D" unique_id=1465517899]

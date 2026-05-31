@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 			var dist = bump_col_point.distance_to(_stair_detector_ray.global_position)
 			if dist > 0.8:
 				#Move up and forward automatically
-				_body.position.y += (1 - dist)
+				_body.position.y += (1 - dist) + 0.1
 				_body.position += _body.basis.z * (1 - dist)
 	else:
 		_body.velocity.y -= GRAVITY * delta

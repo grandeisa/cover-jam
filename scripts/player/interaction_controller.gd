@@ -22,6 +22,5 @@ func _detect_interactable() -> void:
 	if detected_object is not Interactable: return
 	
 	# **PLACE CODE TO DISPLAY VISUAL INDICATOR HERE**
-	
 	if Input.is_action_just_pressed("p_interact"):
 		detected_object.interact.emit()
