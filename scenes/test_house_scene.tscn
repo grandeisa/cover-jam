@@ -2,8 +2,10 @@
 
 [ext_resource type="Material" uid="uid://bm088ijg10pkb" path="res://materials/placeholder/kenney_prototype-textures/dark/texture_08.tres" id="1_gs56k"]
 [ext_resource type="PackedScene" uid="uid://dblcq67wbe7wd" path="res://scenes/player.tscn" id="2_wnewh"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="4_640pk"]
 [ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="4_stiys"]
 [ext_resource type="Material" uid="uid://d0gufglqtpund" path="res://materials/placeholder/kenney_prototype-textures/green/texture_05.tres" id="4_wnewh"]
+[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="5_nl2hp"]
 [ext_resource type="Material" uid="uid://b8bp874bdkywr" path="res://materials/placeholder/kenney_prototype-textures/purple/texture_03.tres" id="5_stiys"]
 [ext_resource type="Material" uid="uid://dy6tqbjif7yh" path="res://materials/placeholder/kenney_prototype-textures/purple/texture_13.tres" id="6_j48ya"]
 [ext_resource type="Script" uid="uid://dgmfyhauhwfum" path="res://scripts/interactables/change_scene_interaction_behaviour.gd" id="7_4y75r"]
@@ -19,13 +21,6 @@ sky_material = SubResource("ProceduralSkyMaterial_gs56k")
 background_mode = 2
 sky = SubResource("Sky_ookog")
 tonemap_mode = 2
-
-[sub_resource type="GDScript" id="GDScript_nx7rw"]
-script/source = "extends Interactable
-
-func _on_interact() -> void:
-	print(\"Cube? Green.... Interaction? Made\")
-"
 
 [node name="TestHouseScene" type="Node3D" unique_id=1751540665]
 
@@ -45,12 +40,19 @@ flip_faces = true
 size = Vector3(30, 5, 20)
 material = ExtResource("1_gs56k")
 
-[node name="PrototypeInteractable" type="CSGBox3D" parent="." unique_id=957314149]
+[node name="TestOvenInteractable" type="CSGBox3D" parent="." unique_id=957314149]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 9)
 material_override = ExtResource("4_wnewh")
 use_collision = true
 collision_layer = 3
-script = SubResource("GDScript_nx7rw")
+script = ExtResource("4_stiys")
+
+[node name="TriggerEventInteraction" type="Node" parent="TestOvenInteractable" unique_id=871634787]
+script = ExtResource("4_640pk")
+_event = &"oven_off"
+
+[node name="OneShotInteraction" type="Node" parent="TestOvenInteractable" unique_id=5900331]
+script = ExtResource("5_nl2hp")
 
 [node name="Player" parent="." unique_id=1465517899 instance=ExtResource("2_wnewh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -71,8 +73,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 size = Vector3(1.5, 0.5, 2)
 material = ExtResource("6_j48ya")
 
-[node name="Node" type="Node" parent="Car" unique_id=1434410935]
+[node name="EndSceneInteraction" type="Node" parent="Car" unique_id=1434410935]
 script = ExtResource("7_4y75r")
 _scene_path = "res://scenes/end_scene.tscn"
 
-[connection signal="interact" from="PrototypeInteractable" to="PrototypeInteractable" method="_on_interact"]
+[connection signal="_interact" from="TestOvenInteractable" to="TestOvenInteractable" method="_on_interact"]

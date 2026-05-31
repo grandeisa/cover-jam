@@ -5,6 +5,6 @@ class_name InteractionBehaviour extends Node
 
 func _ready() -> void:
 	var interactable: Interactable = get_parent()
-	interactable.interact.connect(_on_interact)
+	interactable._interact.connect(_on_interact)
 
 @abstract func _on_interact() -> void

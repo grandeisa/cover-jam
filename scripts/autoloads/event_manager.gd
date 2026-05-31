@@ -32,7 +32,17 @@ func get_event_state(event: StringName) -> bool: return _event_states.get(event,
 
 ## Returns the ending text for the desired event.[br]
 ## Returns an empty [string] in case the ending text doesn't exist.
-func get_event_ending_text(event: StringName) -> bool: return _ending_texts.get(event, "")
+func get_event_ending_text(event: StringName) -> String: return _ending_texts.get(event, "")
+
+## Returns the ending text for the first element in the [member _event_states] [Dictionary]
+## that is [code]false[/code].
+## Returns an empty [String] if there are no events available.
+func get_first_event_ending_text() -> String:
+	for event in _ending_texts.keys():
+		if _event_states.get(event, true): continue
+		return _ending_texts.get(event, "For some reason the text is missing...")
+	
+	return ""
 
 ## Sets [param event] state as [code]true[/code] if it is in the list of events.
 func trigger_event(event: StringName):
