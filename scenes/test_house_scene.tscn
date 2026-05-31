@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" path="res://scenes/interactables/planks.tscn" id="18_25up1"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/basement_door.tscn" id="19_nc5dg"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/phone.tscn" id="20_84k8x"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/trash.tscn" id="20_ue5ns"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/map.tscn" id="21_1vv7p"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/chest.tscn" id="22_hbpq3"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/journal.tscn" id="23_ueq0l"]
@@ -76,6 +77,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.25, 4)
 [node name="WashingMachine" parent="Interactables" unique_id=708132110 instance=ExtResource("7_ue5ns")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.25, 4)
 
+[node name="ChangeStateDryer" parent="Interactables/WashingMachine/ConditionalInteraction/GetClothes" parent_id_path=PackedInt32Array(708132110, 30689506) index="2" unique_id=1908440841 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+_next_state = NodePath("../../../../Dryer/ConditionalInteraction/PlaceClothes")
+_state_machine_interactable = NodePath("../../../../Dryer/ConditionalInteraction")
+
 [node name="Dryer" parent="Interactables" unique_id=1859250708 instance=ExtResource("8_26tvh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.25, 4)
 
@@ -86,6 +91,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.25, 4)
 [node name="Keys" parent="Interactables" unique_id=866098731 instance=ExtResource("14_25up1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.25, 4)
 
+[node name="ChangeState" parent="Interactables/Keys" index="2" unique_id=725221066 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+_next_state = NodePath("../../MainDoor/ConditionalInteraction/LockDoor")
+_state_machine_interactable = NodePath("../../MainDoor/ConditionalInteraction")
+
 [node name="MainDoor" parent="Interactables" unique_id=937838125 instance=ExtResource("15_nc5dg")]
 
 [node name="Computer" parent="Interactables" unique_id=501239230 instance=ExtResource("17_2qflp")]
@@ -94,6 +103,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 4)
 [node name="Planks" parent="Interactables" unique_id=385068276 instance=ExtResource("18_25up1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.25, 4)
 visible = true
+
+[node name="ChangeState" parent="Interactables/Planks" index="1" unique_id=1051728759 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+_next_state = NodePath("../../BasementDoor/ConditionalInteraction/PlankPlacement")
+_state_machine_interactable = NodePath("../../BasementDoor/ConditionalInteraction")
 
 [node name="BasementDoor" parent="Interactables" unique_id=1420407968 instance=ExtResource("19_nc5dg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.25, 4)
@@ -104,11 +117,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.25, 4)
 [node name="Map" parent="Interactables" unique_id=1193492625 instance=ExtResource("21_1vv7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.25, 4)
 
+[node name="ChangeState" parent="Interactables/Map" index="1" unique_id=1552069562 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+_next_state = NodePath("../../Chest/ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxWithMap")
+_state_machine_interactable = NodePath("../../Chest/ConditionalInteraction/OpenBox/ConditionalInteraction2")
+
 [node name="Chest" parent="Interactables" unique_id=395904396 instance=ExtResource("22_hbpq3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.111328, 1.4006042, 4)
 
 [node name="Journal" parent="Interactables" unique_id=1409324698 instance=ExtResource("23_ueq0l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.25, 4)
+
+[node name="ChangeState" parent="Interactables/Journal" index="1" unique_id=598629897 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+_next_state = NodePath("../../Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2/BurnJournals")
+_state_machine_interactable = NodePath("../../Oven/ConditionalInteraction/OvenOn/ConditionalInteraction2")
+
+[node name="Trash" parent="Interactables" unique_id=1860707207 instance=ExtResource("20_ue5ns")]
+
+[node name="ChangeState" parent="Interactables/Trash" index="1" unique_id=572243351 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+_next_state = NodePath("../../Dumpster/Conditional/PlaceTrash")
+_state_machine_interactable = NodePath("../../Dumpster/Conditional")
 
 [node name="Dumpster" parent="Interactables" unique_id=1303482782 instance=ExtResource("25_84k8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.25, 4)
@@ -116,11 +143,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.25, 4)
 [node name="Hammer" parent="Interactables" unique_id=44032773 instance=ExtResource("24_lux7n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.25, 4)
 
+[node name="ChangeState" parent="Interactables/Hammer" index="1" unique_id=193185807 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+_next_state = NodePath("../../BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanksWithHammer")
+_state_machine_interactable = NodePath("../../BasementDoor/ConditionalInteraction/PlankPlacement/ConditionalPlank")
+
 [node name="Docs" parent="Interactables" unique_id=444856100 instance=ExtResource("25_ljmra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.25, 4)
+
+[node name="ChangeState" parent="Interactables/Docs" index="1" unique_id=1439351305 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+_next_state = NodePath("../../Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2/ScanDocs")
+_state_machine_interactable = NodePath("../../Computer/ConditionalInteraction/ComputerEnabled/ConditionalInteraction2")
 
 [node name="Pills" parent="Interactables" unique_id=1191881144 instance=ExtResource("27_nc5dg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.25, 4)
 
 [node name="Car" parent="Interactables" unique_id=193347517 instance=ExtResource("28_84k8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.822266, 0.83631897, 1.0732422)
+
+[editable path="Interactables/Oven"]
+[editable path="Interactables/WashingMachine"]
+[editable path="Interactables/Dryer"]
+[editable path="Interactables/Keys"]
+[editable path="Interactables/MainDoor"]
+[editable path="Interactables/Computer"]
+[editable path="Interactables/Planks"]
+[editable path="Interactables/BasementDoor"]
+[editable path="Interactables/Map"]
+[editable path="Interactables/Chest"]
+[editable path="Interactables/Journal"]
+[editable path="Interactables/Trash"]
+[editable path="Interactables/Dumpster"]
+[editable path="Interactables/Hammer"]
+[editable path="Interactables/Docs"]
