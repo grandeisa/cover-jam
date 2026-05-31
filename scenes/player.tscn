@@ -33,8 +33,8 @@ _camera_origin = NodePath("../CameraOrigin")
 [node name="CharacterController" type="Node" parent="." unique_id=1797100709 node_paths=PackedStringArray("_body", "_stair_detector_ray")]
 script = ExtResource("2_dqkch")
 _body = NodePath("..")
-_speed = 200.0
 _stair_detector_ray = NodePath("../StairDetectorRay")
+_speed = 200.0
 
 [node name="InteractionController" type="Node" parent="." unique_id=1750395310 node_paths=PackedStringArray("_detector_ray", "_interaction_hint_label", "_response_label")]
 script = ExtResource("3_qlg0r")

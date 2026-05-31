@@ -3,8 +3,9 @@
 [ext_resource type="Material" uid="uid://bm088ijg10pkb" path="res://materials/placeholder/kenney_prototype-textures/dark/texture_08.tres" id="1_3dfpv"]
 [ext_resource type="Material" uid="uid://d0gufglqtpund" path="res://materials/placeholder/kenney_prototype-textures/green/texture_05.tres" id="2_2b3rr"]
 [ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="3_rsqoh"]
+[ext_resource type="Script" uid="uid://blnilg65an43a" path="res://scripts/interactables/state_machine_interaction.gd" id="4_1ts6t"]
 [ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="4_rip4w"]
-[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="5_2teey"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="6_3dfpv"]
 [ext_resource type="PackedScene" uid="uid://dblcq67wbe7wd" path="res://scenes/player.tscn" id="6_fvyxp"]
 [ext_resource type="Material" uid="uid://b8bp874bdkywr" path="res://materials/placeholder/kenney_prototype-textures/purple/texture_03.tres" id="7_ts0v3"]
 [ext_resource type="Material" uid="uid://dy6tqbjif7yh" path="res://materials/placeholder/kenney_prototype-textures/purple/texture_13.tres" id="8_alwy6"]
@@ -31,6 +32,12 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=953013832]
 environment = SubResource("Environment_nx7rw")
 
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1701602605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 4)
+use_collision = true
+size = Vector3(20, 1, 1)
+material = ExtResource("1_3dfpv")
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=777795242]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 use_collision = true
@@ -41,21 +48,44 @@ flip_faces = true
 size = Vector3(30, 14, 20)
 material = ExtResource("1_3dfpv")
 
-[node name="TestOvenInteractable" type="CSGBox3D" parent="." unique_id=957314149]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 9)
+[node name="Oven" type="CSGBox3D" parent="." unique_id=2030922616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.25, 4)
 material_override = ExtResource("2_2b3rr")
 use_collision = true
 collision_layer = 3
+size = Vector3(0.5, 0.5, 0.5)
 script = ExtResource("3_rsqoh")
 interaction_hint = &"interaction_oven-off"
 response_text_code = &"response_oven-off"
 
-[node name="TriggerEventInteraction" type="Node" parent="TestOvenInteractable" unique_id=871634787]
+[node name="ConditionalInteraction" type="Node" parent="Oven" unique_id=1484254495 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("4_1ts6t")
+_current_state = NodePath("DisableOven")
+
+[node name="DisableOven" type="Node" parent="Oven/ConditionalInteraction" unique_id=1030166298]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="TriggerEvent" type="Node" parent="Oven/ConditionalInteraction/DisableOven" unique_id=2052319505]
 script = ExtResource("4_rip4w")
 _event = &"oven_off"
 
-[node name="OneShotInteraction" type="Node" parent="TestOvenInteractable" unique_id=5900331]
-script = ExtResource("5_2teey")
+[node name="ChangeState" type="Node" parent="Oven/ConditionalInteraction/DisableOven" unique_id=1745489790 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("6_3dfpv")
+_next_state = NodePath("../../LookAtOven")
+_state_machine_interactable = NodePath("../..")
+
+[node name="LookAtOven" type="Node" parent="Oven/ConditionalInteraction" unique_id=1694503255]
+script = ExtResource("3_rsqoh")
+interaction_hint = &"interaction_oven-on"
+response_text_code = &"response_oven-on"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="BurnJournal" type="Node" parent="Oven/ConditionalInteraction" unique_id=979614827]
+script = ExtResource("3_rsqoh")
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
 
 [node name="Player" parent="." unique_id=1465517899 instance=ExtResource("6_fvyxp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21, 0)
@@ -80,5 +110,3 @@ material = ExtResource("8_alwy6")
 [node name="EndSceneInteraction" type="Node" parent="Car" unique_id=1434410935]
 script = ExtResource("9_r7b0w")
 _scene_path = "res://scenes/end_scene.tscn"
-
-[connection signal="_interact" from="TestOvenInteractable" to="TestOvenInteractable" method="_on_interact"]

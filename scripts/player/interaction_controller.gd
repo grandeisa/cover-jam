@@ -1,6 +1,9 @@
 ## Handles interaction input and detection for a player character
 class_name InteractionController extends Node
 
+## Minimum time between interactions
+const INTERACTION_COOLDOWN: float = 0.75
+
 ## [RayCast3D] used to detect interactable objects.
 @export var _detector_ray: RayCast3D
 
@@ -15,6 +18,8 @@ class_name InteractionController extends Node
 
 ## Timer used to determne how long the response label is visible.
 var _response_lifetime_timer: Timer
+
+var _can_interact: bool = true
 
 func _ready() -> void:
 	_response_label.visible = false
@@ -31,7 +36,7 @@ func _process(_delta: float) -> void:
 ## and handles interaction input.
 func _detect_interactable() -> void:
 	var detected_object = _detector_ray.get_collider()
-	if detected_object is Interactable:
+	if detected_object is Interactable and _can_interact:
 		if not detected_object.active:
 			_interaction_hint_label.visible = false
 			return
@@ -41,10 +46,13 @@ func _detect_interactable() -> void:
 		
 		# Handle interaction.
 		if Input.is_action_just_pressed("p_interact") and detected_object.active:
-			detected_object.trigger_interaction()
 			if not detected_object.response_text_code.is_empty():
 				_response_label.text = tr(detected_object.response_text_code)
 				_response_label.visible = true
 				_response_lifetime_timer.start(_response_lifetime)
+				_can_interact = false
+				await get_tree().create_timer(INTERACTION_COOLDOWN).timeout
+				_can_interact = true
+			detected_object.trigger_interaction()
 	else:
 		_interaction_hint_label.visible = false
