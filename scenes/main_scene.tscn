@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://blo0vfud4jdt0"]
+
+[sub_resource type="GDScript" id="GDScript_und3l"]
+script/source = "extends Node
+
+const HOUSE_SCENE_PATH: String = \"res://scenes/test_house_scene.tscn\"
+
+signal house_ready
+
+@onready var _loading_screen: CanvasLayer = $LoadingScreen
+@onready var _loading_screen_animator: AnimationPlayer = $LoadingScreen/AnimationPlayer
+
+func _ready() -> void:
+	_loading_screen.visible = true
+	_loading_screen_animator.play(\"loading\")
+	call_deferred(\"_create_house\")
+	await house_ready
+	_loading_screen.visible = false
+	_loading_screen_animator.stop()
+	
+func _create_house() -> void:
+	ResourceLoader.load_threaded_request(HOUSE_SCENE_PATH)
+	while(ResourceLoader.load_threaded_get_status(HOUSE_SCENE_PATH) != ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED):
+		await get_tree().create_timer(0.001).timeout
+	var house_scene: PackedScene = ResourceLoader.load_threaded_get(HOUSE_SCENE_PATH)
+	var house = house_scene.instantiate()
+	add_child(house)
+	house_ready.emit()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_und3l"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_und3l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["LOADING..."]
+}
+
+[sub_resource type="Animation" id="Animation_w2twt"]
+resource_name = "loading"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["LOADING", "LOADING.", "LOADING..", "LOADING..."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pw63i"]
+_data = {
+&"RESET": SubResource("Animation_und3l"),
+&"loading": SubResource("Animation_w2twt")
+}
+
+[node name="MainScene" type="Node" unique_id=814110512]
+script = SubResource("GDScript_und3l")
+
+[node name="LoadingScreen" type="CanvasLayer" parent="." unique_id=831223945]
+layer = 5
+visible = false
+
+[node name="Panel" type="Panel" parent="LoadingScreen" unique_id=624137535]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_und3l")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LoadingScreen" unique_id=1360669189]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -34.5
+offset_right = 20.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "LOADING..."
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingScreen" unique_id=679683869]
+libraries/ = SubResource("AnimationLibrary_pw63i")
