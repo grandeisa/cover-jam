@@ -49,11 +49,13 @@ normal_texture = ExtResource("9_qrght")
 resource_name = "stucco indoor"
 cull_mode = 2
 albedo_texture = ExtResource("1_0fn05")
+metallic_specular = 0.29
 metallic_texture = ExtResource("2_82h1m")
 metallic_texture_channel = 2
 roughness_texture = ExtResource("2_82h1m")
 roughness_texture_channel = 1
 normal_enabled = true
+normal_scale = 0.6
 normal_texture = ExtResource("3_e5ov4")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5pje4"]
@@ -195,6 +197,7 @@ data = PackedVector3Array(-2.7784998, 3.4933, -0.57199997, -2.5484998, 3.4933, -
 resource_name = "Concrete_obruby"
 cull_mode = 2
 albedo_texture = ExtResource("4_ep1bp")
+metallic_specular = 0.05
 metallic_texture = ExtResource("5_57tf3")
 metallic_texture_channel = 2
 roughness_texture = ExtResource("5_57tf3")
@@ -1194,6 +1197,7 @@ metallic_texture_channel = 2
 roughness_texture = ExtResource("16_k27xr")
 roughness_texture_channel = 1
 normal_enabled = true
+normal_scale = -0.85
 normal_texture = ExtResource("17_8cron")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_c1cn3"]
