@@ -1,6 +1,7 @@
 extends Node2D
 
 const TITLE_CODE: StringName = "menu_ending-title_doom"
+const TRUE_ENDING_TITLE_CODE: StringName = "menu_ending-title_true"
 const RESET_CODE: StringName = "menu_ending-reset"
 
 ## Path of the scene to be change into when [code]p_reset[/code] is pressed.
@@ -19,8 +20,10 @@ func _ready() -> void:
 	var ending: String = EventManager.get_first_event_ending_text()
 	if not ending.is_empty():
 		_content_label.text = tr(ending)
-	
-	_title_label.text = tr(TITLE_CODE)
+	if EventManager.get_first_event_for_ending().is_empty():
+		_title_label.text = tr(TRUE_ENDING_TITLE_CODE)
+	else:
+		_title_label.text = tr(TITLE_CODE)
 	_reset_label.text = tr(RESET_CODE) + "\n\n"
 
 
