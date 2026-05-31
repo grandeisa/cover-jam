@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bqr60cg5pxtw4"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_tgk3q"]
+[ext_resource type="Script" uid="uid://blnilg65an43a" path="res://scripts/interactables/state_machine_interaction.gd" id="2_7m0ty"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="3_6v5vr"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="4_pefuv"]
+[ext_resource type="PackedScene" uid="uid://dw5ndf6j75wfc" path="res://scenes/interactables/door.tscn" id="5_hwi2m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25up1"]
+size = Vector3(1, 2.0978394, 0.22045898)
+
+[node name="MainDoor" type="StaticBody3D" unique_id=937838125]
+collision_layer = 3
+script = ExtResource("1_tgk3q")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="ConditionalInteraction" type="Node" parent="." unique_id=5056972 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("2_7m0ty")
+_current_state = NodePath("OpenDoor")
+
+[node name="OpenDoor" type="Node" parent="ConditionalInteraction" unique_id=533232168]
+script = ExtResource("1_tgk3q")
+interaction_hint = &"interaction_closed-door_unlocked"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/OpenDoor" unique_id=1488815417 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_6v5vr")
+_next_state = NodePath("../../CloseDoor")
+_state_machine_interactable = NodePath("../..")
+
+[node name="CloseDoor" type="Node" parent="ConditionalInteraction" unique_id=1279062155]
+script = ExtResource("1_tgk3q")
+interaction_hint = &"interaction_open-door"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/CloseDoor" unique_id=1017441182 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_6v5vr")
+_next_state = NodePath("../../OpenDoor")
+_state_machine_interactable = NodePath("../..")
+
+[node name="LockDoor" type="Node" parent="ConditionalInteraction" unique_id=663217237]
+script = ExtResource("1_tgk3q")
+interaction_hint = &"interaction_open-door_with-keys"
+response_text_code = &"response_open-door_with-keys"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="TriggerEvent" type="Node" parent="ConditionalInteraction/LockDoor" unique_id=145596519]
+script = ExtResource("4_pefuv")
+_event = &"house-door_lock"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/LockDoor" unique_id=878697332 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_6v5vr")
+_next_state = NodePath("../../../OpenDoorLocked")
+_state_machine_interactable = NodePath("../..")
+
+[node name="OpenDoorLocked" type="Node" parent="." unique_id=1784771209]
+script = ExtResource("1_tgk3q")
+interaction_hint = &"interaction_closed-door_locked"
+response_text_code = &"response_closed-door_locked"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="Door" parent="." unique_id=730218231 instance=ExtResource("5_hwi2m")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=897535405]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0489197, 0)
+shape = SubResource("BoxShape3D_25up1")

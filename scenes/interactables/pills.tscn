@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dmskwxx22g7i"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_2j5ej"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="2_ddehs"]
+[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="3_jww00"]
+[ext_resource type="Script" uid="uid://dgmfyhauhwfum" path="res://scripts/interactables/change_scene_interaction_behaviour.gd" id="4_ey1ep"]
+[ext_resource type="Script" uid="uid://bykllyxws1rjr" path="res://scripts/interactables/remove_object_interaction.gd" id="5_ythkc"]
+[ext_resource type="PackedScene" uid="uid://dj3o2yare0j5f" path="res://models/interactable/pill.glb" id="6_ocv8m"]
+
+[sub_resource type="GDScript" id="GDScript_mhoyc"]
+script/source = "extends Node
+
+func _ready() -> void:
+	get_parent().visible = false
+	get_parent().active = false
+	get_parent().use_collision = false
+	while get_tree():
+		await get_tree().create_timer(0.1).timeout
+		_check_for_pills_event()
+		
+func _check_for_pills_event() -> void:
+	if EventManager.get_first_event_for_ending() == \"pills_taken\":
+		get_parent().visible = true
+		get_parent().active = true
+		get_parent().use_collision = true
+		queue_free()
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nc5dg"]
+radius = 0.118652344
+height = 0.4736328
+
+[node name="Pills" type="StaticBody3D" unique_id=1191881144]
+collision_layer = 3
+script = ExtResource("1_2j5ej")
+interaction_hint = &"interaction_pills"
+
+[node name="TriggerEvent" type="Node" parent="." unique_id=126398654]
+script = ExtResource("2_ddehs")
+_event = &"pills_taken"
+
+[node name="DisableInteraction" type="Node" parent="." unique_id=233146591]
+script = ExtResource("3_jww00")
+
+[node name="EndSceneInteraction" type="Node" parent="." unique_id=1927164771]
+script = ExtResource("4_ey1ep")
+_scene_path = &"end"
+
+[node name="RemoveItem" type="Node" parent="." unique_id=1594546497]
+script = ExtResource("5_ythkc")
+
+[node name="PillsAppearanceController" type="Node" parent="." unique_id=490420535]
+script = SubResource("GDScript_mhoyc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1436891811]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.06341958, 0)
+shape = SubResource("CapsuleShape3D_nc5dg")
+
+[node name="pill" parent="." unique_id=707632994 instance=ExtResource("6_ocv8m")]

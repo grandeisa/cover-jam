@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://but0kfq60er7j"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_fsn1k"]
+[ext_resource type="PackedScene" uid="uid://cryu2llqyyvwi" path="res://models/interactable/car.glb" id="2_vvpfd"]
+[ext_resource type="Script" uid="uid://dgmfyhauhwfum" path="res://scripts/interactables/change_scene_interaction_behaviour.gd" id="3_e5qm8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bncvl"]
+size = Vector3(1.3513184, 1.3847656, 3.251709)
+
+[node name="Car" type="StaticBody3D" unique_id=193347517]
+collision_layer = 3
+script = ExtResource("1_fsn1k")
+interaction_hint = &"interaction_car"
+
+[node name="car" parent="." unique_id=16344518 instance=ExtResource("2_vvpfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7607615, 0)
+
+[node name="EndSceneInteraction" type="Node" parent="." unique_id=1481304740]
+script = ExtResource("3_e5qm8")
+_scene_path = &"end"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=856832292]
+shape = SubResource("BoxShape3D_bncvl")

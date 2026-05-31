@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bnimffei7jjv6"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_m6wsp"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="2_ibew6"]
+[ext_resource type="PackedScene" uid="uid://cxvm71csm5exh" path="res://models/interactable/cat.glb" id="3_70rch"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ue5ns"]
+radius = 0.22216797
+height = 0.8935547
+
+[node name="Cat" type="StaticBody3D" unique_id=950922914]
+collision_layer = 3
+script = ExtResource("1_m6wsp")
+interaction_hint = &"interaction_cat"
+response_text_code = &"response_cat"
+
+[node name="TriggerEvent" type="Node" parent="." unique_id=1474444068]
+script = ExtResource("2_ibew6")
+_event = &"cat_pet"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1558916289]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.38533556, 0.038258016)
+shape = SubResource("CapsuleShape3D_ue5ns")
+
+[node name="cat" parent="." unique_id=485274725 instance=ExtResource("3_70rch")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0.41501057, 0)

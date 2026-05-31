@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bhdb7ytmi4ovr"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_1y255"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="2_r16yt"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="3_0meyu"]
+[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="4_trvk5"]
+[ext_resource type="Script" uid="uid://bykllyxws1rjr" path="res://scripts/interactables/remove_object_interaction.gd" id="5_btl4x"]
+[ext_resource type="PackedScene" uid="uid://dw5ss5fphol0g" path="res://models/interactable/hammer.glb" id="6_g6cyd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8rc1w"]
+size = Vector3(0.2, 0.2, 0.4)
+
+[node name="Hammer" type="StaticBody3D" unique_id=44032773]
+collision_layer = 3
+script = ExtResource("1_1y255")
+interaction_hint = &"interaction_hammer_pickup"
+response_text_code = &"response_hammer_pickup"
+
+[node name="TriggerEvent" type="Node" parent="." unique_id=753848754]
+script = ExtResource("2_r16yt")
+_event = &"hammer_pickup"
+
+[node name="ChangeState" type="Node" parent="." unique_id=193185807 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_0meyu")
+_next_state = NodePath("")
+_state_machine_interactable = NodePath("")
+
+[node name="DisableInteraction" type="Node" parent="." unique_id=1876383254]
+script = ExtResource("4_trvk5")
+
+[node name="RemoveItem" type="Node" parent="." unique_id=277920254]
+script = ExtResource("5_btl4x")
+
+[node name="hammer" parent="." unique_id=52899825 instance=ExtResource("6_g6cyd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=250042545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018157959, 0.0189147, 0)
+shape = SubResource("BoxShape3D_8rc1w")

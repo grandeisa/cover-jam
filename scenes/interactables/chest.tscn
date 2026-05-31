@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://cvx7rej0c8xks"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_7fup5"]
+[ext_resource type="PackedScene" uid="uid://c426k65djnfr" path="res://models/interactable/chest.glb" id="2_cfmh4"]
+[ext_resource type="Script" uid="uid://blnilg65an43a" path="res://scripts/interactables/state_machine_interaction.gd" id="3_bqxrc"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="4_22hgo"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="5_my246"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3c56g"]
+size = Vector3(0.25, 0.2, 0.2)
+
+[node name="Chest" type="StaticBody3D" unique_id=395904396]
+collision_layer = 3
+script = ExtResource("1_7fup5")
+interaction_hint = &"interaction_closed-box"
+response_text_code = &"response_closed-box"
+
+[node name="chest" parent="." unique_id=1407557094 instance=ExtResource("2_cfmh4")]
+
+[node name="ConditionalInteraction" type="Node" parent="." unique_id=6966688 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("3_bqxrc")
+_current_state = NodePath("ClosedBox")
+
+[node name="ClosedBox" type="Node" parent="ConditionalInteraction" unique_id=1606494725]
+script = ExtResource("1_7fup5")
+interaction_hint = &"interaction_closed-box"
+response_text_code = &"response_closed-box"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/ClosedBox" unique_id=1639489737 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("4_22hgo")
+_next_state = NodePath("../../OpenBox")
+_state_machine_interactable = NodePath("../..")
+
+[node name="OpenBox" type="Node" parent="ConditionalInteraction" unique_id=1480335014]
+script = ExtResource("1_7fup5")
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ConditionalInteraction2" type="Node" parent="ConditionalInteraction/OpenBox" unique_id=1435116899 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("3_bqxrc")
+_current_state = NodePath("OpenBoxNoMap")
+
+[node name="OpenBoxNoMap" type="Node" parent="ConditionalInteraction/OpenBox/ConditionalInteraction2" unique_id=85469461]
+script = ExtResource("1_7fup5")
+interaction_hint = &"interaction_open-box_no-map"
+response_text_code = &"response_open-box_no-map"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxNoMap" unique_id=1762858088 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("4_22hgo")
+_next_state = NodePath("../../../../ClosedBox")
+_state_machine_interactable = NodePath("../../../..")
+
+[node name="OpenBoxWithMap" type="Node" parent="ConditionalInteraction/OpenBox/ConditionalInteraction2" unique_id=1123291713]
+script = ExtResource("1_7fup5")
+interaction_hint = &"interaction_open-box_with-map"
+response_text_code = &"response_open-box_with-map"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="TriggerEvent" type="Node" parent="ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxWithMap" unique_id=1622968702]
+script = ExtResource("5_my246")
+_event = &"map_hidden"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/OpenBox/ConditionalInteraction2/OpenBoxWithMap" unique_id=392899160 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("4_22hgo")
+_next_state = NodePath("../../../../LockedBox")
+_state_machine_interactable = NodePath("../../../..")
+
+[node name="LockedBox" type="Node" parent="ConditionalInteraction" unique_id=1244930410]
+script = ExtResource("1_7fup5")
+interaction_hint = &"interaction_locked-box"
+response_text_code = &"response_locked-box"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=395838893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1058054, 0)
+shape = SubResource("BoxShape3D_3c56g")

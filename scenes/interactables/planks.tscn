@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dua5ag6a3gflu"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_00ogx"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="2_ab0i1"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="3_gh5cf"]
+[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="4_7uhl3"]
+[ext_resource type="Script" uid="uid://bykllyxws1rjr" path="res://scripts/interactables/remove_object_interaction.gd" id="5_7am8l"]
+[ext_resource type="PackedScene" uid="uid://douafq43t3qaf" path="res://models/interactable/planks.glb" id="6_aem5r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iamjc"]
+size = Vector3(1, 0.2692871, 1.970459)
+
+[node name="Planks" type="StaticBody3D" unique_id=385068276]
+visible = false
+collision_layer = 3
+script = ExtResource("1_00ogx")
+interaction_hint = &"interaction_planks_pickup"
+response_text_code = &"response_planks_pickup"
+
+[node name="TriggerEvent" type="Node" parent="." unique_id=385868618]
+script = ExtResource("2_ab0i1")
+_event = &"planks_pickup"
+
+[node name="ChangeState" type="Node" parent="." unique_id=1051728759 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_gh5cf")
+_next_state = NodePath("")
+_state_machine_interactable = NodePath("")
+
+[node name="DisableInteraction" type="Node" parent="." unique_id=2061873770]
+script = ExtResource("4_7uhl3")
+
+[node name="RemoveItem" type="Node" parent="." unique_id=2027444733]
+script = ExtResource("5_7am8l")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1382750138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Wooden planks
+
+"
+
+[node name="planks" parent="." unique_id=1098225139 instance=ExtResource("6_aem5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14999282, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1240582347]
+shape = SubResource("BoxShape3D_iamjc")

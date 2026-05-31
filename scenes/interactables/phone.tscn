@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dyob6sipgmo26"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_pp01x"]
+[ext_resource type="PackedScene" uid="uid://caoc51ojr1can" path="res://models/interactable/cellphone.glb" id="2_f6vsa"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="3_3bvqr"]
+[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="4_emx7u"]
+[ext_resource type="Script" uid="uid://bykllyxws1rjr" path="res://scripts/interactables/remove_object_interaction.gd" id="5_rm8jo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_blrnt"]
+size = Vector3(0.13183594, 0.05444336, 0.21386719)
+
+[node name="Phone" type="StaticBody3D" unique_id=366554376]
+collision_layer = 3
+script = ExtResource("1_pp01x")
+interaction_hint = &"interaction_cellphone"
+response_text_code = &"response_cellphone"
+
+[node name="cellphone" parent="." unique_id=446835092 instance=ExtResource("2_f6vsa")]
+
+[node name="TriggerEvent" type="Node" parent="." unique_id=235883296]
+script = ExtResource("3_3bvqr")
+_event = &"mother"
+
+[node name="DisableInteraction" type="Node" parent="." unique_id=1699062542]
+script = ExtResource("4_emx7u")
+
+[node name="RemoveItem" type="Node" parent="." unique_id=463199936]
+script = ExtResource("5_rm8jo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=643950680]
+shape = SubResource("BoxShape3D_blrnt")

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bq7nq6silvih7"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_ogw0e"]
+[ext_resource type="Script" uid="uid://blnilg65an43a" path="res://scripts/interactables/state_machine_interaction.gd" id="2_pth2o"]
+[ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="3_srrdf"]
+[ext_resource type="PackedScene" uid="uid://b0sv65rj8kwt5" path="res://scenes/interactables/door_medium_right.tscn" id="4_1bhoc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2qflp"]
+size = Vector3(0.8154297, 2.02063, 0.076171875)
+
+[node name="SimpleDoor" type="StaticBody3D" unique_id=1938618768]
+collision_layer = 3
+script = ExtResource("1_ogw0e")
+interaction_hint = &"interaction_oven-off"
+response_text_code = &"response_oven-off"
+
+[node name="ConditionalInteraction" type="Node" parent="." unique_id=1096765101 node_paths=PackedStringArray("_current_state")]
+script = ExtResource("2_pth2o")
+_current_state = NodePath("OpenDoor")
+
+[node name="OpenDoor" type="Node" parent="ConditionalInteraction" unique_id=1253228307]
+script = ExtResource("1_ogw0e")
+interaction_hint = &"interaction_closed-door_unlocked"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/OpenDoor" unique_id=616032120 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_srrdf")
+_next_state = NodePath("../../CloseDoor")
+_state_machine_interactable = NodePath("../..")
+
+[node name="CloseDoor" type="Node" parent="ConditionalInteraction" unique_id=1990440392]
+script = ExtResource("1_ogw0e")
+interaction_hint = &"interaction_open-door"
+metadata/_custom_type_script = "uid://cyltasfew5sr3"
+
+[node name="ChangeState" type="Node" parent="ConditionalInteraction/CloseDoor" unique_id=1635762448 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
+script = ExtResource("3_srrdf")
+_next_state = NodePath("../../OpenDoor")
+_state_machine_interactable = NodePath("../..")
+
+[node name="Door" parent="." unique_id=730218231 instance=ExtResource("4_1bhoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07048786, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1597358286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.010315, 0)
+shape = SubResource("BoxShape3D_2qflp")

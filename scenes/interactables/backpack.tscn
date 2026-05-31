@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://d2psnu1qwsdmi"]
+
+[ext_resource type="Script" uid="uid://cyltasfew5sr3" path="res://scripts/interactable.gd" id="1_33e72"]
+[ext_resource type="PackedScene" uid="uid://e70g2y7nfk0i" path="res://models/interactable/backpack.glb" id="2_u0emh"]
+[ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="3_lma66"]
+[ext_resource type="Script" uid="uid://dc1mmwh1qgt53" path="res://scripts/interactables/disable_interaction_behaviour.gd" id="4_bfhg6"]
+[ext_resource type="Script" uid="uid://bykllyxws1rjr" path="res://scripts/interactables/remove_object_interaction.gd" id="5_62shq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjsfv"]
+size = Vector3(0.3486328, 0.45043945, 0.36621094)
+
+[node name="Backpack" type="StaticBody3D" unique_id=1766439008]
+collision_layer = 3
+script = ExtResource("1_33e72")
+interaction_hint = &"interaction_backpack_pickup"
+response_text_code = &"response_backpack_pickup"
+
+[node name="backpack" parent="." unique_id=1536278461 instance=ExtResource("2_u0emh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2545321, 0)
+
+[node name="TriggerEvent" type="Node" parent="." unique_id=1224122721]
+script = ExtResource("3_lma66")
+_event = &"backpack_pickup"
+
+[node name="DisableInteraction" type="Node" parent="." unique_id=2113666160]
+script = ExtResource("4_bfhg6")
+
+[node name="RemoveItem" type="Node" parent="." unique_id=957502528]
+script = ExtResource("5_62shq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1661316776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010253906, 0.0030517578, -0.0073242188)
+shape = SubResource("BoxShape3D_qjsfv")
