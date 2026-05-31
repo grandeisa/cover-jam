@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cg72ioxg3iflu"]
+
+[ext_resource type="Script" uid="uid://def47nqx7oxsq" path="res://scripts/end_scene.gd" id="1_nld2j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtt65"]
+bg_color = Color(0.011764706, 0.011764706, 0.011764706, 0.67058825)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nld2j"]
+content_margin_left = 256.0
+content_margin_right = 256.0
+
+[node name="EndScene" type="Node2D" unique_id=1808120751 node_paths=PackedStringArray("_content_label")]
+script = ExtResource("1_nld2j")
+_game_scene_path = "res://scenes/test_house_scene.tscn"
+_content_label = NodePath("UILayer/VBoxContainer/Content")
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=223964238]
+
+[node name="Panel" type="Panel" parent="UILayer" unique_id=1968140793]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wtt65")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer" unique_id=1965061014]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="UILayer/VBoxContainer" unique_id=1431139441]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 60
+bbcode_enabled = true
+text = "[b]A TERRA ENCONTROU SEU FIM[/b]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Content" type="RichTextLabel" parent="UILayer/VBoxContainer" unique_id=750001647]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nld2j")
+text = "You uhhh... I don't know this is kinda unexpected... there is no text for this ending I have no idea what you forgot but don't think the Earth is safe..."
+fit_content = true
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[node name="ResetText" type="RichTextLabel" parent="UILayer/VBoxContainer" unique_id=1396030573]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "
+[b]Pressione R para tentar novamente[/b]
+
+"
+fit_content = true
+horizontal_alignment = 1
