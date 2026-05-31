@@ -2,8 +2,8 @@
 
 [ext_resource type="AudioStream" uid="uid://lmlgo2wt0km7" path="res://thirdparty/SFX/close_door.wav" id="1_h1aie"]
 [ext_resource type="AudioStream" uid="uid://cjjfiyjghf7cl" path="res://thirdparty/SFX/open_door.wav" id="2_kdnji"]
-[ext_resource type="ArrayMesh" uid="uid://bg6ikjjopfyhf" path="res://materials/models/tres/doors/door_medium.res" id="4_wc5cr"]
-[ext_resource type="ArrayMesh" uid="uid://ceqieov5lgfm4" path="res://materials/models/tres/doors/door_medium_frame.res" id="5_766yg"]
+[ext_resource type="ArrayMesh" uid="uid://bg6ikjjopfyhf" path="res://models/tres/doors/door_medium.res" id="4_wc5cr"]
+[ext_resource type="ArrayMesh" uid="uid://ceqieov5lgfm4" path="res://models/tres/doors/door_medium_frame.res" id="5_766yg"]
 [ext_resource type="Script" uid="uid://bk8vhqtvqvjwt" path="res://scripts/objects/door.gd" id="6_t7fy8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ju5n0"]

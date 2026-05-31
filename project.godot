@@ -23,6 +23,7 @@ EventManager="*uid://dshxrqy7r0uv3"
 
 folder_colors={
 "res://materials/": "orange",
+"res://models/": "red",
 "res://scenes/": "green",
 "res://scripts/": "blue"
 }

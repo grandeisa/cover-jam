@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://56wbti14iyyh"]
 
-[ext_resource type="Texture2D" uid="uid://cbgegfgl11827" path="res://materials/models/living_room/living_room_book_covers.png" id="1_05oq8"]
+[ext_resource type="Texture2D" uid="uid://cbgegfgl11827" path="res://models/living_room/living_room_book_covers.png" id="1_05oq8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnnor"]
 resource_name = "book white"

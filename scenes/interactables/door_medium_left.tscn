@@ -3,8 +3,8 @@
 [ext_resource type="AudioStream" uid="uid://lmlgo2wt0km7" path="res://thirdparty/SFX/close_door.wav" id="1_aanwt"]
 [ext_resource type="AudioStream" uid="uid://cjjfiyjghf7cl" path="res://thirdparty/SFX/open_door.wav" id="2_iifrb"]
 [ext_resource type="Script" uid="uid://bk8vhqtvqvjwt" path="res://scripts/objects/door.gd" id="3_jtd1w"]
-[ext_resource type="ArrayMesh" uid="uid://bg6ikjjopfyhf" path="res://materials/models/tres/doors/door_medium.res" id="4_noefc"]
-[ext_resource type="ArrayMesh" uid="uid://ceqieov5lgfm4" path="res://materials/models/tres/doors/door_medium_frame.res" id="5_gvwwt"]
+[ext_resource type="ArrayMesh" uid="uid://bg6ikjjopfyhf" path="res://models/tres/doors/door_medium.res" id="4_noefc"]
+[ext_resource type="ArrayMesh" uid="uid://ceqieov5lgfm4" path="res://models/tres/doors/door_medium_frame.res" id="5_gvwwt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ju5n0"]
 size = Vector3(0.79455566, 2.030304, 0.029296875)
