@@ -12,6 +12,8 @@ const GRAVITY: float = 9.8
 ## The speed in which the character moves.
 @export var _speed: float = 160.0
 
+@export var audio_stream : AudioStreamPlayer3D
+
 func _physics_process(delta: float) -> void:
 	var movement_input: Vector2 = Input.get_vector("p_left", "p_right", "p_backward", "p_forward").normalized() * _speed * delta
 	var movement_velocity: Vector3 = Vector3.ZERO
@@ -39,4 +41,7 @@ func _physics_process(delta: float) -> void:
 		_body.velocity.y,
 		movement_velocity.z
 	)
+	if Vector2(movement_velocity.x, movement_velocity.z).length() > 0.1:
+		if not audio_stream.playing:
+			audio_stream.play()
 	_body.move_and_slide()
