@@ -3,14 +3,50 @@ extends Node
 
 ## List of all possible events to be checked (ordered).
 const EVENT_LIST: Array[StringName] = [
-	"oven_off"
+	"on-time",
+	"oven_off",
+	"backpack_pickup",
+	"glasses_pickup",
+	"clothes_pickup",
+	"clothes-on-dryer",
+	"cat_pet",
+	"house-door_lock",
+	"docs_pickup",
+	"docs_scanned",
+	"basement-door_planks-on-front",
+	"basement-door_blocked",
+	"magnet_break",
+	"hammer_pickup",
+	"mother",
+	"computer_off",
+	"map_pickup",
+	"map_hidden",
+	"journal_pickup",
+	"journal_burn",
+	"trash_pickup",
+	"dumpster_filled",
+	"pills_taken"
 ]
 
 ## Key: Events that have endings[br]
 ## Value: Text displayed in case of ending (event is [code]false[/code])[br]
 ## [b]All texts should be displayed with a BBCode enabled [RichTextLabel][/b]
 const _ending_texts: Dictionary[StringName, String] = {
-	"oven_off" : "finale-event_oven-off"
+	"backpack_pickup" : "finale-event_backpack_pickup",
+	"glasses_pickup" : "finale-event_glasses_pickup",
+	"oven_off" : "finale-event_oven_off",
+	"clothes-on-dryer" : "finale-event_clothes",
+	"cat_pet" : "finale-event_cat",
+	"house-door_lock" : "finale-event_house-door",
+	"docs_scanned" : "finale-event_documents",
+	"basement-door_blocked" : "finale-event_basement-door",
+	"magnet_break" : "finale-event_magnet",
+	"mother" : "finale-event_mother",
+	"computer_off" : "finale-event_computer",
+	"map_hidden" : "finale-event_magnet",
+	"journal_burn" : "finale-event_journal",
+	"dumpster_filled" : "finale-event_trash",
+	"pills_taken" : "finale-event_pills"
 }
 
 ## States of all current events.
