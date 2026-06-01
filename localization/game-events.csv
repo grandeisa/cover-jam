@@ -29,12 +29,12 @@ interaction_washing-machine,Tirar roupas da máquina?,Take clothes out of the wa
 response_washing-machine,Tudo molhado…,It’s all wet…
 interaction_washing-machine_empty,Olhar para a máquina de lavar?,Look at the washing machine?
 response_washing-machine_empty,Ah sim… bela máquina de lavar…,Ah yes… what a nice washing machine…
-interaction_dryer_no-clothes,Olhar para a secadora?,Look at the dryer?
-response_dryer_no-clothes,Sabia que ela pode secar roupas?,Did you know it can dry clothes?
-interaction_dryer_with-clothes,Colocar roupas na secadora?,Place clothes in the dryer?
+interaction_dryer_no-clothes,Olhar para o varal?,Look at the clothesline?
+response_dryer_no-clothes,Sabia que dá pra estender roupas aqui?,Did you know you can hang your clothes here?
+interaction_dryer_with-clothes,Colocar roupas no varal?,Hang clothes?
 response_dryer_with-clothes,Com certeza não vão mofar agora,They won’t get moldy now
-interaction_dryer_full,Olhar para a secadora..?,Look at the dryer..?
-response_dryer_full,Parece que há roupas na secadora… Extraordinário…,Looks like there are clothes in the dryer… Extraordinary…
+interaction_dryer_full,Olhar para o varal..?,Look at the clothesline..?
+response_dryer_full,Parece que há roupas no varal… Extraordinário…,Looks like there are clothes on the line... Extraordinary…
 interaction_cat,Fazer carinho no gato?,Pet the cat?
 response_cat,miau.,meow.
 interaction_key,Pegar chave?,Take keys?
@@ -87,7 +87,7 @@ interaction_oven_with-journal,Queimar diário?,Burn journals?
 response_oven-with-journal,QUEIMA QUEIMA QUEIMA,BURN BURN BURN
 interaction_trash_pickup,Pegar lixo?,Pickup trash?
 response_trash_pickup,Eca,Ew
-interaction_dumpster_no-trash,Olhar para a caçamba?,Look at the dumpster?
+interaction_dumpster_no-trash,Olhar para a lixeira?,Look at the trashcan?
 response_dumpster_no-trash,Meio vazia… não?,Kinda empty… right?
 interaction_dumpster_with-trash,Jogar lixo?,Throw trash?
 response_dumpster_with-trash,Você sente a imensa alegria de um trabalho bem feito…,You feel the immense joy of a job well done…

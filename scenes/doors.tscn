@@ -1,14 +1,10 @@
 [gd_scene format=3 uid="uid://7k85y08rhken"]
 
-[ext_resource type="PackedScene" uid="uid://dw5ndf6j75wfc" path="res://scenes/interactables/door.tscn" id="1_ctrmn"]
 [ext_resource type="PackedScene" uid="uid://b0sv65rj8kwt5" path="res://scenes/interactables/door_medium_right.tscn" id="2_6xqom"]
 [ext_resource type="PackedScene" uid="uid://ch01usqvmxsvg" path="res://scenes/interactables/door_medium_left.tscn" id="3_78wek"]
 [ext_resource type="PackedScene" uid="uid://dmsaq5q8ffi3u" path="res://scenes/interactables/door_small_right.tscn" id="4_4x3mg"]
 
 [node name="Doors" type="Node3D" unique_id=1656655075]
-
-[node name="Door" parent="." unique_id=730218231 instance=ExtResource("1_ctrmn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9718982, 1.2, 3.5030832)
 
 [node name="Door2" parent="." unique_id=1349106118 instance=ExtResource("2_6xqom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29318, 1.2, -1.6775312)
@@ -48,9 +44,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6172583, 4.2, -1.6090472)
 
 [node name="Door14" parent="." unique_id=824145325 instance=ExtResource("4_4x3mg")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.0484862, 4.2, -3.2129927)
-
-[node name="Door16" parent="." unique_id=42462269 instance=ExtResource("4_4x3mg")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.6707802, 1.1999998, -1.2577357)
 
 [node name="Door15" parent="." unique_id=1148526539 instance=ExtResource("4_4x3mg")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.0484862, 1.1999998, -3.2129927)

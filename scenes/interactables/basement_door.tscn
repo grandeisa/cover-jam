@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="3_fiund"]
 [ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="4_wqjbn"]
 [ext_resource type="PackedScene" uid="uid://dmsaq5q8ffi3u" path="res://scenes/interactables/door_small_right.tscn" id="5_751aj"]
+[ext_resource type="Script" uid="uid://b1e5l4ok8jang" path="res://scripts/interactables/set_animation_interaction.gd" id="5_tjfh6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gkjao"]
 size = Vector3(0.7441406, 2.0986328, 0.20898438)
@@ -65,6 +66,11 @@ _state_machine_interactable = NodePath("../../../..")
 script = ExtResource("4_wqjbn")
 _event = &"basement-door_blocked"
 
+[node name="SetAnimation" type="Node" parent="ConditionalInteraction/PlankPlacement/ConditionalPlank/PlacePlanksWithHammer" unique_id=1645794893 node_paths=PackedStringArray("_animator")]
+script = ExtResource("5_tjfh6")
+_animator = NodePath("../../../../../Door/AnimationPlayer")
+_animation = &"barricade"
+
 [node name="PlanksPlaced" type="Node" parent="ConditionalInteraction" unique_id=1521480157]
 script = ExtResource("1_to2jp")
 interaction_hint = &"interaction_basement-door_planks-in-front"
@@ -83,3 +89,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06655681, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=431549240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0493164, 0)
 shape = SubResource("BoxShape3D_gkjao")
+
+[editable path="Door"]

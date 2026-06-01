@@ -2,6 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://lmlgo2wt0km7" path="res://thirdparty/SFX/close_door.wav" id="1_18pbm"]
 [ext_resource type="Script" uid="uid://bk8vhqtvqvjwt" path="res://scripts/objects/door.gd" id="1_q5w8r"]
+[ext_resource type="AudioStream" uid="uid://lka4psqdcyx3" path="res://thirdparty/SFX/lock-door.wav" id="3_8lim4"]
 [ext_resource type="ArrayMesh" uid="uid://1gbdamssdotr" path="res://models/tres/doors/door_large_frame.res" id="3_ipbdw"]
 [ext_resource type="AudioStream" uid="uid://cjjfiyjghf7cl" path="res://thirdparty/SFX/open_door.wav" id="3_q5w8r"]
 [ext_resource type="ArrayMesh" uid="uid://bdghvti8qhypj" path="res://models/tres/doors/door_large.res" id="5_ivja7"]
@@ -47,6 +48,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../LockDoor:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("StaticBody3D:is_locked")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_q5w8r"]
 resource_name = "close"
@@ -70,6 +95,33 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.46666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_15hst"]
+resource_name = "lock"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../LockDoor:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.03333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody3D:is_locked")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -106,6 +158,7 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_kgbum"),
 &"close": SubResource("Animation_q5w8r"),
+&"lock": SubResource("Animation_15hst"),
 &"open": SubResource("Animation_pg2b6")
 }
 
@@ -117,6 +170,9 @@ stream = ExtResource("1_18pbm")
 [node name="OpenDoor" type="AudioStreamPlayer3D" parent="." unique_id=1475137712]
 stream = ExtResource("3_q5w8r")
 volume_db = 10.0
+
+[node name="LockDoor" type="AudioStreamPlayer3D" parent="." unique_id=1833276758]
+stream = ExtResource("3_8lim4")
 
 [node name="DoorFrame_016" type="MeshInstance3D" parent="." unique_id=1613876951]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9735792, -1.2, -3.4850554)

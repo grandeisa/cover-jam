@@ -4,10 +4,101 @@
 [ext_resource type="Script" uid="uid://blnilg65an43a" path="res://scripts/interactables/state_machine_interaction.gd" id="2_dfuai"]
 [ext_resource type="Script" uid="uid://6axnm5jlbf40" path="res://scripts/interactables/trigger_state_interaction_behaviour.gd" id="3_md2gj"]
 [ext_resource type="Script" uid="uid://c37p6gi46dr0w" path="res://scripts/interactables/change_state_interaction.gd" id="4_80ysr"]
+[ext_resource type="Script" uid="uid://b1e5l4ok8jang" path="res://scripts/interactables/set_animation_interaction.gd" id="4_rfux8"]
 [ext_resource type="PackedScene" uid="uid://cipa8b2lh0tio" path="res://models/interactable/oven.glb" id="5_rfux8"]
+[ext_resource type="AudioStream" uid="uid://bj1gbsi25ksc1" path="res://thirdparty/SFX/gass_leak.wav" id="6_dfuai"]
+[ext_resource type="AudioStream" uid="uid://ccdtcid7dlfhg" path="res://thirdparty/SFX/burn.mp3" id="7_md2gj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_26tvh"]
 size = Vector3(0.86376953, 0.84088135, 0.78100586)
+
+[sub_resource type="Animation" id="Animation_md2gj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GassLeak:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GassLeak:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.06666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Burn:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rfux8"]
+resource_name = "burn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Burn:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_80ysr"]
+resource_name = "turn_off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GassLeak:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GassLeak:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rfux8"]
+_data = {
+&"RESET": SubResource("Animation_md2gj"),
+&"burn": SubResource("Animation_rfux8"),
+&"turn_off": SubResource("Animation_80ysr")
+}
 
 [node name="Oven" type="StaticBody3D" unique_id=405203539]
 collision_layer = 3
@@ -39,6 +130,11 @@ metadata/_custom_type_script = "uid://cyltasfew5sr3"
 script = ExtResource("3_md2gj")
 _event = &"oven_off"
 
+[node name="SetAnimation" type="Node" parent="ConditionalInteraction/OvenOn/ConditionalInteraction2/DisableOven" unique_id=75526742 node_paths=PackedStringArray("_animator")]
+script = ExtResource("4_rfux8")
+_animator = NodePath("../../../../../AnimationPlayer")
+_animation = &"turn_off"
+
 [node name="ChangeState" type="Node" parent="ConditionalInteraction/OvenOn/ConditionalInteraction2/DisableOven" unique_id=435227196 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("4_80ysr")
 _next_state = NodePath("../../../../LookAtOven")
@@ -53,6 +149,11 @@ metadata/_custom_type_script = "uid://cyltasfew5sr3"
 [node name="TriggerEvent" type="Node" parent="ConditionalInteraction/OvenOn/ConditionalInteraction2/BurnJournals" unique_id=1114518826]
 script = ExtResource("3_md2gj")
 _event = &"journal_burn"
+
+[node name="SetAnimation" type="Node" parent="ConditionalInteraction/OvenOn/ConditionalInteraction2/BurnJournals" unique_id=413418566 node_paths=PackedStringArray("_animator")]
+script = ExtResource("4_rfux8")
+_animator = NodePath("../../../../../AnimationPlayer")
+_animation = &"burn"
 
 [node name="ChangeState" type="Node" parent="ConditionalInteraction/OvenOn/ConditionalInteraction2/BurnJournals" unique_id=2607123 node_paths=PackedStringArray("_next_state", "_state_machine_interactable")]
 script = ExtResource("4_80ysr")
@@ -71,3 +172,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14909637, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=108978750]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031982422, 0.37265015, -0.015014648)
 shape = SubResource("BoxShape3D_26tvh")
+
+[node name="GassLeak" type="AudioStreamPlayer3D" parent="." unique_id=369978171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19593316, 0)
+stream = ExtResource("6_dfuai")
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=823807444]
+libraries/ = SubResource("AnimationLibrary_rfux8")
+
+[node name="Burn" type="AudioStreamPlayer3D" parent="." unique_id=543093718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6551995, 0)
+stream = ExtResource("7_md2gj")
