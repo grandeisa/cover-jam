@@ -152,7 +152,7 @@ _next_state = NodePath("../../Chest/ConditionalInteraction/OpenBox/ConditionalIn
 _state_machine_interactable = NodePath("../../Chest/ConditionalInteraction/OpenBox/ConditionalInteraction2")
 
 [node name="Chest" parent="Interactables" unique_id=395904396 instance=ExtResource("22_hbpq3")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.111328, 1.4006042, -1)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.111328, 1.4006042, 1.7838434)
 metadata/_edit_group_ = true
 
 [node name="Journal" parent="Interactables" unique_id=1409324698 instance=ExtResource("23_ueq0l")]

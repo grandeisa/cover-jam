@@ -43,7 +43,7 @@ size = Vector3(0.598, 0.61276245, 0.481)
 size = Vector3(0.97680664, 2.1918945, 0.32421875)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qrght"]
-height = 0.6494751
+height = 0.43678284
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_de74l"]
 size = Vector3(1.6118774, 1.1688843, 0.7977295)
@@ -135,7 +135,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8743255, 2.2007096, -1.3916
 shape = SubResource("BoxShape3D_lamap")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="LivingRoomCol" unique_id=1772398709]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1166625, 1.5075624, 4.01869)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1166625, 1.4012163, 4.01869)
 shape = SubResource("CylinderShape3D_qrght")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="LivingRoomCol" unique_id=1882370149]

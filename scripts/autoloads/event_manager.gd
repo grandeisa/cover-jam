@@ -42,7 +42,7 @@ const _ending_texts: Dictionary[StringName, String] = {
 	"computer_off" : "finale-event_computer",
 	"basement-door_blocked" : "finale-event_basement-door",
 	"mother" : "finale-event_mother",
-	"map_hidden" : "finale-event_magnet",
+	"map_hidden" : "finale-event_map",
 	"docs_scanned" : "finale-event_documents",
 	"journal_burn" : "finale-event_journal",
 	"dumpster_filled" : "finale-event_trash",
